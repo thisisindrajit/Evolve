@@ -1,0 +1,102 @@
+@keyframes fade-in {
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#dashboard {
+  width: 95%;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+#dashboard #top {
+  display: grid;
+  margin:auto;
+  width:90%;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1.5rem;
+}
+
+#asset-type {
+  display: flex;
+  align-items: center;
+  overflow: auto;
+  padding-bottom: 30px;
+}
+
+.label-grid{
+  margin: 75px 0 25px 0;
+  align-items: center;
+  display:flex;
+  font-weight: 200;
+  grid-template-columns: 1fr 1fr;
+}
+
+.label-grid .label-dashboard {
+  font-size: 1.6rem;
+}
+
+.label-grid .label-icon{
+  display:flex;
+  cursor:pointer;
+  align-items: center;
+  margin:auto;
+  font-size:1.1rem;
+  margin-right:0;
+}
+
+/* width */
+#asset-type::-webkit-scrollbar {
+  height:7.5px;
+  width:7.5px;
+}
+
+/* Track */
+#asset-type::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+#asset-type::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+#asset-type::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+#stocks, #crypto, #bonds, #other-assets{
+  display:grid;
+  grid-template-columns: auto 100px;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+}
+
+#footer{
+  height:75px;
+}
+
+#stock-market-overview{
+  border-radius:20px;
+  overflow:hidden;
+  background:linear-gradient(129.95deg, #0f0c29, #302b63, #24243e);
+}
+
+#markets-overview{
+  background:linear-gradient(129.95deg,  #acb6e5, #86fde8);
+  border-radius: 20px;
+  padding:20px;
+  box-sizing: border-box;
+  display:flex;
+}
+
+.left-grid, .right-grid{
+  display:flex;
+  gap:1.5rem;
+  flex-direction: column;
+}

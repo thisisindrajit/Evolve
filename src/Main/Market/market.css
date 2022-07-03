@@ -1,0 +1,12 @@
+#market {
+  width: 95vw;
+  margin: 0 20px;
+  overflow: hidden;
+}
+
+#market-container, #crypto-container{
+  width:80%;
+  margin:auto;
+  height:500px;
+  padding:10px;
+}

@@ -1,0 +1,14 @@
+#sidebar {
+  background: linear-gradient(180deg, #92ecec 0%, #14cccc 100%);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+@keyframes fade-in {
+  100% {
+    transform: translateY(0);
+  }
+}

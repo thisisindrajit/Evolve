@@ -1,0 +1,14 @@
+#content{
+    background:linear-gradient(180deg, #1B1E21 0%, #121515 100%);
+    color:white;
+    min-height:100vh;
+    overflow-x:hidden;
+    overflow-y:auto;
+    width:100%;
+    scroll-behavior: smooth;
+}
+
+#page-render{
+    margin-top:20px;
+    display:flex;
+}

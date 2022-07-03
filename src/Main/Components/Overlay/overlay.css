@@ -1,0 +1,51 @@
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+#overlay #box {
+  position: relative;
+  height: auto;
+  max-height:85%;
+  width: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #313233;
+  box-sizing: border-box;
+  overflow: auto;
+  display: flex;
+  /* flex-direction: column; */
+}
+
+#overlay #box #close {
+  top: 0;
+  left: 0;
+  padding: 15px;
+  cursor: pointer;
+}
+
+/* width */
+#overlay::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+#overlay::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+#overlay::-webkit-scrollbar-thumb {
+  background: white;
+}
+
+/* Handle on hover */
+#overlay::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}

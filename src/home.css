@@ -1,0 +1,117 @@
+#home {
+  background: linear-gradient(180deg, #1b1e21 0%, #121515 100%);
+  /*background:linear-gradient(to bottom, #121515, #218F8F, #1FBCBC);*/
+  color: white;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+#top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 15vh;
+}
+
+#top-bar .side {
+  color: #14cccc;
+  display: flex;
+  align-items: center;
+  margin: 0 30px;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out;
+}
+
+#evolve {
+  margin: auto;
+  margin-left: 0px;
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: 0.8rem;
+}
+
+#top-bar .side:hover {
+  padding-bottom: 5px;
+  color: white;
+  border-bottom: 1px solid #14cccc;
+}
+
+#home-content {
+  display: flex;
+  height: 80vh;
+}
+
+#c-box {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 500px);
+}
+
+#inside-box {
+  background: linear-gradient(to bottom, #218f8f, #1fbcbc);
+  width: 85%;
+  border-radius: 20px;
+  padding: 30px 0 40px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 75px;
+  box-sizing: border-box;
+  font-weight: 500;
+}
+
+#inside-box p {
+  font-size: 1.2rem;
+  line-height: 2.4rem;
+  text-align: center;
+  width: 90%;
+}
+
+#reg-but {
+  background: transparent;
+  border: 2px solid white;
+  padding: 15px;
+  margin: 5px auto;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: white;
+  transition: all 0.15s ease-in-out;
+}
+
+#reg-but:hover {
+  color: #1fbcbc;
+  transform: translateY(2.5px);
+  background-color: white;
+}
+
+#right-img-holder {
+  display: flex;
+  height: 100%;
+  width: 500px;
+  margin: auto;
+  margin-right: 0;
+  overflow: hidden;
+  opacity: 0.5;
+}
+
+#right-img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  transform: scale(2.5) translateX(30px);
+}
+
+#home-footer {
+  height: 5vh;
+  text-align: center;
+  padding-right: 30px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}

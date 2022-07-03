@@ -1,0 +1,111 @@
+/* !Form CSS */
+
+#form-holder {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+#form-holder .form-title {
+  margin: 25px 0 0 25px;
+  font-size: 1.8rem;
+  font-weight: 200;
+}
+
+#form-content {
+  padding: 20px;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: auto;
+  /* background-color:yellow; */
+}
+
+#form-content form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#form-content form #error {
+  padding: 15px;
+  color: #fd1c03;
+  border: 1px solid #fd1c03;
+  margin-bottom: 25px;
+}
+
+#form-content form input[type="text"],
+[type="date"],.selectbox {
+  margin: 10px auto;
+  padding: 15px;
+  outline: none;
+  font-size: 1.1rem;
+  font-family: "HelveticaNeueCyr", "HelveticaNeue-Light", "Helvetica Neue Light",
+    "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  width: 60%;
+  box-sizing: border-box;
+  border:none;
+}
+
+select {
+  background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right white;
+  -webkit-appearance: none;
+  background-position: right 15px center;
+}
+
+[type="date"] {
+  background: #fff
+    url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)
+    97% 50% no-repeat;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+#form-content form button, #status {
+  font-family: "HelveticaNeueCyr", "HelveticaNeue-Light", "Helvetica Neue Light",
+    "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  width: 60%;
+  margin: auto;
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  outline: none;
+  background: transparent;
+  color: white;
+  padding: 15px;
+  border: 1px solid #14cccc;
+  margin: 10px auto 50px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+#form-content form button:hover {
+  border: 1px solid #14cccc;
+  color: white;
+  background: #14cccc;
+}
+
+/* width */
+#form-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+#form-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+#form-content::-webkit-scrollbar-thumb {
+  background: white;
+}
+
+/* Handle on hover */
+#form-content::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}

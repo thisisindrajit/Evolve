@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Evolve
+Investing is important, if not critical, to make your money work for you. You work hard for your money and your money should work hard for you. Investing is how you take charge of your financial security. It allows you to grow your wealth but also generate an additional income stream if needed ahead of retirement. So, investment portfolio management is one of the most important tasks for any investor. Portfolio managers are people who perform portfolio management for their clients but they need to be paid a good amount of money. And for small and medium sized portfolios, management can be done easily by the investor itself. All that the investor needs is a platform where they can manage all of their assets and take further investment decisions based on insights from the platform as well as their own. This is the exact problem that Evolve is trying to solve.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Evolve is an online investment portfolio management system where users can keep track of all the assets that they have invested in and how well their assets are performing.** It also provides the users with information regarding various markets like the stock market, crypto market etc. and also gives insights on various asset buying and selling decisions. This can be a more affordable alternative to hiring portfolio managers at higher costs. It also has a beautiful UI to make it user friendly and visually appealing.
 
-## Available Scripts
+**Evolve - the only online investment portfolio manager that you’ll ever need.**
 
-In the project directory, you can run:
 
-### `npm start`
+## Tech Stack:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- ReactJS (frontend)
+- Redux (State Management)
+- Snowpack (module bundler)
+- PHP (backend)
+- MySQL (database)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Site screenshots
+### Home
+![Screenshot (71)](https://user-images.githubusercontent.com/43838718/121715360-67625900-cafc-11eb-8c64-48692ac37f33.png)
+### Login
+![image](https://user-images.githubusercontent.com/43838718/115106145-c5514500-9f80-11eb-987d-a9c05ec88ed5.png)
+### Register
+![image](https://user-images.githubusercontent.com/43838718/115106146-c6827200-9f80-11eb-8d53-f32517f510ee.png)
+### Dashboard
+![Screenshot (69)](https://user-images.githubusercontent.com/43838718/121714917-f3c04c00-cafb-11eb-8821-3d909ae2ec85.png)
+![image](https://user-images.githubusercontent.com/43838718/115106253-56282080-9f81-11eb-902a-13e571634b78.png)
+![image](https://user-images.githubusercontent.com/43838718/115106254-57f1e400-9f81-11eb-962f-3225cb900e7a.png)
+### Search
+![image](https://user-images.githubusercontent.com/43838718/115106255-588a7a80-9f81-11eb-81ae-a4b59d23eaf6.png)
+### Market
+![image](https://user-images.githubusercontent.com/43838718/115106315-b61ec700-9f81-11eb-87e7-1ac282511a68.png)
+![image](https://user-images.githubusercontent.com/43838718/115106316-b74ff400-9f81-11eb-88b4-53a4779c34bd.png)
+### Notes
+![Screenshot (70)](https://user-images.githubusercontent.com/43838718/121715217-3c780500-cafc-11eb-984e-2be12727809d.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Note - All data available in My Stocks, My Crypto, My Bonds and Other Assets tables in the dashboard are just dummy values and are not real.
 
-### `npm run build`
+*Charts and financial information provided by TradingView, a popular charting & trading platform.*
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## References:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Snowpack documentation - https://www.snowpack.dev/tutorials/react
+- React Hooks documentation - https://reactjs.org/docs/hooks-intro.html
+- TradingView widgets - https://www.tradingview.com/widget/

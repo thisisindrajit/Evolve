@@ -1,0 +1,26 @@
+#search {
+  width: 95vw;
+  margin: 0 20px;
+  overflow: hidden;
+}
+
+#chart-holder-search {
+  width: 100%;
+  margin: auto;
+  overflow: auto;
+  height: 600px;
+}
+
+#chart-holder-stock {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ticker-evolve {
+  width: 100%;
+  margin: auto;
+}

@@ -1,0 +1,46 @@
+#notes {
+  width: 95vw;
+  margin: 0 20px;
+  overflow: hidden;
+}
+
+textarea {
+  width: 100%;
+  margin: auto;
+  background-color: #313233;
+  color: white;
+  height: 500px;
+  padding: 10px;
+  outline: none;
+  font-size: 1.1rem;
+  font-family: "HelveticaNeueCyr", "HelveticaNeue-Light", "Helvetica Neue Light",
+    "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  box-sizing: border-box;
+  resize: none;
+  border: 1px solid white;
+}
+
+.save {
+  border: 1px solid #14cccc;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  font-weight:400;
+}
+
+.save:hover {
+  border: 1px solid #14cccc;
+  color: black;
+  background: #14cccc;
+}
+
+#right-note{
+  margin:auto;
+  margin-right:0;
+  display:flex;
+}
+
+.note-msg{
+  margin:auto;
+  margin-right:20px;
+}

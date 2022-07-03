@@ -1,0 +1,7 @@
+.box{
+    padding:25px;
+    width:100%;
+    box-sizing: border-box;
+    /*margin:auto;*/
+    border-radius:20px;
+}
