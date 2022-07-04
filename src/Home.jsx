@@ -71,7 +71,7 @@ const Home = (props) => {
     //   </div>
     // </div>
     <div className="flex flex-col justify-between min-h-screen">
-      <div className="flex items-center justify-between px-6 md:px-8 h-24">
+      <div className="flex items-center justify-between px-4 md:px-8 h-20 md:h-24 ">
         {/* Logo holder */}
         <div className="flex items-center gap-6">
           <img
@@ -129,7 +129,7 @@ const Home = (props) => {
           />
         </div>
       </div>
-      <div className="p-6 md:p-8 text-right text-sm footer">
+      <div className="px-4 py-6 md:p-8 text-right text-sm footer">
         © Copyright {new Date().getFullYear()} - Evolve
       </div>
     </div>
