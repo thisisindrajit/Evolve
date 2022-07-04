@@ -2,14 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400&display=swap");
+
 html,
 body {
   margin: 0;
   max-width: 100vw;
   min-height: 100vh;
+  font-family: "Inter", sans-serif;
   background: linear-gradient(180deg, #1b1e21 0%, #121515 100%);
   color: white;
   scroll-behavior: smooth;
+  font-weight:200;
 }
 
 * {

@@ -71,13 +71,12 @@ const Home = (props) => {
     //   </div>
     // </div>
     <div className="flex flex-col justify-between min-h-screen">
-      <div className="flex items-center justify-between px-8 topbar">
+      <div className="flex items-center justify-between px-6 md:px-8 h-24">
         {/* Logo holder */}
         <div className="flex items-center gap-6">
           <img
             src={logo}
-            height="25"
-            width="25"
+            width="28"
             alt="Evolve logo"
             style={{
               opacity: "0",
@@ -85,35 +84,38 @@ const Home = (props) => {
                 "icon-opacity-change 0.5s 0.25s cubic-bezier(.18,.87,.92,1) forwards",
             }}
           />
-          <div className="text-base logo-evolve">EVOLVE</div>
+          <div className="text-base logo-evolve hidden md:block">EVOLVE</div>
         </div>
         {/* Links holder */}
-        <div className="flex items-center justify-evenly gap-12">
+        <div className="flex items-center justify-evenly sm:gap-12">
           <Link to="/login">
             <div className="topbar-link transition-all">Login</div>
           </Link>
           <Link to="/register">
-            <div className="topbar-link transition-all">Register</div>
+            <div className="topbar-link transition-all hidden sm:block">
+              Register
+            </div>
           </Link>
         </div>
       </div>
       <div className="flex mb-12">
-        <div className="flex items-center justify-center w-3/5">
-          <div className="content-holder rounded-lg w-4/5 p-8 flex flex-col gap-4">
-            <p className="text-lg content leading-8">
+        <div className="flex items-center justify-center w-full md:w-3/5 p-4 md:p-0">
+          <div className="content-holder rounded-lg w-full md:w-11/12 p-6 md:p-8 flex flex-col gap-4">
+            <div className="text-base md:text-lg content leading-8">
               Unable to afford a portfolio manager to maintain your investments?
-              <br />
-              Welcome to Evolve - the only online investment portfolio manager
-              that you'll ever need.
-            </p>
+              <div className="mt-4 mb-2 leading-8">
+                Welcome to EVOLVE - the only online investment portfolio manager
+                that you'll ever need.
+              </div>
+            </div>
             <Link to="/register">
-              <div className="text-base text-white content border-2 border-white p-3 w-fit reg-button transition-all">
+              <div className="text-sm md:text-base text-white content border-2 border-white p-3 w-fit reg-button transition-all">
                 Become an Evolve member!
               </div>
             </Link>
           </div>
         </div>
-        <div className="right-img-holder">
+        <div className="right-img-holder hidden md:block">
           <img
             src={full_logo}
             className="right-img"
@@ -127,7 +129,7 @@ const Home = (props) => {
           />
         </div>
       </div>
-      <div className="p-8 text-right text-sm footer">
+      <div className="p-6 md:p-8 text-right text-sm footer">
         © Copyright {new Date().getFullYear()} - Evolve
       </div>
     </div>

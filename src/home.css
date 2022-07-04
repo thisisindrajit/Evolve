@@ -4,10 +4,6 @@
   letter-spacing: 0.7rem;
 }
 
-.topbar {
-  min-height: 80px;
-}
-
 .topbar-link {
   color: #14cccc;
 }
@@ -19,8 +15,6 @@
 }
 
 .content-holder {
-  font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial,
-    "Lucida Grande", sans-serif;
   background: linear-gradient(to bottom, #218f8f, #1fbcbc);
 }
 
@@ -52,7 +46,5 @@
 }
 
 .footer {
-  font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial,
-    "Lucida Grande", sans-serif;
   font-weight: 500;
 }
