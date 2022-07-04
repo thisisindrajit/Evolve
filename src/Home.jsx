@@ -92,7 +92,7 @@ const Home = (props) => {
           <Link to="/login">
             <div className="topbar-link transition-all">Login</div>
           </Link>
-          <Link to="/register" className="topbar-link transition-all">
+          <Link to="/register">
             <div className="topbar-link transition-all">Register</div>
           </Link>
         </div>
