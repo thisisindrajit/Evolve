@@ -42,7 +42,7 @@ const Login = (props) => {
       //there is an error
       if (response.data.error !== undefined) {
         console.log(response.data.error);
-        document.getElementById("holder").scrollTo(0, 0);
+        document.getElementsByClassName("holder")[0].scrollTo(0, 0);
 
         //resetting the form
         setData({ email: "", password: "" });
@@ -71,52 +71,6 @@ const Login = (props) => {
   return props.loading === true ? (
     <Loading />
   ) : (
-    // <div id="login">
-    //   <div id="holder">
-    //     <form onSubmit={(e) => handleSubmit(e)}>
-    //       <span id="label">Login into Evolve</span>
-
-    //       {/*Vertical line*/}
-
-    //       <div
-    //         style={{
-    //           height: "0.5px",
-    //           backgroundColor: "#14CCCC",
-    //           width: "40vw",
-    //           margin: "25px",
-    //         }}
-    //       ></div>
-
-    //       {/*error box*/}
-    //       {error.isSet && <div id="error">{error.errorDesc}</div>}
-
-    //       <input
-    //         type="text"
-    //         title="Email"
-    //         name="email"
-    //         value={data.email}
-    //         placeholder="Email (Required)"
-    //         onChange={(e) => changeData(e, 1)}
-    //         spellCheck="false"
-    //         required
-    //       />
-    //       <input
-    //         type="password"
-    //         title="Password"
-    //         name="password"
-    //         value={data.password}
-    //         placeholder="Password (Required)"
-    //         onChange={(e) => changeData(e, 2)}
-    //         required
-    //       />
-    //       <button type="submit">Login</button>
-
-    //       <span id="new-user">
-    //         New User? <Link to="/register">Click Here</Link> to register!
-    //       </span>
-    //     </form>
-    //   </div>
-    // </div>
     <div className="flex flex-col min-h-screen">
       <LogoHolder type="login" />
       <div className="m-auto holder px-4 py-8 xsm:px-6 sm:px-10 w-11/12 sm:w-10/12 md:w-6/12 xl:w-5/12">
@@ -131,7 +85,11 @@ const Login = (props) => {
           <div className="my-6 bg-evolve-green h-px w-full"></div>
 
           {/*error box*/}
-          {error.isSet && <div id="error">{error.errorDesc}</div>}
+          {error.isSet && (
+            <div className="border-2 border-red-500 text-white p-2 w-full sm:w-10/12 text-center my-2 md:text-base text-sm">
+              {error.errorDesc}
+            </div>
+          )}
 
           <input
             type="text"
