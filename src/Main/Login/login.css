@@ -8,6 +8,5 @@
 }
 
 .holder form .input-field {
-  @apply w-full sm:w-10/12 my-2 text-black p-4 text-sm md:text-base;
-  outline: none;
+  @apply min-w-full text-black p-4 text-sm md:text-base outline-none;
 }

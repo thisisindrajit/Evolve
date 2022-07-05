@@ -4,7 +4,8 @@ import "./register.css";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import Loading from "../../Utils/Loading";
-
+import LogoHolder from "../LogoHolder/LogoHolder";
+import InputHolder from "../Components/InputHolder";
 
 const Register = (props) => {
   //if already logged in, redirect directly to dashboard
@@ -51,7 +52,7 @@ const Register = (props) => {
       //there is an error
       if (response.data.error !== undefined) {
         //console.log(response.data.error);
-        document.getElementById("holder").scrollTo(0, 0);
+        document.getElementsByClassName("holder")[0].scrollTo(0, 0);
 
         //resetting the form
         setData({
@@ -88,73 +89,102 @@ const Register = (props) => {
   return props.loading === true ? (
     <Loading />
   ) : (
-    <div id="register">
-      <div id="holder">
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <span id="label">Become an Evolve member</span>
+    <div className="flex flex-col min-h-screen pb-4 md:pb-8">
+      <LogoHolder type="register" />
+      <div className="m-auto holder px-4 py-8 xsm:px-6 sm:px-10 w-11/12 sm:w-10/12 md:w-6/12 xl:w-5/12">
+        <form
+          className="flex flex-col items-center justify-center"
+          onSubmit={(e) => handleSubmit(e)}
+        >
+          <div className="text-lg sm:text-xl md:text-2xl">
+            Become an Evolve member
+          </div>
+
           {/*Vertical line*/}
-          <div
-            style={{
-              height: "0.5px",
-              backgroundColor: "#14CCCC",
-              width: "40vw",
-              margin: "25px",
-            }}
-          ></div>
+          <div className="my-6 bg-evolve-green h-px w-full"></div>
+
           {/*error box*/}
-          {error.isSet && <div id="error">{error.errorDesc}</div>}
-          <input
-            type="text"
-            title="First Name"
-            name="firstname"
-            value={data.firstName}
-            placeholder="First Name (Required)"
-            onChange={(e) => changeData(e, 1)}
-            spellCheck="false"
-            required
-          />
-          <input
-            type="text"
-            title="Last Name"
-            name="lastname"
-            value={data.lastName}
-            placeholder="Last Name"
-            onChange={(e) => changeData(e, 2)}
-            spellCheck="false"
-          />
+          {error.isSet && (
+            <div className="border-2 border-red-500 text-white p-2 w-full sm:w-10/12 text-center my-2 md:text-base text-sm">
+              {error.errorDesc}
+            </div>
+          )}
+
+          <InputHolder title="First name" isRequired>
+            <input
+              type="text"
+              title="First Name"
+              name="firstname"
+              value={data.firstName}
+              placeholder="Enter your first name"
+              onChange={(e) => changeData(e, 1)}
+              spellCheck="false"
+              className="input-field"
+              required
+            />
+          </InputHolder>
+          <InputHolder title="Last name">
+            <input
+              type="text"
+              title="Last Name"
+              name="lastname"
+              value={data.lastName}
+              placeholder="Enter your last name"
+              onChange={(e) => changeData(e, 2)}
+              className="input-field"
+              spellCheck="false"
+            />
+          </InputHolder>
           {/*Change location to set of options only */}
-          <input
-            type="text"
-            title="Location"
-            name="location"
-            value={data.location}
-            placeholder="Location (Required)"
-            onChange={(e) => changeData(e, 3)}
-            spellCheck="false"
-            required
-          />
-          <input
-            type="text"
-            title="Email"
-            name="email"
-            value={data.email}
-            placeholder="Email (Required)"
-            onChange={(e) => changeData(e, 4)}
-            spellCheck="false"
-            required
-          />
-          <input
-            type="password"
-            title="Password"
-            name="password"
-            value={data.password}
-            placeholder="Password (Required)"
-            onChange={(e) => changeData(e, 5)}
-            required
-          />
-          <button type="submit">Register</button>
-          <span id="old-user">
-            Already registered? <Link to="/login">Click Here</Link> to Login!
+          <InputHolder title="Country" isRequired>
+            <input
+              type="text"
+              title="Location"
+              name="location"
+              value={data.location}
+              placeholder="Enter your country"
+              onChange={(e) => changeData(e, 3)}
+              spellCheck="false"
+              className="input-field"
+              required
+            />
+          </InputHolder>
+          <InputHolder title="Email ID" isRequired>
+            <input
+              type="text"
+              title="Email"
+              name="email"
+              value={data.email}
+              placeholder="Enter your email ID"
+              onChange={(e) => changeData(e, 4)}
+              spellCheck="false"
+              className="input-field"
+              required
+            />
+          </InputHolder>
+          <InputHolder title="Password" isRequired>
+            <input
+              type="password"
+              title="Password"
+              name="password"
+              value={data.password}
+              placeholder="Enter your password"
+              onChange={(e) => changeData(e, 5)}
+              className="input-field"
+              required
+            />
+          </InputHolder>
+          <button type="submit" className="w-full sm:w-10/12">
+            <div className="border-2 border-white p-4 font-bold my-2 hover:text-white hover:bg-evolve-green hover:border-evolve-green transition-all text-sm">
+              REGISTER
+            </div>
+          </button>
+          <span className="text-sm mt-6">
+            Already registered?{" "}
+            <Link to="/login" className="text-evolve-green hover:underline">
+              Click Here
+            </Link>{" "}
+            to Login!
           </span>
         </form>
       </div>

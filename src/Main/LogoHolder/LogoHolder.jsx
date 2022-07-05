@@ -4,7 +4,11 @@ import "./logoholder.css";
 
 const LogoHolder = (props) => {
   return (
-    <div className="flex items-center justify-between px-4 md:px-8 h-20 md:h-24">
+    <div
+      className={`flex items-center justify-between px-4 md:px-8 h-20 md:h-24 ${
+        (props.type === "login" || props.type === "register") && "mb-2"
+      }`}
+    >
       <Link to="/">
         <div className="flex items-center gap-6">
           <img
@@ -39,6 +43,13 @@ const LogoHolder = (props) => {
         <div className="flex items-center">
           <Link to="/register">
             <div className="topbar-link transition-all">Register</div>
+          </Link>
+        </div>
+      )}
+      {props.type === "register" && (
+        <div className="flex items-center">
+          <Link to="/login">
+            <div className="topbar-link transition-all">Login</div>
           </Link>
         </div>
       )}
