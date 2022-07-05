@@ -1,4 +1,4 @@
-#register {
+/* #register {
   background:linear-gradient(180deg, #1B1E21 0%, #121515 100%);
   color:white;
   overflow-y: auto;
@@ -20,7 +20,6 @@
   justify-content: center;
   overflow: auto;
   background-color: #3c3f41;
-  /*box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);*/
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
     0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
@@ -98,8 +97,6 @@ a:focus {
   text-decoration: underline;
 }
 
-/*TO DO - change font size for various screen sizes if time permits */
-
 @media screen and (max-height: 720px) {
   #register #holder {
     display: block;
@@ -109,4 +106,4 @@ a:focus {
     width: 50vw;
     padding: 40px 25px;
   }
-}
+} */

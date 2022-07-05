@@ -4,7 +4,7 @@ import "./bonds.css";
 import BondDeleteOverlay from "./BondDeleteOverlay";
 import axios from "axios";
 import { connect } from "react-redux";
-import.meta.hot; // FOR GETTING ENV VARIABLES FROM SNOWPACK
+
 
 const Bonds = (props) => {
   let isunmounted = false;

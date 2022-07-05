@@ -4,7 +4,7 @@ import "./login.css";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import Loading from "../../Utils/Loading";
-import.meta.hot; // FOR GETTING ENV VARIABLES FROM SNOWPACK
+import LogoHolder from "../LogoHolder/LogoHolder";
 
 const Login = (props) => {
   //if already logged in, redirect directly to dashboard
@@ -31,7 +31,7 @@ const Login = (props) => {
     e.preventDefault();
 
     // TODO: Perform email validation using regex
-    
+
     // const LOGIN_ENDPOINT = "http://localhost:80/evolve/login.php";
     const LOGIN_ENDPOINT = process.env.REACT_APP_API_URL + "/login.php";
 
@@ -71,21 +71,64 @@ const Login = (props) => {
   return props.loading === true ? (
     <Loading />
   ) : (
-    <div id="login">
-      <div id="holder">
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <span id="label">Login into Evolve</span>
+    // <div id="login">
+    //   <div id="holder">
+    //     <form onSubmit={(e) => handleSubmit(e)}>
+    //       <span id="label">Login into Evolve</span>
+
+    //       {/*Vertical line*/}
+
+    //       <div
+    //         style={{
+    //           height: "0.5px",
+    //           backgroundColor: "#14CCCC",
+    //           width: "40vw",
+    //           margin: "25px",
+    //         }}
+    //       ></div>
+
+    //       {/*error box*/}
+    //       {error.isSet && <div id="error">{error.errorDesc}</div>}
+
+    //       <input
+    //         type="text"
+    //         title="Email"
+    //         name="email"
+    //         value={data.email}
+    //         placeholder="Email (Required)"
+    //         onChange={(e) => changeData(e, 1)}
+    //         spellCheck="false"
+    //         required
+    //       />
+    //       <input
+    //         type="password"
+    //         title="Password"
+    //         name="password"
+    //         value={data.password}
+    //         placeholder="Password (Required)"
+    //         onChange={(e) => changeData(e, 2)}
+    //         required
+    //       />
+    //       <button type="submit">Login</button>
+
+    //       <span id="new-user">
+    //         New User? <Link to="/register">Click Here</Link> to register!
+    //       </span>
+    //     </form>
+    //   </div>
+    // </div>
+    <div className="flex flex-col min-h-screen">
+      <LogoHolder type="login" />
+      <div className="m-auto holder px-4 py-8 xsm:px-6 sm:px-10 w-11/12 sm:w-10/12 md:w-6/12 xl:w-5/12">
+        <form
+          className="flex flex-col items-center justify-center"
+          onSubmit={(e) => handleSubmit(e)}
+        >
+          <span className="text-xl md:text-2xl">Login into Evolve</span>
 
           {/*Vertical line*/}
 
-          <div
-            style={{
-              height: "0.5px",
-              backgroundColor: "#14CCCC",
-              width: "40vw",
-              margin: "25px",
-            }}
-          ></div>
+          <div className="my-6 bg-evolve-green h-px w-full"></div>
 
           {/*error box*/}
           {error.isSet && <div id="error">{error.errorDesc}</div>}
@@ -97,6 +140,7 @@ const Login = (props) => {
             value={data.email}
             placeholder="Email (Required)"
             onChange={(e) => changeData(e, 1)}
+            className="input-field"
             spellCheck="false"
             required
           />
@@ -107,12 +151,21 @@ const Login = (props) => {
             value={data.password}
             placeholder="Password (Required)"
             onChange={(e) => changeData(e, 2)}
+            className="input-field"
             required
           />
-          <button type="submit">Login</button>
+          <button type="submit" className="w-full sm:w-10/12">
+            <div className="border-2 border-white p-4 font-bold my-2 hover:text-white hover:bg-evolve-green hover:border-evolve-green transition-all text-sm">
+              LOGIN
+            </div>
+          </button>
 
-          <span id="new-user">
-            New User? <Link to="/register">Click Here</Link> to register!
+          <span className="text-sm mt-6">
+            New User?{" "}
+            <Link to="/register" className="text-evolve-green hover:underline">
+              Click Here
+            </Link>{" "}
+            to register!
           </span>
         </form>
       </div>

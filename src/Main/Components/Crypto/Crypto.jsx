@@ -4,7 +4,7 @@ import "./crypto.css";
 import CryptoDeleteOverlay from "./CryptoDeleteOverlay";
 import axios from "axios";
 import { connect } from "react-redux";
-import.meta.hot; // FOR GETTING ENV VARIABLES FROM SNOWPACK
+
 
 const Crypto = (props) => {
   let isunmounted = false;

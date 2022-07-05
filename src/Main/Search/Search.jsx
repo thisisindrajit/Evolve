@@ -4,7 +4,7 @@ import { AdvancedChart } from "react-tradingview-embed";
 import defaultPageStyles from '../../Styles/defaultPageStyles';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import.meta.hot; // FOR GETTING ENV VARIABLES FROM SNOWPACK
+
 
 const Search = (props) => {
 

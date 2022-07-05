@@ -1,19 +1,4 @@
 /* NEW STYLES */
-
-.logo-evolve {
-  letter-spacing: 0.7rem;
-}
-
-.topbar-link {
-  color: #14cccc;
-}
-
-.topbar-link:hover {
-  padding-bottom: 5px;
-  color: white;
-  border-bottom: 1px solid #14cccc;
-}
-
 .content-holder {
   background: linear-gradient(to bottom, #218f8f, #1fbcbc);
 }

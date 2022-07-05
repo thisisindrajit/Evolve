@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import './notes.css';
 import defaultPageStyles from '../../Styles/defaultPageStyles';
 import axios from 'axios';
-import.meta.hot; // FOR GETTING ENV VARIABLES FROM SNOWPACK
+
 
 const Notes = (props) => {
 

@@ -4,7 +4,7 @@ import './stocks.css';
 import StockDeleteOverlay from "./StockDeleteOverlay";
 import axios from "axios";
 import { connect } from 'react-redux';
-import.meta.hot; // FOR GETTING ENV VARIABLES FROM SNOWPACK
+
 
 const Stocks = (props) => {
   let isunmounted = false;

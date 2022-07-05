@@ -1,112 +1,13 @@
-#login {
-  background: linear-gradient(180deg, #1b1e21 0%, #121515 100%);
-  color: white;
-  overflow-y: auto;
-  overflow-x: hidden;
-  min-height:100vh;
-  max-height:fit-content;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#login #holder {
-  margin:25px auto;
-  scroll-behavior: smooth;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: auto;
+/* NEW STYLES */
+.holder {
   background-color: #3c3f41;
-  /*box-shadow: 0 25px 50px -12px rgba(41, 41, 41, 0.25);*/
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
     0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
     0 100px 80px rgba(0, 0, 0, 0.12);
-  width: 50vw;
-  padding: 40px 25px;
 }
 
-#login #holder #error {
-  padding:15px;
-  color:#FD1C03;
-  border:1px solid #FD1C03;
-  margin-bottom:15px;
-}
-
-#login #holder form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-#login #holder form #label {
-  font-size: 1.8rem;
-}
-
-#login #holder form input[type="text"],
-input[type="password"] {
-  margin: 10px auto;
-  padding: 15px;
+.holder form .input-field {
+  @apply w-full sm:w-10/12 my-2 text-black p-4;
   outline: none;
-  font-size: 1.1rem;
-  font-family: "HelveticaNeueCyr", "HelveticaNeue-Light", "Helvetica Neue Light",
-    "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  width: 60%;
-  box-sizing: border-box;
-}
-
-#login #holder form button {
-  font-family: "HelveticaNeueCyr", "HelveticaNeue-Light", "Helvetica Neue Light",
-    "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  width: 60%;
-  margin: auto;
-  font-size: 1.1rem;
-  box-sizing: border-box;
-  outline: none;
-  background: transparent;
-  color: white;
-  padding: 15px;
-  border: 1px solid #14cccc;
-  margin: 10px auto 50px;
-  cursor: pointer;
-  transition: all 0.15s ease-in-out;
-}
-
-#login #holder form button:hover {
-  border: 1px solid #14cccc;
-  color: white;
-  background: #14cccc;
-}
-
-#login #holder form #new-user {
-  font-size: 1rem;
-}
-
-#login #holder form #new-user a,
-a:visited,
-a:focus {
-  color: #14cccc;
-  text-decoration: none;
-}
-
-#login #holder form #new-user a:hover {
-  text-decoration: underline;
-}
-
-/*TO DO - change font size for various screen sizes if time permits */
-
-@media screen and (max-height: 500px) {
-  #login #holder {
-    display: block;
-    overflow: auto;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    height: 70vh;
-    width: 50vw;
-    padding: 40px 25px;
-  }
 }

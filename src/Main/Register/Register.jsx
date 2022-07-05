@@ -4,7 +4,7 @@ import "./register.css";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import Loading from "../../Utils/Loading";
-import.meta.hot; // FOR GETTING ENV VARIABLES FROM SNOWPACK
+
 
 const Register = (props) => {
   //if already logged in, redirect directly to dashboard

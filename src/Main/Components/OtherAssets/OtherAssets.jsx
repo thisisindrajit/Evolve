@@ -4,7 +4,7 @@ import './otherassets.css';
 import OtherAssetDeleteOverlay from "./OtherAssetDeleteOverlay";
 import axios from "axios";
 import { connect } from "react-redux";
-import.meta.hot; // FOR GETTING ENV VARIABLES FROM SNOWPACK
+
 
 const OtherAssets = (props) => {
 

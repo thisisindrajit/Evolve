@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../form.css";
 import { connect } from "react-redux";
-import.meta.hot; // FOR GETTING ENV VARIABLES FROM SNOWPACK
+
 
 const CryptoForm = (props) => {
   const [data, setData] = useState({

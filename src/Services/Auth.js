@@ -1,5 +1,5 @@
 import axios from "axios";
-import.meta.hot; // FOR GETTING ENV VARIABLES FROM SNOWPACK
+
 
 export const removelocalStorage = () => {
   localStorage.removeItem("access_token");

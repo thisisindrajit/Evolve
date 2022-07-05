@@ -2,15 +2,24 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     screens: {
       ...defaultTheme.screens,
+      xsm: "425px",
       md: "992px",
     },
-    extend: {},
+    extend: {
+      borderColor: {
+        "evolve-green": "#14cccc",
+      },
+      backgroundColor: {
+        "evolve-green": "#14cccc",
+      },
+      textColor: {
+        "evolve-green": "#14cccc",
+      },
+    },
   },
   plugins: [],
-}
+};
