@@ -11,7 +11,7 @@ const InputHolder = (props) => {
       </div>
       {props.children}
       {props.showInfo && (
-        <div className="text-sm text-gray-300">{props.info}</div>
+        <div className="text-xs md:text-sm text-gray-300 text-justify leading-relaxed">{props.info}</div>
       )}
     </div>
   );

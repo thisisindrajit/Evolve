@@ -1,20 +1,54 @@
 //https://www.techiediaries.com/react-formdata-file-upload-multipart-form-tutorial/
 
-import React from 'react';
-import './topbar.css';
+import React from "react";
+// import "./topbar.css";
 
 const TopBar = (props) => {
-
-    return (
-        <div id="topbar">
-            Welcome {localStorage.getItem("username")}
-            {/* <img id="dp" onClick={() => props.logout()} src="https://pics.freeicons.io/uploads/icons/png/7947586491595453760-512.png" alt="Display Picture" /> */}
-            <svg id="dp" viewBox="0 0 24 24" onClick={() => props.logout()} fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" clipRule="evenodd" d="M17.294 7.29105C17.294 10.2281 14.9391 12.5831 12 12.5831C9.0619 12.5831 6.70601 10.2281 6.70601 7.29105C6.70601 4.35402 9.0619 2 12 2C14.9391 2 17.294 4.35402 17.294 7.29105ZM12 22C7.66237 22 4 21.295 4 18.575C4 15.8539 7.68538 15.1739 12 15.1739C16.3386 15.1739 20 15.8789 20 18.599C20 21.32 16.3146 22 12 22Z" fill="white" />
-            </svg>
-
-        </div>
-    )
-}
+  return (
+    <div className="p-6 flex justify-between items-center">
+      <div className="text-lg sm:text-xl md:text-2xl">
+        Welcome{" "}
+        <span className="font-bold">{localStorage.getItem("username")}</span>
+      </div>
+      {/* <img id="dp" onClick={() => props.logout()} src="https://pics.freeicons.io/uploads/icons/png/7947586491595453760-512.png" alt="Display Picture" /> */}
+      <svg
+        className="cursor-pointer h-6 md:h-8"
+        viewBox="0 0 80 80"
+        onClick={() => props.logout()}
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="39.115" cy="39.115" r="39.115" fill="#007367" />
+        <mask
+          id="mask0_11_335"
+          style={{ maskType: "alpha" }}
+          maskUnits="userSpaceOnUse"
+          x="0"
+          y="0"
+          width="79"
+          height="79"
+        >
+          <circle cx="39.115" cy="39.115" r="39.115" fill="#C4C4C4" />
+        </mask>
+        <g mask="url(#mask0_11_335)">
+          <ellipse
+            cx="39.1157"
+            cy="68.8424"
+            rx="29.7274"
+            ry="17.2106"
+            fill="#89FFDD"
+          />
+        </g>
+        <ellipse
+          cx="39.1154"
+          cy="33.2478"
+          rx="14.0814"
+          ry="14.0814"
+          fill="#89FFDD"
+        />
+      </svg>
+    </div>
+  );
+};
 
 export default TopBar;

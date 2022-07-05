@@ -6,16 +6,17 @@ import defaultPageStyles from "../../Styles/defaultPageStyles";
 
 const Sidebar = (props) => {
   return (
-    <div id="sidebar" style={defaultPageStyles.sidebaranimationStyle}>
+    <div className="sidebar" style={defaultPageStyles.sidebaranimationStyle}>
       {/*Logo*/}
       <img
         src={logo}
-        height="80"
-        width="80"
-        alt="evolve logo"
+        height="26"
+        width="26"
+        alt="Evolve logo"
+        className="m-7"
         style={{
           opacity: "0",
-          marginBottom: "15px",
+          paddingTop: "0.5px",
           animation:
             "icon-opacity-change 0.75s 0.1s cubic-bezier(.18,.87,.92,1) forwards",
         }}
@@ -23,8 +24,8 @@ const Sidebar = (props) => {
 
       {/*Home icon*/}
       <Icon
-        height={30}
-        width={30}
+        height={26}
+        width={26}
         fill={props.fillvalue === 1 ? "yes" : "no"}
         onClick={() => props.setpage(1)}
       >
@@ -33,8 +34,8 @@ const Sidebar = (props) => {
 
       {/*Search icon*/}
       <Icon
-        height={30}
-        width={30}
+        height={26}
+        width={26}
         fill={props.fillvalue === 2 ? "yes" : "no"}
         onClick={() => props.setpage(2)}
       >
@@ -59,8 +60,8 @@ const Sidebar = (props) => {
 
       {/*Markets Icon*/}
       <Icon
-        height={30}
-        width={30}
+        height={26}
+        width={26}
         fill={props.fillvalue === 3 ? "yes" : "no"}
         onClick={() => props.setpage(3)}
       >
@@ -105,8 +106,8 @@ const Sidebar = (props) => {
 
       {/*Notes Icon*/}
       <Icon
-        height={30}
-        width={30}
+        height={26}
+        width={26}
         fill={props.fillvalue === 4 ? "yes" : "no"}
         onClick={() => props.setpage(4)}
       >

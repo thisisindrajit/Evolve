@@ -1,7 +1,7 @@
-#sidebar {
-  background: linear-gradient(180deg, #92ecec 0%, #14cccc 100%);
+.sidebar {
+  @apply hidden md:flex;
+  background: linear-gradient(to bottom, #218f8f, #1fbcbc);
   width: 100%;
-  display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;

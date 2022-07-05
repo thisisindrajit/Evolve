@@ -141,7 +141,7 @@ const Register = (props) => {
             title="Country"
             isRequired
             showInfo
-            info="This data is used to select the correct stock exchange for you."
+            info="This data is used to select the apt currency for you."
           >
             {/* <input
               type="text"
