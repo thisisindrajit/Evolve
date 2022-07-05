@@ -6,6 +6,7 @@ import { Redirect } from "react-router-dom";
 import Loading from "../../Utils/Loading";
 import LogoHolder from "../LogoHolder/LogoHolder";
 import InputHolder from "../Components/InputHolder";
+import CountrySelector from "../Components/CountrySelector";
 
 const Register = (props) => {
   //if already logged in, redirect directly to dashboard
@@ -17,7 +18,7 @@ const Register = (props) => {
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
-    location: "",
+    location: "India",
     email: "",
     password: "",
   });
@@ -136,8 +137,13 @@ const Register = (props) => {
             />
           </InputHolder>
           {/*Change location to set of options only */}
-          <InputHolder title="Country" isRequired>
-            <input
+          <InputHolder
+            title="Country"
+            isRequired
+            showInfo
+            info="This data is used to select the correct stock exchange for you."
+          >
+            {/* <input
               type="text"
               title="Location"
               name="location"
@@ -147,6 +153,10 @@ const Register = (props) => {
               spellCheck="false"
               className="input-field"
               required
+            /> */}
+            <CountrySelector
+              value={data.location}
+              onChange={(e) => changeData(e, 3)}
             />
           </InputHolder>
           <InputHolder title="Email ID" isRequired>
