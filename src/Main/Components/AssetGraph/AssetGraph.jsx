@@ -1,87 +1,116 @@
-import React, { Component } from 'react';
-import Chart from 'react-apexcharts'
+import React from "react";
+import Chart from "react-apexcharts";
 import "../box.css";
-import "./assetgraph.css";
-import { connect } from 'react-redux';
-class AssetGraph extends Component {
+import { connect } from "react-redux";
+import { currency } from "../../../Utils/constants";
 
-  constructor(props) {
-    super(props);
+const AssetGraph = (props) => {
+  let isDataLoaded =
+    props.stockLoading +
+    props.cryptoLoading +
+    props.bondLoading +
+    props.othersLoading;
+  let purpricearr = [
+    parseFloat(props.stockPurchasePrice),
+    parseFloat(props.cryptoPurchasePrice),
+    parseFloat(props.bondPurchasePrice),
+    parseFloat(props.othersPurchasePrice),
+  ];
 
-    this.state = {
-      options: {
-        plotOptions: {
-          pie: {
-            donut: {
-              size: '55%',
-            },
-          }
+  const chartOptions = {
+    plotOptions: {
+      pie: {
+        donut: {
+          size: "60%",
         },
-        stroke: {
-          show: false
-        },
+      },
+    },
+    stroke: {
+      show: false,
+    },
 
-        dataLabels: {
-          enabled: false
+    dataLabels: {
+      enabled: false,
+    },
+    fill: {
+      type: "gradient",
+    },
+    tooltip: {
+      y: {
+        formatter: function (value) {
+          return currency + value;
         },
-        fill: {
-          type: 'gradient',
-        },
-        tooltip:{
-          y: {
-            formatter: function(value) {
-              return "₹" + value;
-            }
-          }
-        },
-        legend: {
-          show: true,
-          showForSingleSeries: false,
-          showForNullSeries: true,
-          showForZeroSeries: true,
-          position: 'right',
-          floating: false,
-          fontSize: '16px',
-          fontFamily: "HelveticaNeueCyr, HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', 'sans-serif'",
-          fontWeight: 400,
-          tooltipHoverFormatter: undefined,
-          offsetX: 0,
-          offsetY: 0,
-          labels: {
-            colors: ["#fff"],
-            useSeriesColors: false
+      },
+    },
+    legend: {
+      show: true,
+      showForSingleSeries: false,
+      showForNullSeries: true,
+      showForZeroSeries: true,
+      position: "right",
+      floating: false,
+      fontSize: "15px",
+      tooltipHoverFormatter: undefined,
+      fontFamily: "Inter",
+      fontWeight: "300",
+      offsetX: 0,
+      offsetY: 3,
+      labels: {
+        colors: ["#fff"],
+        useSeriesColors: false,
+      },
+      itemMargin: {
+        vertical: 5,
+      },
+    },
+    labels: ["Stocks", "Crypto", "Bonds", "Other Assets"],
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 250,
+            height: 600,
           },
-          itemMargin: {
-            vertical: 5
+          legend: {
+            position: "bottom",
+            offsetX: -18,
+          },
+          labels: ["Stocks", "Crypto", "Bonds", "Others"],
         },
-        },
-        labels: ['Stocks', 'Crypto', 'Bonds', 'Other Assets']
-      }
-    }
-  }
+      },
+    ],
+  };
 
-  render() {
-
-    let isDataLoaded = this.props.stockLoading + this.props.cryptoLoading + this.props.bondLoading + this.props.othersLoading;
-    let purpricearr = [parseFloat(this.props.stockPurchasePrice),parseFloat(this.props.cryptoPurchasePrice),parseFloat(this.props.bondPurchasePrice),parseFloat(this.props.othersPurchasePrice)];
-
-    // console.log(this.props.isDataLoaded);
-    // console.log(this.props.purchasePrice);
-    return (
-      <div className="box assetgraph" style={this.props.gradient}>
-        <span className="title">Purchase Price Distribution</span>
-        <div id="chart-holder">
-        {isDataLoaded === 0 ? purpricearr.reduce((a,b) => a + b) !== 0 ? <Chart options={this.state.options} series={purpricearr} type="donut" width="400" /> : <span id="chart-status">No assets!</span> : <span id="chart-status">Loading chart...</span>}
-        </div>
+  return (
+    <div className="flex flex-col rounded-lg p-4" style={props.gradient}>
+      <span className="text-sm sm:text-base xl:text-lg font-bold">
+        Purchase Price Distribution
+      </span>
+      <div className="m-auto mt-8">
+        {isDataLoaded === 0 ? (
+          purpricearr.reduce((a, b) => a + b) !== 0 ? (
+            <Chart
+              options={chartOptions}
+              series={purpricearr}
+              type="donut"
+              width="375"
+            />
+          ) : (
+            <div className="text-sm xl:text-base my-6">No assets!</div>
+          )
+        ) : (
+          <div className="text-sm xl:text-base my-6">Loading chart...</div>
+        )}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 // these are the functions which are required to map the state to the props and dispatch actions to store
 
-const mapStateToProps = state => ({
-  ...state
+const mapStateToProps = (state) => ({
+  ...state,
 });
 
 export default connect(mapStateToProps)(AssetGraph);

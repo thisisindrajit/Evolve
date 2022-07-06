@@ -6,17 +6,11 @@
 }
 
 #dashboard {
-  width: 95%;
-  box-sizing: border-box;
-  margin: auto;
+  @apply w-full m-auto;
 }
 
 #dashboard #top {
-  display: grid;
-  margin:auto;
-  width:90%;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1.5rem;
+  @apply w-full xl:w-10/12 grid grid-cols-1 xmd:grid-cols-2 gap-4 m-auto px-4;
 }
 
 #asset-type {
@@ -26,10 +20,10 @@
   padding-bottom: 30px;
 }
 
-.label-grid{
+.label-grid {
   margin: 75px 0 25px 0;
   align-items: center;
-  display:flex;
+  display: flex;
   font-weight: 200;
   grid-template-columns: 1fr 1fr;
 }
@@ -38,19 +32,19 @@
   font-size: 1.6rem;
 }
 
-.label-grid .label-icon{
-  display:flex;
-  cursor:pointer;
+.label-grid .label-icon {
+  display: flex;
+  cursor: pointer;
   align-items: center;
-  margin:auto;
-  font-size:1.1rem;
-  margin-right:0;
+  margin: auto;
+  font-size: 1.1rem;
+  margin-right: 0;
 }
 
 /* width */
 #asset-type::-webkit-scrollbar {
-  height:7.5px;
-  width:7.5px;
+  height: 7.5px;
+  width: 7.5px;
 }
 
 /* Track */
@@ -69,34 +63,32 @@
   background: #888;
 }
 
-#stocks, #crypto, #bonds, #other-assets{
-  display:grid;
+#stocks,
+#crypto,
+#bonds,
+#other-assets {
+  display: grid;
   grid-template-columns: auto 100px;
-  align-items:center;
-  justify-content:center;
-  width:100%;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
-#footer{
-  height:75px;
+#footer {
+  height: 75px;
 }
 
-#stock-market-overview{
-  border-radius:20px;
-  overflow:hidden;
-  background:linear-gradient(129.95deg, #0f0c29, #302b63, #24243e);
+#stock-market-overview {
+  @apply rounded-lg;
+  background: linear-gradient(129.95deg, #0f0c29, #302b63, #24243e);
 }
 
-#markets-overview{
-  background:linear-gradient(129.95deg,  #acb6e5, #86fde8);
-  border-radius: 20px;
-  padding:20px;
-  box-sizing: border-box;
-  display:flex;
+#markets-overview {
+  @apply rounded-lg;
+  background: linear-gradient(129.95deg, #acb6e5, #86fde8);
 }
 
-.left-grid, .right-grid{
-  display:flex;
-  gap:1.5rem;
-  flex-direction: column;
+.left-grid,
+.right-grid {
+  @apply flex flex-col gap-4;
 }

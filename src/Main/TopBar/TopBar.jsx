@@ -5,7 +5,7 @@ import React from "react";
 
 const TopBar = (props) => {
   return (
-    <div className="p-6 flex justify-between items-center">
+    <div className="px-4 py-6 xl:p-6 flex justify-between items-center">
       <div className="text-lg sm:text-xl md:text-2xl">
         Welcome{" "}
         <span className="font-bold">{localStorage.getItem("username")}</span>

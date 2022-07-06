@@ -13,6 +13,7 @@
     "react-redux": "^8.0.2",
     "react-router-dom": "^5.3.3",
     "react-scripts": "5.0.1",
+    "react-tooltip": "^4.2.21",
     "react-tradingview-embed": "^3.0.6"
   },
   "scripts": {

@@ -28,16 +28,17 @@ const Sidebar = (props) => {
         width={26}
         fill={props.fillvalue === 1 ? "yes" : "no"}
         onClick={() => props.setpage(1)}
+        tooltipData="Home"
       >
         <path d="M15.2396 34.6369V29.5254C15.2395 28.2302 16.2928 27.1779 17.5974 27.1697H22.3877C23.6981 27.1697 24.7605 28.2244 24.7605 29.5254V34.622C24.7604 35.7455 25.6734 36.6585 26.8049 36.6666H30.0731C31.5994 36.6706 33.0646 36.0713 34.1453 35.0012C35.226 33.931 35.8334 32.4779 35.8334 30.9625V16.4431C35.8333 15.219 35.2868 14.0579 34.341 13.2725L23.2383 4.45712C21.2975 2.91521 18.5256 2.96502 16.6423 4.57565L5.77837 13.2725C4.78792 14.0347 4.19594 15.1993 4.16669 16.4431V30.9477C4.16669 34.1062 6.74566 36.6666 9.92698 36.6666H13.1205C13.6653 36.6706 14.1892 36.4585 14.5758 36.0774C14.9625 35.6963 15.1799 35.1778 15.1799 34.6369H15.2396Z" />
       </Icon>
-
       {/*Search icon*/}
       <Icon
         height={26}
         width={26}
         fill={props.fillvalue === 2 ? "yes" : "no"}
         onClick={() => props.setpage(2)}
+        tooltipData="Search"
       >
         <ellipse
           cx="19.611"
@@ -64,6 +65,7 @@ const Sidebar = (props) => {
         width={26}
         fill={props.fillvalue === 3 ? "yes" : "no"}
         onClick={() => props.setpage(3)}
+        tooltipData="Markets"
       >
         {props.fillvalue !== 3 ? (
           <>
@@ -110,6 +112,7 @@ const Sidebar = (props) => {
         width={26}
         fill={props.fillvalue === 4 ? "yes" : "no"}
         onClick={() => props.setpage(4)}
+        tooltipData="Notes"
       >
         {props.fillvalue !== 4 ? (
           <>
