@@ -18,13 +18,15 @@ import OtherAssetForm from "../Components/OtherAssets/OtherAssetForm";
 import OtherAssetEditForm from "../Components/OtherAssets/OtherAssetEditForm";
 import Overlay from "../Components/Overlay/Overlay";
 import { connect } from "react-redux";
+import { useTitle } from "../../Services/useTitle";
 
 const Dashboard = (props) => {
-  let assetTypes = ["Stocks", "Crypto", "Bonds", "Others"];
+  useTitle(`${localStorage.getItem("username")}'s Dashboard - Evolve`);
+  // let assetTypes = ["Stocks", "Crypto", "Bonds", "Others"];
 
-  let assettypeboxhandler = (type) => {
-    console.log("Clicked " + type);
-  };
+  // let assettypeboxhandler = (type) => {
+  //   console.log("Clicked " + type);
+  // };
 
   const marketobj = {
     colorTheme: "dark",

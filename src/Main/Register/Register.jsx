@@ -7,13 +7,17 @@ import Loading from "../../Utils/Loading";
 import LogoHolder from "../LogoHolder/LogoHolder";
 import InputHolder from "../Components/InputHolder";
 import CountrySelector from "../Components/CountrySelector";
+import { useTitle } from "../../Services/useTitle";
 
 const Register = (props) => {
+
   //if already logged in, redirect directly to dashboard
   if (props.isAuthenticated) {
     let uid = localStorage.getItem("userID");
     return <Redirect to={`/dashboard/${uid}`} />;
   }
+
+  useTitle("Register - Evolve")
 
   const [data, setData] = useState({
     firstName: "",

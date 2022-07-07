@@ -6,6 +6,7 @@ import { Redirect } from "react-router-dom";
 import Loading from "../../Utils/Loading";
 import LogoHolder from "../LogoHolder/LogoHolder";
 import InputHolder from "../Components/InputHolder";
+import { useTitle } from "../../Services/useTitle";
 
 const Login = (props) => {
   //if already logged in, redirect directly to dashboard
@@ -13,6 +14,8 @@ const Login = (props) => {
     let uid = localStorage.getItem("userID");
     return <Redirect to={`/dashboard/${uid}`} />;
   }
+
+  useTitle("Login - Evolve");
 
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState({ isSet: false, errorDesc: "" });

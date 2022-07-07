@@ -5,6 +5,7 @@ import Loading from "./Utils/Loading";
 import "./home.css";
 import full_logo from "./Images/logo_vector_full.png";
 import LogoHolder from "./Main/LogoHolder/LogoHolder";
+import { useTitle } from "./Services/useTitle";
 
 const Home = (props) => {
   //if already logged in, redirect directly to dashboard
@@ -12,6 +13,8 @@ const Home = (props) => {
     let uid = localStorage.getItem("userID");
     return <Redirect to={`/dashboard/${uid}`} />;
   }
+
+  useTitle("Evolve");
 
   return props.loading === true ? (
     <Loading />
