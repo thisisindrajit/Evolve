@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
+import { currency } from "../../Utils/constants";
 
 const UserMenu = (props) => {
   return (
@@ -52,16 +53,17 @@ const UserMenu = (props) => {
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items
-          className="fixed right-4 rounded-lg top-12 md:top-16 w-64 origin-top-right divide-y divide-white bg-gray-300 p-4 shadow-lg focus:outline-none"
+          className="absolute right-4 rounded-lg mt-8 md:mt-10 w-64 origin-top-right divide-y divide-white bg-gray-300 p-4 shadow-lg focus:outline-none"
           style={{
             background: "linear-gradient(to bottom, #218f8f, #1fbcbc)",
           }}
         >
           <div>
-            <div className="flex flex-col mb-4">
+            <div className="flex flex-col gap-2 mb-4">
               <div className="text-sm text-white dark:text-darkest-grey truncate font-bold">
                 {props.userName}'s Menu
               </div>
+              <div className="text-xs flex justify-between items-center font-bold bg-dark-green p-2 rounded-md border-green-200 border">CURRENCY <div>{currency}</div></div>
             </div>
           </div>
           <div className="pt-2">

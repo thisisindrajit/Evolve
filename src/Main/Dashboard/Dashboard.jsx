@@ -276,35 +276,37 @@ const Dashboard = (props) => {
         <div id="top">
           <div className="left-grid">
             <AssetBox
-              //sending purchase price and current price for various assets
-              // purchasePrice={assetPurchasePrice}
-              // currentPrice={assetCurrentPrice}
-              // isDataLoaded={loadingData.reduce((a, b) => a + b)}
               gradient={{
                 background:
                   "linear-gradient(129.95deg, #F82C8E 0.74%, #A90C61 100%)",
               }}
             />
-            <div id="stock-market-overview">
-              <div className="tradingview-widget-container">
-                <div className="tradingview-widget-container__widget"></div>
+            <div>
+              <div className="text-sm md:text-base text-transparent font-bold mb-2 bg-clip-text bg-gradient-to-l from-indigo-400 via-purple-500 to-pink-400">
+                NASDAQ Overview
+              </div>
+              <div id="stock-market-overview">
+                <div className="tradingview-widget-container">
+                  <div className="tradingview-widget-container__widget"></div>
+                </div>
               </div>
             </div>
           </div>
           <div className="right-grid">
             <AssetGraph
-              //sending purchase price and current price for various assets
-              //isDataLoaded={loadingData.reduce((a, b) => a + b)}
-              // purchasePrice={assetPurchasePrice}
-              // currentPrice={assetCurrentPrice}
               gradient={{
                 background:
                   "linear-gradient(129.95deg, #404D58 0.74%, #5D7489 100%)",
               }}
             />
-            <div id="markets-overview">
-              <div className="tradingview-widget-container">
-                <div className="tradingview-widget-container__widget"></div>
+            <div>
+              <div className="text-sm md:text-base text-transparent font-bold mb-2 bg-clip-text bg-gradient-to-r from-cyan-500 via-green-300 to-blue-500">
+                MARKETS Overview
+              </div>
+              <div id="markets-overview">
+                <div className="tradingview-widget-container">
+                  <div className="tradingview-widget-container__widget"></div>
+                </div>
               </div>
             </div>
           </div>

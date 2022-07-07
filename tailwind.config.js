@@ -16,6 +16,7 @@ module.exports = {
       },
       backgroundColor: {
         "evolve-green": "#14cccc",
+        "dark-green": "#218f8f",
       },
       textColor: {
         "evolve-green": "#14cccc",

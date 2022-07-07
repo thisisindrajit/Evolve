@@ -54,7 +54,7 @@ const AssetGraph = (props) => {
       fontFamily: "Inter",
       fontWeight: "300",
       offsetX: 0,
-      offsetY: 3,
+      offsetY: 4,
       labels: {
         colors: ["#fff"],
         useSeriesColors: false,
@@ -74,7 +74,7 @@ const AssetGraph = (props) => {
           },
           legend: {
             position: "bottom",
-            offsetX: -15,
+            offsetX: -18,
             fontSize: "14px",
           },
           labels: ["Stocks", "Crypto", "Bonds", "Others"],
@@ -86,9 +86,9 @@ const AssetGraph = (props) => {
   return (
     <div className="flex flex-col rounded-lg p-4" style={props.gradient}>
       <span className="text-sm sm:text-base xl:text-lg font-bold">
-        Purchase Price Distribution
+        Assets distribution
       </span>
-      <div className="m-auto mt-8">
+      <div className="m-auto mt-6 mb-2">
         {isDataLoaded === 0 ? (
           purpricearr.reduce((a, b) => a + b) !== 0 ? (
             <Chart
