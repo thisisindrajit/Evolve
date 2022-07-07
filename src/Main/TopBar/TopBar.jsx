@@ -8,7 +8,7 @@ import HamburgerMenu from "../Components/HamburgerMenu/HamburgerMenu";
 
 const TopBar = (props) => {
   return (
-    <div className="p-4 md:px-4 md:py-6 flex justify-between items-center sticky z-10 top-bar transition-all mb-6">
+    <div className="px-4 py-2 md:px-4 md:py-6 flex justify-between items-center sticky z-10 top-bar transition-all mb-6">
       {/* Welcome in case of desktop mode */}
       <div className="text-lg sm:text-xl md:text-2xl hidden md:block">
         Welcome{" "}
