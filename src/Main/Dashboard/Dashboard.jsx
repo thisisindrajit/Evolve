@@ -282,7 +282,7 @@ const Dashboard = (props) => {
               }}
             />
             <div>
-              <div className="text-sm md:text-base text-transparent font-bold mb-2 bg-clip-text bg-gradient-to-l from-indigo-400 via-purple-500 to-pink-400">
+              <div className="text-sm md:text-base text-transparent font-bold mb-2 bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
                 NASDAQ Overview
               </div>
               <div id="stock-market-overview">

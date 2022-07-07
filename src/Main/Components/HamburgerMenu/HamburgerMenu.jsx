@@ -11,12 +11,12 @@ const HamburgerMenu = (props) => {
           <>
             <Popover.Button>
               {open ? (
-                <div className="flex flex-col h-5 w-5 items-center justify-center md:hidden open transition-all">
+                <div className="flex flex-col h-10 w-5 items-center justify-center md:hidden open transition-all">
                   <span className="hamburger__top-bun"></span>
                   <span className="hamburger__bottom-bun"></span>
                 </div>
               ) : (
-                <div className="flex flex-col h-5 w-5 items-center justify-center md:hidden transition-all">
+                <div className="flex flex-col h-10 w-5 items-center justify-center md:hidden transition-all">
                   <span className="hamburger__top-bun"></span>
                   <span className="hamburger__bottom-bun"></span>
                 </div>
@@ -33,7 +33,7 @@ const HamburgerMenu = (props) => {
               leaveTo="transform opacity-0 scale-95"
             >
               <Popover.Panel
-                className="absolute left-4 rounded-lg mt-3 origin-top-left p-5 shadow-lg focus:outline-none"
+                className="absolute left-4 rounded-lg origin-top-left p-5 shadow-lg focus:outline-none"
                 style={{
                   background: "linear-gradient(to bottom, #218f8f, #1fbcbc)",
                 }}

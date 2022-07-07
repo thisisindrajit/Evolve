@@ -18,4 +18,20 @@ body {
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.icon {
+  transition: all 0.15s ease-in-out;
+  opacity: 0;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+@keyframes icon-opacity-change {
+  100% {
+    opacity: 1;
+  }
 }
