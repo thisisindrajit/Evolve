@@ -26,7 +26,7 @@ const Content = (props) => {
 
   return (
     <div id="content">
-      <TopBar logout={props.logout} />
+      <TopBar logout={props.logout} currentpage={props.currentpage} setpage={props.setpage}/>
       <div id="page-render">
         {props.currentpage == 1 && <Dashboard />}
         {props.currentpage == 2 && <Search />}

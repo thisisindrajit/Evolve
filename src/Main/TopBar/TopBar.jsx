@@ -4,6 +4,7 @@ import React from "react";
 import UserMenu from "../Components/UserMenu";
 import logo from "../../Images/logo_vector.png";
 import "./topbar.css";
+import HamburgerMenu from "../Components/HamburgerMenu/HamburgerMenu";
 
 const TopBar = (props) => {
   return (
@@ -14,10 +15,7 @@ const TopBar = (props) => {
         <span className="font-bold">{localStorage.getItem("username")}</span>
       </div>
       {/* hamburger menu in case of mobile mode */}
-      <div className="flex flex-col h-5 w-5 items-center justify-center md:hidden">
-        <span className="hamburger__top-bun"></span>
-        <span className="hamburger__bottom-bun"></span>
-      </div>
+      <HamburgerMenu currentpage={props.currentpage}  setpage={props.setpage}/>
       <div className="block md:hidden">
         <img
           src={logo}

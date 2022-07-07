@@ -8,9 +8,9 @@ const Icon = (props) => {
   };
 
   return (
-    <div className="h-8 my-6 flex items-center">
+    <div className={props.className}>
       <svg
-        className="icon outline-none"
+        className={`${!props.noIconCSS && "icon"} outline-none`}
         style={{ cursor: "pointer", ...iconstyle }}
         height={props.height}
         width={props.width}
@@ -19,12 +19,14 @@ const Icon = (props) => {
         stroke={props.fill == "no" ? "white" : "none"}
         strokeWidth="2"
         xmlns="http://www.w3.org/2000/svg"
-        onClick={props.onClick}
+        onClick={props.onClick ? props.onClick : null}
         data-tip={props.tooltipData}
       >
         {props.children}
       </svg>
-      <ReactTooltip place="right" type="light" effect="float" />
+      {props.showTooltip && (
+        <ReactTooltip place="right" type="light" effect="float" />
+      )}
     </div>
   );
 };

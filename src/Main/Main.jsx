@@ -19,7 +19,7 @@ const Main = (props) => {
   return (
     <div id="main">
       <Sidebar fillvalue={curpage} setpage={setnewcurpage} />
-      <Content currentpage={curpage} logout={props.logout} />
+      <Content currentpage={curpage} setpage={setnewcurpage} logout={props.logout} />
     </div>
   );
 };
