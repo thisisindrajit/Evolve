@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./main.css";
 import Sidebar from "./Sidebar/Sidebar";
 import Content from "./Content";
-import { Redirect } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 
 const Main = (props) => {
-    
   if (props.match.params.id !== localStorage.getItem("userID")) {
     return <Redirect to="/" />;
   }

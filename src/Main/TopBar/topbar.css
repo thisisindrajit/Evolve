@@ -1,28 +1,5 @@
-#topbar {
-  box-sizing: border-box;
-  width: 100%;
-  margin: auto;
-  padding: 22.5px 25px 20px;
-  font-weight: 200;
-  font-size: 1.8rem;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-#topbar #dp{
-  height: 30px;
-  width: 32px;
-  cursor: pointer;
-  overflow: hidden;
-  margin: auto;
-  margin-right: 0px;
-  object-fit: contain;
-}
-
-@keyframes fade-in {
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.top-bar-active {
+  @apply m-4 rounded-lg top-4;
+  backdrop-filter: blur(15px) saturate(180%);
+  background-color: rgba(75, 75, 75, 0.15);
 }

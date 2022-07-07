@@ -74,7 +74,8 @@ const AssetGraph = (props) => {
           },
           legend: {
             position: "bottom",
-            offsetX: -18,
+            offsetX: -15,
+            fontSize: "14px",
           },
           labels: ["Stocks", "Crypto", "Bonds", "Others"],
         },

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./dashboard.css";
 import defaultPageStyles from "../../Styles/defaultPageStyles";
 import AssetBox from "../Components/AssetBox/AssetBox";
@@ -21,50 +21,15 @@ import { connect } from "react-redux";
 
 const Dashboard = (props) => {
   let assetTypes = ["Stocks", "Crypto", "Bonds", "Others"];
-  //use state to store current asset value and current purchase value of all Assets
-  // let [assetPurchasePrice, setassetPurchasePrice] = useState([0, 0, 0, 0]); //1 - stock, 2 - crypto, 3 - bonds, 4 - others
-  // let [assetCurrentPrice, setassetCurrentPrice] = useState([0, 0, 0, 0]);
-  //loading status for assets
-  // let [loadingData, setloadingData] = useState([1, 1, 1, 1])
-  //overlay
-  //let [overlay, setOverlayType] = useState(0); //0 - not open, 1 - add stock, 2 - edit stock, 3 - add crypto, 4 - edit crypto, 5 - add bond, 6 - edit bond
-
-  //edit form data
-  //let [editFormData, setEditFormData] = useState({});
-
-  // let setassetPurchasePriceByType = (type, newprice) => {
-  //   let newassetPurchasePrice = assetPurchasePrice;
-  //   newassetPurchasePrice[type - 1] = parseFloat(newprice);
-
-  //   setassetPurchasePrice([...newassetPurchasePrice]); //to update array in useState, use this syntax
-  // };
-
-  // let setloadingDataByType = (type, status) => {
-  //   let newloading = loadingData;
-  //   newloading[type - 1] = status;
-  //   setloadingData([...newloading]); //to update array in useState, use this syntax
-  // };
 
   let assettypeboxhandler = (type) => {
     console.log("Clicked " + type);
   };
 
-  // let openOverlay = (overlaytype) => {
-  //   setOverlayType(overlaytype);
-  // };
-
-  // let openEditOverlay = (stockData, type) => {
-  //   setEditFormData(stockData);
-  //   setOverlayType(type);
-  // };
-
-  // console.log(loadingData)
-  // console.log(assetPurchasePrice)
-
   const marketobj = {
     colorTheme: "dark",
     dateRange: "12M",
-    exchange: "BSE",
+    exchange: "NASDAQ",
     showChart: true,
     locale: "en",
     largeChartUrl: "",
@@ -103,20 +68,20 @@ const Dashboard = (props) => {
         title: "Indices",
         symbols: [
           {
-            s: "BSE:SENSEX",
-            d: "SENSEX",
+            s: "FOREXCOM:NSXUSD",
+            d: "Nasdaq 100",
           },
           {
             s: "FOREXCOM:SPXUSD",
             d: "S&P 500",
           },
           {
-            s: "FOREXCOM:NSXUSD",
-            d: "Nasdaq 100",
-          },
-          {
             s: "FOREXCOM:DJI",
             d: "Dow 30",
+          },
+          {
+            s: "BSE:SENSEX",
+            d: "SENSEX",
           },
         ],
         originalTitle: "Indices",
@@ -345,11 +310,11 @@ const Dashboard = (props) => {
           </div>
         </div>
 
-        <div className="label-grid">
+        {/* <div className="label-grid">
           <div className="label-dashboard">Asset Types</div>
         </div>
 
-        {/*Vertical line*/}
+        
         <div
           style={{
             height: "0.5px",
@@ -369,7 +334,7 @@ const Dashboard = (props) => {
               />
             );
           })}
-        </div>
+        </div> */}
 
         <div className="label-grid">
           <div className="label-dashboard">My Stocks</div>

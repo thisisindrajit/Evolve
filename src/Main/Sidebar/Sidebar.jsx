@@ -6,7 +6,7 @@ import defaultPageStyles from "../../Styles/defaultPageStyles";
 
 const Sidebar = (props) => {
   return (
-    <div className="sidebar" style={defaultPageStyles.sidebaranimationStyle}>
+    <div className="sidebar z-20" style={defaultPageStyles.sidebaranimationStyle}>
       {/*Logo*/}
       <img
         src={logo}

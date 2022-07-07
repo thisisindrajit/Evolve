@@ -13,7 +13,6 @@ const style = {
     },
 
     pageStyle: {
-        // padding:"25px",
         fontSize:"1.2rem",
         opacity:"0",
         transform:"translateY(-15px)",

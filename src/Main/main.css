@@ -1,5 +1,5 @@
 #main{
-    @apply block md:grid;
+    @apply flex md:grid;
     grid-template-columns: minmax(3vw, 65px) auto;
     width:100%;
     height: 100vh;
