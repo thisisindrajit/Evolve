@@ -1,67 +1,56 @@
-#main-table, #edit-table {
+#main-table {
+  @apply mt-3 block overflow-auto;
   border-collapse: separate;
-  border-spacing: 0 15px;
-  display:block;
-  width: 100%;
-  overflow:auto;
+  border-spacing: 0 0.75rem;
 }
 
 #main-table th,
-#main-table td{
-  text-align: left;
-  min-width:150px;
+#main-table td {
+  @apply text-left text-xs md:text-sm font-bold py-2 px-4 truncate;
+  min-width: 150px;
   width: 50vw;
-  max-width:50vw;
-  font-size: 1rem;
-  font-weight: 550;
-  padding: 10px 20px;
+  max-width: 50vw;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  overflow:hidden;
-  text-overflow: ellipsis;
-  white-space:nowrap;
 }
- 
-#edit-table th,
-#edit-table td {
-  text-align: left;
-  width:100px;
-  font-size: 1rem;
-  font-weight: 550;
+
+@media (max-width: 768px) {
+  #main-table th,
+  #main-table td {
+    min-width: 0;
+
+    width: fit-content;
+  }
 }
 
 #main-table .data td:first-child,
 #main-table .total td:first-child,
 #main-table .header th:first-child {
-  border-radius: 10px 0 0 10px;
+  @apply rounded-l-lg;
 }
 
 #main-table .data td:last-child,
 #main-table .total td:last-child,
 #main-table .header th:last-child {
-  border-radius: 0 10px 10px 0;
+  @apply rounded-r-lg;
 }
 
 #main-table .header {
-  background: linear-gradient(#e5e5e5 0.74%, #404d58 0.75%, #3e4449 100%);
-  border-radius:10px;
+  background: linear-gradient(#404d58 0%, #3e4449 100%);
   box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.25);
 }
 
 #main-table .data {
-  border-radius:10px;
   box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.25);
 }
 
 #main-table .total {
-  border-radius:10px;
-  background:transparent;
+  background: transparent;
 }
-
 
 /* width */
 #main-table::-webkit-scrollbar {
-  height:7.5px;
-  width:7.5px;
+  height: 5px;
+  width: 5px;
 }
 
 /* Track */
@@ -71,41 +60,11 @@
 
 /* Handle */
 #main-table::-webkit-scrollbar-thumb {
-  background: white;
-  border-radius: 8px;
+  @apply rounded-lg;
+  background: #939393;
 }
 
 /* Handle on hover */
 #main-table::-webkit-scrollbar-thumb:hover {
   background: #888;
 }
-
-#edit-bar{
-  width:100px;
-  overflow-x:hidden;
-  height:100%;
-}
-
-#edit-table .header{
-  color:transparent;
-  height:37px;
-}
-
-#edit-table .data{
-  height:37px;
-}
-
-#edit-table .data .edit-icons{
-  display: flex;
-  align-items: center;
-  justify-content:flex-end;
-}
-
-#edit-table .data .edit-icons svg{
-  cursor:pointer;
-}
-
-#edit-table .data .edit-icons svg:nth-child(1){
-  margin-right:20px;
-}
-

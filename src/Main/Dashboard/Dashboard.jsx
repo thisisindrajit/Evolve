@@ -340,11 +340,13 @@ const Dashboard = (props) => {
           })}
         </div> */}
 
-        <div className="label-grid">
-          <div className="label-dashboard">My Stocks</div>
-          {
+        <div className="m-auto mx-4 my-16">
+          <div className="flex items-center justify-between">
+            <div className="text-lg md:text-xl">
+              My <span className="font-bold">Stocks</span>
+            </div>
             <div
-              className="label-icon"
+              className="flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer"
               onClick={() =>
                 props.openOverlay({
                   type: "setOverlay",
@@ -353,8 +355,8 @@ const Dashboard = (props) => {
               }
             >
               <svg
-                width="40"
-                height="40"
+                width="28"
+                height="28"
                 viewBox="0 0 50 50"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -383,205 +385,199 @@ const Dashboard = (props) => {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span style={{ marginLeft: "10px" }}>Add Stock</span>
+              <span className="block sm:hidden text-xs uppercase">Add</span>
+              <span className="hidden sm:block text-sm md:text-base">
+                Add Stock
+              </span>
             </div>
-          }
-        </div>
+          </div>
 
-        <div id="stocks">
-          <Stocks
-            gradient="linear-gradient(130deg, #da77d6 0.75%, #7526c5 100%)"
-            // loading={loadingData[0]}
-            // setloading={setloadingDataByType}
-            // isDataLoaded={loadingData.reduce((a, b) => a + b)}
-            // setPurchasePrice={setassetPurchasePriceByType}
-            // openOverlay={openEditOverlay}
-            // addeditoverlayhandle={openOverlay}
-            // currentOpenOverlay={overlay}
-          />
-        </div>
+          <div id="stocks">
+            <Stocks gradient="linear-gradient(130deg, #da77d6 0.75%, #7526c5 100%)" />
+          </div>
 
-        <div className="label-grid">
-          <div className="label-dashboard">My Crypto</div>
-          {
-            <div
-              className="label-icon"
-              onClick={() =>
-                props.openOverlay({
-                  type: "setOverlay",
-                  payload: { overlay: 3 },
-                })
-              }
-            >
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 50 50"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+          <div className="label-grid">
+            <div className="label-dashboard">My Crypto</div>
+            {
+              <div
+                className="label-icon"
+                onClick={() =>
+                  props.openOverlay({
+                    type: "setOverlay",
+                    payload: { overlay: 3 },
+                  })
+                }
               >
-                <path
-                  d="M25 17.3485V32.6118"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M32.6389 24.9802H17.3611"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M34.7619 4.16666H15.2381C8.4325 4.16666 4.16663 8.9835 4.16663 15.8024V34.1976C4.16663 41.0165 8.41266 45.8333 15.2381 45.8333H34.7619C41.5873 45.8333 45.8333 41.0165 45.8333 34.1976V15.8024C45.8333 8.9835 41.5873 4.16666 34.7619 4.16666Z"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span style={{ marginLeft: "10px" }}>Add Crypto</span>
-            </div>
-          }
-        </div>
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 50 50"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M25 17.3485V32.6118"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M32.6389 24.9802H17.3611"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M34.7619 4.16666H15.2381C8.4325 4.16666 4.16663 8.9835 4.16663 15.8024V34.1976C4.16663 41.0165 8.41266 45.8333 15.2381 45.8333H34.7619C41.5873 45.8333 45.8333 41.0165 45.8333 34.1976V15.8024C45.8333 8.9835 41.5873 4.16666 34.7619 4.16666Z"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span style={{ marginLeft: "10px" }}>Add Crypto</span>
+              </div>
+            }
+          </div>
 
-        <div id="crypto">
-          <Crypto
-            gradient="linear-gradient(129.95deg, #70A3E0 0.75%, #7924CD 100%)"
-            // loading={loadingData[1]}
-            // setloading={setloadingDataByType}
-            // isDataLoaded={loadingData.reduce((a, b) => a + b)}
-            // setPurchasePrice={setassetPurchasePriceByType}
-            // openOverlay={openEditOverlay}
-            // addeditoverlayhandle={openOverlay}
-            // currentOpenOverlay={overlay}
-          />
-        </div>
+          <div id="crypto">
+            <Crypto
+              gradient="linear-gradient(129.95deg, #70A3E0 0.75%, #7924CD 100%)"
+              // loading={loadingData[1]}
+              // setloading={setloadingDataByType}
+              // isDataLoaded={loadingData.reduce((a, b) => a + b)}
+              // setPurchasePrice={setassetPurchasePriceByType}
+              // openOverlay={openEditOverlay}
+              // addeditoverlayhandle={openOverlay}
+              // currentOpenOverlay={overlay}
+            />
+          </div>
 
-        <div className="label-grid">
-          <div className="label-dashboard">My Bonds</div>
-          {
-            <div
-              className="label-icon"
-              onClick={() =>
-                props.openOverlay({
-                  type: "setOverlay",
-                  payload: { overlay: 5 },
-                })
-              }
-            >
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 50 50"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+          <div className="label-grid">
+            <div className="label-dashboard">My Bonds</div>
+            {
+              <div
+                className="label-icon"
+                onClick={() =>
+                  props.openOverlay({
+                    type: "setOverlay",
+                    payload: { overlay: 5 },
+                  })
+                }
               >
-                <path
-                  d="M25 17.3485V32.6118"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M32.6389 24.9802H17.3611"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M34.7619 4.16666H15.2381C8.4325 4.16666 4.16663 8.9835 4.16663 15.8024V34.1976C4.16663 41.0165 8.41266 45.8333 15.2381 45.8333H34.7619C41.5873 45.8333 45.8333 41.0165 45.8333 34.1976V15.8024C45.8333 8.9835 41.5873 4.16666 34.7619 4.16666Z"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span style={{ marginLeft: "10px" }}>Add Bond</span>
-            </div>
-          }
-        </div>
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 50 50"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M25 17.3485V32.6118"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M32.6389 24.9802H17.3611"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M34.7619 4.16666H15.2381C8.4325 4.16666 4.16663 8.9835 4.16663 15.8024V34.1976C4.16663 41.0165 8.41266 45.8333 15.2381 45.8333H34.7619C41.5873 45.8333 45.8333 41.0165 45.8333 34.1976V15.8024C45.8333 8.9835 41.5873 4.16666 34.7619 4.16666Z"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span style={{ marginLeft: "10px" }}>Add Bond</span>
+              </div>
+            }
+          </div>
 
-        <div id="bonds">
-          <Bonds
-            gradient="linear-gradient(129.95deg, #D96587 0.75%, #DF275F 100%)"
-            // loading={loadingData[2]}
-            // setloading={setloadingDataByType}
-            // isDataLoaded={loadingData.reduce((a, b) => a + b)}
-            // setPurchasePrice={setassetPurchasePriceByType}
-            // openOverlay={openEditOverlay}
-            // addeditoverlayhandle={openOverlay}
-            // currentOpenOverlay={overlay}
-          />
-        </div>
+          <div id="bonds">
+            <Bonds
+              gradient="linear-gradient(129.95deg, #D96587 0.75%, #DF275F 100%)"
+              // loading={loadingData[2]}
+              // setloading={setloadingDataByType}
+              // isDataLoaded={loadingData.reduce((a, b) => a + b)}
+              // setPurchasePrice={setassetPurchasePriceByType}
+              // openOverlay={openEditOverlay}
+              // addeditoverlayhandle={openOverlay}
+              // currentOpenOverlay={overlay}
+            />
+          </div>
 
-        <div className="label-grid">
-          <div className="label-dashboard">Other Assets</div>
-          {
-            <div
-              className="label-icon"
-              onClick={() =>
-                props.openOverlay({
-                  type: "setOverlay",
-                  payload: { overlay: 7 },
-                })
-              }
-            >
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 50 50"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+          <div className="label-grid">
+            <div className="label-dashboard">Other Assets</div>
+            {
+              <div
+                className="label-icon"
+                onClick={() =>
+                  props.openOverlay({
+                    type: "setOverlay",
+                    payload: { overlay: 7 },
+                  })
+                }
               >
-                <path
-                  d="M25 17.3485V32.6118"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M32.6389 24.9802H17.3611"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M34.7619 4.16666H15.2381C8.4325 4.16666 4.16663 8.9835 4.16663 15.8024V34.1976C4.16663 41.0165 8.41266 45.8333 15.2381 45.8333H34.7619C41.5873 45.8333 45.8333 41.0165 45.8333 34.1976V15.8024C45.8333 8.9835 41.5873 4.16666 34.7619 4.16666Z"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span style={{ marginLeft: "10px" }}>Add Asset</span>
-            </div>
-          }
-        </div>
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 50 50"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M25 17.3485V32.6118"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M32.6389 24.9802H17.3611"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M34.7619 4.16666H15.2381C8.4325 4.16666 4.16663 8.9835 4.16663 15.8024V34.1976C4.16663 41.0165 8.41266 45.8333 15.2381 45.8333H34.7619C41.5873 45.8333 45.8333 41.0165 45.8333 34.1976V15.8024C45.8333 8.9835 41.5873 4.16666 34.7619 4.16666Z"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span style={{ marginLeft: "10px" }}>Add Asset</span>
+              </div>
+            }
+          </div>
 
-        <div id="other-assets">
-          <OtherAssets
-            gradient="linear-gradient(to right, #2C5364, #203A43, #0F2027)"
-            // loading={loadingData[3]}
-            // setloading={setloadingDataByType}
-            // isDataLoaded={loadingData.reduce((a, b) => a + b)}
-            // setPurchasePrice={setassetPurchasePriceByType}
-            // openOverlay={openEditOverlay}
-            // addeditoverlayhandle={openOverlay}
-            // currentOpenOverlay={overlay}
-          />
+          <div id="other-assets">
+            <OtherAssets
+              gradient="linear-gradient(to right, #2C5364, #203A43, #0F2027)"
+              // loading={loadingData[3]}
+              // setloading={setloadingDataByType}
+              // isDataLoaded={loadingData.reduce((a, b) => a + b)}
+              // setPurchasePrice={setassetPurchasePriceByType}
+              // openOverlay={openEditOverlay}
+              // addeditoverlayhandle={openOverlay}
+              // currentOpenOverlay={overlay}
+            />
+          </div>
         </div>
 
         <div id="footer"></div>

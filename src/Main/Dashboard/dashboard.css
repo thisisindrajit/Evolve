@@ -67,8 +67,7 @@
 #crypto,
 #bonds,
 #other-assets {
-  display: grid;
-  grid-template-columns: auto 100px;
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -92,4 +91,3 @@
 .right-grid {
   @apply flex flex-col gap-4;
 }
-

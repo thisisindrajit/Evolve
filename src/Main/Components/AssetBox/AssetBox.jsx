@@ -17,9 +17,14 @@ const AssetBox = (props) => {
     parseFloat(props.othersPurchasePrice);
 
   return (
-    <div className="flex assetbox rounded-lg p-4" style={props.gradient}>
+    <div
+      className="flex justify-between assetbox rounded-lg p-4"
+      style={props.gradient}
+    >
       <div className="flex flex-col gap-1.5 w-6/12">
-        <span className="text-sm sm:text-base xl:text-lg font-bold">Purchase Value</span>
+        <span className="text-sm sm:text-base xl:text-lg font-bold">
+          Purchase Value
+        </span>
         <span className="text-sm sm:text-base truncate">
           {isDataLoaded === 0 ? currency + purprice.toFixed(2) : "Loading..."}
         </span>
@@ -27,7 +32,9 @@ const AssetBox = (props) => {
       {/* horizontal line */}
       <div className="h-full w-0.5 mx-4 hor-line"></div>
       <div className="flex flex-col gap-1.5 w-6/12">
-        <span className="text-sm sm:text-base xl:text-lg font-bold">Average Return</span>
+        <span className="text-sm sm:text-base xl:text-lg font-bold">
+          Average Return
+        </span>
         <span className="text-sm sm:text-base truncate"></span>
       </div>
     </div>
