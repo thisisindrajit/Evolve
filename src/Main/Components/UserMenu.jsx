@@ -63,10 +63,17 @@ const UserMenu = (props) => {
               <div className="text-sm text-white dark:text-darkest-grey truncate font-bold">
                 {props.userName}'s Menu
               </div>
-              <div className="text-xs flex justify-between items-center font-bold bg-dark-green p-2 rounded-md border-green-200 border">CURRENCY <div>{currency}</div></div>
+              <div className="text-xs flex justify-between items-center font-bold bg-dark-green p-2 rounded-md border-green-200 border">
+                CURRENCY <div>{currency}</div>
+              </div>
             </div>
           </div>
           <div className="pt-2">
+            <Menu.Item>
+              <div className="text-sm cursor-pointer py-2 hover:px-2 transition-all hover:bg-white hover:text-black rounded-md">
+                Request a feature
+              </div>
+            </Menu.Item>
             <Menu.Item>
               <div className="text-sm cursor-pointer py-2 hover:px-2 transition-all hover:bg-white hover:text-black rounded-md">
                 Feedback

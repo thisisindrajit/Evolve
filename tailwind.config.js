@@ -11,6 +11,10 @@ module.exports = {
       md: "992px",
     },
     extend: {
+      spacing: {
+        'screen-60': '60vw',
+        'screen-95': '95vw',
+      },
       borderColor: {
         "evolve-green": "#14cccc",
       },

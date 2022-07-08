@@ -193,86 +193,8 @@ const Dashboard = (props) => {
 
   return (
     <>
-      {props.overlay !== 0 && (
-        <Overlay>
-          {/*Add Stock Form*/}
-          {props.overlay === 1 && (
-            <StockForm
-              border="1px solid #da77d6"
-              //overlayhandle={openOverlay}
-              //setloading={setloadingDataByType}
-            />
-          )}
-
-          {/*Edit Stock Form*/}
-          {props.overlay === 2 && (
-            <StockEditForm
-              border="1px solid #da77d6"
-              //overlayhandle={openOverlay}
-              //stockData={editFormData}
-              //setloading={setloadingDataByType}
-            />
-          )}
-
-          {/*Crypto Form*/}
-          {props.overlay === 3 && (
-            <CryptoForm
-              border="1px solid #70A3E0"
-              //overlayhandle={openOverlay}
-              //setloading={setloadingDataByType}
-            />
-          )}
-
-          {/*Edit Crypto form*/}
-          {props.overlay === 4 && (
-            <CryptoEditForm
-              border="1px solid #70A3E0"
-              //overlayhandle={openOverlay}
-              // cryptoData={editFormData}
-              //setloading={setloadingDataByType}
-            />
-          )}
-
-          {/*Add Bond form*/}
-          {props.overlay === 5 && (
-            <BondForm
-              border="1px solid #D96587"
-              //overlayhandle={openOverlay}
-              //setloading={setloadingDataByType}
-            />
-          )}
-
-          {/*Edit Bond form*/}
-          {props.overlay === 6 && (
-            <BondEditForm
-              border="1px solid #D96587"
-              //overlayhandle={openOverlay}
-              //bondData={editFormData}
-              //setloading={setloadingDataByType}
-            />
-          )}
-
-          {/*Add other asset form*/}
-          {props.overlay === 7 && (
-            <OtherAssetForm
-              border="1px solid #2C5364"
-              //overlayhandle={openOverlay}
-              //bondData={editFormData}
-              //setloading={setloadingDataByType}
-            />
-          )}
-
-          {/*Edit Other Asset form*/}
-          {props.overlay === 8 && (
-            <OtherAssetEditForm
-              border="1px solid #2C5364"
-              //overlayhandle={openOverlay}
-              //otherAssetData={editFormData}
-              //setloading={setloadingDataByType}
-            />
-          )}
-        </Overlay>
-      )}
+      {/*Add Stock Form*/}
+      <StockForm border="1px solid #da77d6" isOpen={props.overlay === 1} />
 
       <div id="dashboard" style={defaultPageStyles.pageStyle}>
         <div id="top">
