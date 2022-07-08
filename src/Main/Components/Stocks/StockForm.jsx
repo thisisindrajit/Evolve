@@ -155,7 +155,6 @@ const StockForm = (props) => {
                 ? "linear-gradient(180deg, #d11e4b 0%, #ce2331 100%)"
                 : "linear-gradient(180deg, #555 0%, #666 100%)",
           }}
-         
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -262,9 +261,8 @@ const StockForm = (props) => {
                 name="purchaseDate"
                 max={setMaxDate()}
                 value={data.purchaseDate}
-                placeholder="Enter the purchase date (in the form DD/MM/YYYY)"
                 onChange={(e) => changeData(e, 5)}
-                className="min-w-full sm:w-10/12 my-2 text-black p-4 text-sm md:text-base outline-none"
+                className="min-w-full sm:w-10/12 my-2 text-black p-4 text-sm md:text-base outline-none date-input"
                 required
               />
             </InputHolder>

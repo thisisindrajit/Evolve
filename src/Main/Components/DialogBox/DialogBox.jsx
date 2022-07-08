@@ -29,10 +29,10 @@ const DialogBox = (props) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="transform overflow-hidden rounded-2xl dialogbox p-6 md:py-6 md:px-8 text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className="transform overflow-hidden rounded-2xl dialogbox py-5 px-6 md:py-6 md:px-8 text-left align-middle shadow-xl transition-all">
                 <Dialog.Title
-                  as="h3"
-                  className="text-base md:text-lg font-medium leading-6 text-red-500 pb-4 mb-4 border-white border-b"
+                  as="div"
+                  className="text-base md:text-lg font-medium leading-6 text-red-500 mb-4 uppercase md:capitalize"
                 >
                   {props.title}
                 </Dialog.Title>

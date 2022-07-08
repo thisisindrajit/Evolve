@@ -1,25 +1,9 @@
-/* #delete-overlay {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.85);
-  border-radius: 10px;
-  width: 100%;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.date-input {
+  -webkit-appearance: none;
 }
 
-#delete-overlay #delete-content {
-  background-color: #313233;
-  padding: 25px;
-  border-radius: 10px;
-  height: 130px;
-  width: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-} */
-
+.date-input::-webkit-inner-spin-button,
+.date-input::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
