@@ -59,14 +59,14 @@ const OtherAssetForm = (props) => {
       errorSet(
         "Please provide a percentage between 1 and 100 for Expected Annual Return!"
       );
-      document.getElementById("form-content").scrollTo(0, 0);
+      document.getElementById("custom-form").scrollTo(0, 0);
       Object.assign(data, { annualReturn: "" });
       return;
     }
 
     if (!decreg.test(data.purchasePrice)) {
       errorSet("Please provide number input only for purchase price!");
-      document.getElementById("form-content").scrollTo(0, 0);
+      document.getElementById("custom-form").scrollTo(0, 0);
       Object.assign(data, { purchasePrice: "" });
       return;
     }

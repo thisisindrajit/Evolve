@@ -56,21 +56,21 @@ const BondEditForm = (props) => {
 
     if (!decreg.test(data.faceValue)) {
       errorSet("Please provide number input only for face value!");
-      document.getElementById("form-content").scrollTo(0, 0);
+      document.getElementById("custom-form").scrollTo(0, 0);
       Object.assign(data, { faceValue: "" });
       return;
     }
 
     if (!percentreg.test(data.couponRate)) {
       errorSet("Please provide a percentage value between 1 and 100 as input for coupon rate!");
-      document.getElementById("form-content").scrollTo(0, 0);
+      document.getElementById("custom-form").scrollTo(0, 0);
       Object.assign(data, { couponRate: "" });
       return;
     }
 
     if (!percentreg.test(data.yearsToMaturity)) {
       errorSet("Please provide a value between 1 and 100 as input for years to maturity!");
-      document.getElementById("form-content").scrollTo(0, 0);
+      document.getElementById("custom-form").scrollTo(0, 0);
       Object.assign(data, { yearsToMaturity: "" });
       return;
     }

@@ -8,6 +8,8 @@ const StockDeleteOverlay = (props) => {
   let [text, setText] = useState("Delete");
 
   let deleteStock = async () => {
+    setText("Deleting...");
+
     const data = {
       stockTransactionID: props.stocktid,
       type: "3",
@@ -20,7 +22,6 @@ const StockDeleteOverlay = (props) => {
       let response = await axios.post(DELETE_ENDPOINT, data);
 
       if (response.status === 200 && !isunmounted) {
-        // console.log(response.data);
         props.setLoading({ type: "setLoading", payload: { stockLoading: 1 } });
       } else {
         console.log(response.data.error);
@@ -30,27 +31,19 @@ const StockDeleteOverlay = (props) => {
     }
   };
 
-  useEffect(() => {
-    if (text === "Deleting...") {
-      deleteStock();
-    }
-
-    return () => {
-      isunmounted = true;
-    };
-  }, [text]);
-
   return (
     <DialogBox
       isOpen={props.stocktid === -1 ? false : true}
       onClose={text === "Delete" ? () => props.setOverlay(-1) : () => {}}
-      title="Delete stock"
+      title="Delete Stock"
     >
       <div className="flex flex-col text-base gap-2 cursor-pointer">
-        <div className="text-sm text-justify md:text-base mb-4">Do you really want to delete this stock?</div>
+        <div className="text-sm text-justify md:text-base mb-4">
+          Do you really want to delete this stock?
+        </div>
         <div
           className="bg-red-500 text-white p-3 w-full text-sm uppercase rounded-md text-center"
-          onClick={text === "Delete" ? () => setText("Deleting...") : null}
+          onClick={text === "Delete" ? () => deleteStock() : null}
         >
           {text}
         </div>
@@ -58,7 +51,7 @@ const StockDeleteOverlay = (props) => {
           className="border border-white text-white p-3 w-full text-sm uppercase rounded-md text-center cursor-pointer"
           onClick={text === "Delete" ? () => props.setOverlay(-1) : null}
         >
-          Close
+          Cancel
         </div>
       </div>
     </DialogBox>

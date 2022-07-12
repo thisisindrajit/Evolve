@@ -1,9 +1,0 @@
-.date-input {
-  -webkit-appearance: none;
-}
-
-.date-input::-webkit-inner-spin-button,
-.date-input::-webkit-calendar-picker-indicator {
-  display: none;
-  -webkit-appearance: none;
-}

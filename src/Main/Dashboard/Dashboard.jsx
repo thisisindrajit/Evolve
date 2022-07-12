@@ -193,16 +193,24 @@ const Dashboard = (props) => {
 
   return (
     <>
-      {/*Add Stock Form*/}
-      <StockForm border="1px solid #da77d6" isOpen={props.overlay === 1} />
+      {/* Add stock form */}
+      <StockForm isOpen={props.overlay === 1} />
+
+      {/* Edit Stock form */}
+      <StockEditForm isOpen={props.overlay === 2} />
+
+      {/* Add Crypto form */}
+      <CryptoForm isOpen={props.overlay === 3} />
+
+      {/* Edit Crypto form */}
+      <CryptoEditForm isOpen={props.overlay === 4} />
 
       <div id="dashboard" style={defaultPageStyles.pageStyle}>
         <div id="top">
           <div className="left-grid">
             <AssetBox
               gradient={{
-                background:
-                  "linear-gradient(129.95deg, #F82C8E 0.74%, #A90C61 100%)",
+                background: "linear-gradient(145deg, #F82C8E 0%, #A90C61 100%)",
               }}
             />
             <div>
@@ -219,8 +227,7 @@ const Dashboard = (props) => {
           <div className="right-grid">
             <AssetGraph
               gradient={{
-                background:
-                  "linear-gradient(129.95deg, #404D58 0.74%, #5D7489 100%)",
+                background: "linear-gradient(145deg, #404D58 0%, #5D7489 100%)",
               }}
             />
             <div>
@@ -262,77 +269,25 @@ const Dashboard = (props) => {
           })}
         </div> */}
 
-        <div className="m-auto mx-4 my-16">
-          <div className="flex items-center justify-between">
-            <div className="text-lg md:text-xl">
-              My <span className="font-bold">Stocks</span>
-            </div>
-            <div
-              className="flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer"
-              onClick={() =>
-                props.openOverlay({
-                  type: "setOverlay",
-                  payload: { overlay: 1 },
-                })
-              }
-            >
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 50 50"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M25 17.3485V32.6118"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M32.6389 24.9802H17.3611"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M34.7619 4.16666H15.2381C8.4325 4.16666 4.16663 8.9835 4.16663 15.8024V34.1976C4.16663 41.0165 8.41266 45.8333 15.2381 45.8333H34.7619C41.5873 45.8333 45.8333 41.0165 45.8333 34.1976V15.8024C45.8333 8.9835 41.5873 4.16666 34.7619 4.16666Z"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span className="block sm:hidden text-xs uppercase">Add</span>
-              <span className="hidden sm:block text-sm md:text-base">
-                Add Stock
-              </span>
-            </div>
-          </div>
-
-          <div id="stocks">
-            <Stocks gradient="linear-gradient(130deg, #da77d6 0.75%, #7526c5 100%)" />
-          </div>
-
-          <div className="label-grid">
-            <div className="label-dashboard">My Crypto</div>
-            {
+        <div className="m-auto mx-4 my-16 flex flex-col gap-24">
+          {/* STOCKS */}
+          <div>
+            <div className="flex items-center justify-between">
+              <div className="text-lg md:text-xl">
+                My <span className="font-bold">Stocks</span>
+              </div>
               <div
-                className="label-icon"
+                className="flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer"
                 onClick={() =>
                   props.openOverlay({
                     type: "setOverlay",
-                    payload: { overlay: 3 },
+                    payload: { overlay: 1 },
                   })
                 }
               >
                 <svg
-                  width="40"
-                  height="40"
+                  width="28"
+                  height="28"
                   viewBox="0 0 50 50"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -361,23 +316,78 @@ const Dashboard = (props) => {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span style={{ marginLeft: "10px" }}>Add Crypto</span>
+                <span className="block sm:hidden text-xs uppercase">Add</span>
+                <span className="hidden sm:block text-sm md:text-base">
+                  Add Stock
+                </span>
               </div>
-            }
+            </div>
+
+            <div id="stocks">
+              <Stocks gradient="linear-gradient(130deg, #da77d6 0%, #7526c5 75%)" />
+            </div>
           </div>
 
-          <div id="crypto">
-            <Crypto
-              gradient="linear-gradient(129.95deg, #70A3E0 0.75%, #7924CD 100%)"
-              // loading={loadingData[1]}
-              // setloading={setloadingDataByType}
-              // isDataLoaded={loadingData.reduce((a, b) => a + b)}
-              // setPurchasePrice={setassetPurchasePriceByType}
-              // openOverlay={openEditOverlay}
-              // addeditoverlayhandle={openOverlay}
-              // currentOpenOverlay={overlay}
-            />
+          {/* CRYPTO */}
+
+          <div>
+            <div className="flex items-center justify-between">
+              <div className="text-lg md:text-xl">
+                My <span className="font-bold">Crypto</span>
+              </div>
+              <div
+                className="flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer"
+                onClick={() =>
+                  props.openOverlay({
+                    type: "setOverlay",
+                    payload: { overlay: 3 },
+                  })
+                }
+              >
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 50 50"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M25 17.3485V32.6118"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M32.6389 24.9802H17.3611"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M34.7619 4.16666H15.2381C8.4325 4.16666 4.16663 8.9835 4.16663 15.8024V34.1976C4.16663 41.0165 8.41266 45.8333 15.2381 45.8333H34.7619C41.5873 45.8333 45.8333 41.0165 45.8333 34.1976V15.8024C45.8333 8.9835 41.5873 4.16666 34.7619 4.16666Z"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span className="block sm:hidden text-xs uppercase">Add</span>
+                <span className="hidden sm:block text-sm md:text-base">
+                  Add Crypto
+                </span>
+              </div>
+            </div>
+
+            <div id="crypto">
+              <Crypto gradient="linear-gradient(130deg, #70A3E0 0%, #7924CD 75%)" />
+            </div>
           </div>
+
+          {/* ------ */}
 
           <div className="label-grid">
             <div className="label-dashboard">My Bonds</div>
@@ -429,7 +439,7 @@ const Dashboard = (props) => {
 
           <div id="bonds">
             <Bonds
-              gradient="linear-gradient(129.95deg, #D96587 0.75%, #DF275F 100%)"
+              gradient="linear-gradient(145deg, #D96587 0%, #DF275F 100%)"
               // loading={loadingData[2]}
               // setloading={setloadingDataByType}
               // isDataLoaded={loadingData.reduce((a, b) => a + b)}

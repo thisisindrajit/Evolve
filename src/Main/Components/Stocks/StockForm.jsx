@@ -75,14 +75,14 @@ const StockForm = (props) => {
 
     if (!numreg.test(data.quantity)) {
       errorSet("Please provide number input only for quantity!");
-      document.getElementById("form-content").scrollTo(0, 0);
+      document.getElementById("custom-form").scrollTo(0, 0);
       Object.assign(data, { quantity: "" });
       return;
     }
 
     if (!decreg.test(data.purchasePrice)) {
       errorSet("Please provide number input only for purchase price!");
-      document.getElementById("form-content").scrollTo(0, 0);
+      document.getElementById("custom-form").scrollTo(0, 0);
       Object.assign(data, { purchasePrice: "" });
       return;
     }
@@ -183,6 +183,7 @@ const StockForm = (props) => {
       <div className="flex flex-col w-full md:w-10/12 m-auto md:my-4">
         <div>
           <form
+          id="custom-form"
             className="flex flex-col items-center justify-center"
             onSubmit={(e) => handleSubmit(e)}
           >
@@ -193,12 +194,7 @@ const StockForm = (props) => {
               </div>
             )}
 
-            <InputHolder
-              title="Stock Symbol"
-              isRequired
-              showInfo
-              info="Enter the ticker symbol in capital letters only."
-            >
+            <InputHolder title="Stock Symbol" isRequired>
               <input
                 type="text"
                 title="Symbol"
@@ -212,7 +208,12 @@ const StockForm = (props) => {
               />
             </InputHolder>
 
-            <InputHolder title="Description" isRequired>
+            <InputHolder
+              title="Description"
+              isRequired
+              showInfo
+              info="Enter a short description of the stock (e.g. Apple Inc.)"
+            >
               <input
                 type="text"
                 title="Description"

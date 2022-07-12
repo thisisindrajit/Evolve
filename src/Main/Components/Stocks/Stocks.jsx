@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../table.css";
-import "./stocks.css";
 import StockDeleteOverlay from "./StockDeleteOverlay";
 import axios from "axios";
 import { connect } from "react-redux";
@@ -9,7 +8,6 @@ import { currency } from "../../../Utils/constants";
 const Stocks = (props) => {
   let isunmounted = false;
 
-  // let [stockData, setStockData] = useState([]);
   let [deleteOverlay, setDeleteOverlay] = useState(-1); //using the deleteOverlay value to store the transaction ID of the stock to be deleted
 
   let findTotalPurchasePrice = (stocks) => {
@@ -46,10 +44,9 @@ const Stocks = (props) => {
       let response = await axios.post(STOCK_ENDPOINT, data);
 
       if (response.status === 200 && !isunmounted) {
-        //! Set stocks, stock purchase price to store and stocks loading to 0
+        // Set stocks, stock purchase price to store and stocks loading to 0
 
         if (!response.data.msg) {
-          //setStockData(response.data);
           const stockData = {
             type: "setstockdetails",
             payload: {
@@ -60,7 +57,7 @@ const Stocks = (props) => {
             },
           };
 
-          //* Dispatcher for setting stock data
+          // Dispatcher for setting stock data
           props.setstockdata(stockData);
         } else {
           const stockData = {
@@ -73,11 +70,11 @@ const Stocks = (props) => {
             },
           };
 
-          //* Dispatcher for setting stock data
+          // Dispatcher for setting stock data
           props.setstockdata(stockData);
         }
 
-        setDeleteOverlay(-1); //for closing the delete overlay on deleting stock
+        setDeleteOverlay(-1); // for closing the delete overlay on deleting stock
       } else {
         console.log("Some error occurred!");
       }
@@ -104,7 +101,7 @@ const Stocks = (props) => {
     <>
       {deleteOverlay !== -1 && (
         <StockDeleteOverlay
-          stocktid={deleteOverlay} //this variable stores the transaction id of the stock to be deleted
+          stocktid={deleteOverlay} // this variable stores the transaction id of the stock to be deleted
           setOverlay={setDeleteOverlay}
         />
       )}
@@ -161,8 +158,10 @@ const Stocks = (props) => {
                     <td>{convertDateFormat(stock.purchase_date)}</td>
                     <td>{stock.quantity}</td>
                     <td>{currency + stock.purchase_price}</td>
-                    <td>{currency + currentdata[index]}</td>
-                    <td>{glmain}</td>
+                    {/*<td>{currency + currentdata[index]}</td> 
+                      <td>{glmain}</td>*/}
+                    <td></td>
+                    <td></td>
                     <td>
                       <div className="flex items-center gap-4">
                         {/*Edit icon*/}
@@ -254,18 +253,19 @@ const Stocks = (props) => {
                 <td></td>
                 <td></td>
                 <td>{currency + findTotalPurchasePrice(props.stocks)}</td>
-                <td>{currency + totalcp.toFixed(2)}</td>
+                {/* <td>{currency + totalcp.toFixed(2)}</td> */}
+                <td></td>
                 <td></td>
               </tr>
             </tbody>
           </table>
         </>
       ) : props.stockLoading === 1 ? (
-        <div className="m-auto mt-8 text-sm md:text-base">
+        <div className="m-auto mt-8 text-sm md:text-base w-full text-center">
           Loading your stocks...
         </div>
       ) : (
-        <div className="m-auto mt-8 text-sm md:text-base text-[#fd1c03]">
+        <div className="m-auto mt-8 text-sm md:text-base text-[#fd1c03] w-full text-center">
           No stocks added yet!
         </div>
       )}
