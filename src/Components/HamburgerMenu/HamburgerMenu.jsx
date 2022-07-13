@@ -9,7 +9,7 @@ const HamburgerMenu = (props) => {
       <Popover>
         {({ open }) => (
           <>
-            <Popover.Button>
+            <Popover.Button as="div" className="outline-none">
               {open ? (
                 <div className="flex flex-col h-10 w-5 items-center justify-center md:hidden open transition-all">
                   <span className="hamburger__top-bun"></span>
