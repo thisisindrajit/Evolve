@@ -1,0 +1,40 @@
+@keyframes fade-in {
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#dashboard {
+  @apply w-full m-auto;
+}
+
+#dashboard #top {
+  @apply w-full xl:w-10/12 grid grid-cols-1 xmd:grid-cols-2 gap-4 m-auto px-4;
+}
+
+#stocks,
+#crypto,
+#bonds,
+#other-assets {
+  @apply flex items-center justify-center w-full;
+}
+
+#footer {
+  height: 75px;
+}
+
+#stock-market-overview {
+  @apply rounded-lg;
+  background: linear-gradient(129.95deg, #0f0c29, #302b63, #24243e);
+}
+
+#markets-overview {
+  @apply rounded-lg;
+  background: linear-gradient(129.95deg, #acb6e5, #86fde8);
+}
+
+.left-grid,
+.right-grid {
+  @apply flex flex-col gap-4;
+}

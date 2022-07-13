@@ -1,0 +1,35 @@
+/* NEW STYLES */
+.content-holder {
+  background: linear-gradient(to bottom, #218f8f, #1fbcbc);
+}
+
+.content-holder .content {
+  font-weight: 500;
+}
+
+.content-holder .reg-button:hover {
+  color: #1fbcbc;
+  transform: translateY(2.5px);
+  background-color: white;
+}
+
+.right-img-holder {
+  display: flex;
+  height: 350px;
+  width: 350px;
+  margin: auto;
+  margin-right: 0;
+  overflow: hidden;
+  opacity: 0.5;
+}
+
+.right-img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  transform: translateX(75px) translateY(15px);
+}
+
+.footer {
+  font-weight: 500;
+}

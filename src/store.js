@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userassetsreducer from "./Reducers/userassetsreducer";
+import userAssetsReducer from "./Reducers/userAssetsReducer";
 
 let initialState = {
   overlay: 0,
@@ -19,6 +19,6 @@ let initialState = {
 };
 
 export const store = configureStore({
-  reducer: userassetsreducer,
+  reducer: userAssetsReducer,
   preloadedState: initialState,
 });

@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Home from "./Home";
-import Main from "./Main/Main";
-import Login from "./Main/Login/Login";
-import Register from "./Main/Register/Register";
+import LandingPage from "./landingPage";
+import Main from "./Components/Main";
+import Login from "./Components/Login/Login";
+import Register from "./Components/Register/Register";
 import NotFound from "./Utils/NotFound";
 import ProtectedRoute from "./Utils/ProtectedRoute";
 import * as authservice from "./Services/Auth";
@@ -54,7 +54,7 @@ export default function AppRoutes() {
           exact
           path="/"
           render={(props) => (
-            <Home
+            <LandingPage
               isAuthenticated={isAuthenticated}
               loading={loading}
               {...props}
