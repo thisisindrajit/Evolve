@@ -80,7 +80,7 @@ const CryptoEditForm = (props) => {
       return;
     }
 
-    setText("Editing crypto...");
+    setText("Editing Crypto...");
 
     const EDIT_ENDPOINT =
       process.env.REACT_APP_API_URL + "/addEditDelcrypto.php";

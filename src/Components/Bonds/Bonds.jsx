@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../table.css";
-import "./bonds.css";
 import BondDeleteOverlay from "./BondDeleteOverlay";
 import axios from "axios";
 import { connect } from "react-redux";
@@ -110,12 +109,12 @@ const Bonds = (props) => {
               <tr className="header">
                 <th>Type</th>
                 <th>Description</th>
-                <th>Purchase Date</th>
-                <th>Face Value</th>
-                <th>Coupon Rate</th>
-                <th>Years to Maturity</th>
-                <th>Payment Interval</th>
-                <th>Total Interest paid until now</th>
+                <th>Purchase date</th>
+                <th>Face value</th>
+                <th>Coupon rate</th>
+                <th>Years to maturity</th>
+                <th>Payment interval</th>
+                <th>Total interest paid until now</th>
                 <th>Options</th>
               </tr>
             </thead>

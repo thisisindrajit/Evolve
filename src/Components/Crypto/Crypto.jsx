@@ -106,11 +106,11 @@ const Crypto = (props) => {
               <tr className="header">
                 <th>Symbol</th>
                 <th>Description</th>
-                <th>Purchase Date</th>
+                <th>Purchase date</th>
                 <th>Quantity</th>
-                <th>Purchase Price</th>
-                <th>Current Price</th>
-                <th>Total Gain/Loss</th>
+                <th>Purchase price</th>
+                <th>Current price</th>
+                <th>Total gain/loss</th>
                 <th>Options</th>
               </tr>
             </thead>
@@ -239,11 +239,11 @@ const Crypto = (props) => {
         </>
       ) : props.cryptoLoading === 1 ? (
         <div className="m-auto mt-8 text-sm md:text-base w-full text-center">
-          Loading your crypto currencies...
+          Loading your cryptocurrencies...
         </div>
       ) : (
         <div className="m-auto mt-8 text-sm md:text-base text-[#fd1c03] w-full text-center">
-          No crypto currencies added yet!
+          No cryptocurrencies added yet!
         </div>
       )}
     </>

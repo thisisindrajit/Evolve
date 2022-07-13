@@ -106,7 +106,7 @@ const BondForm = (props) => {
       return;
     }
 
-    setText("Adding bond...");
+    setText("Adding Bond...");
 
     const ADD_ENDPOINT = process.env.REACT_APP_API_URL + "/addEditDelBond.php";
 

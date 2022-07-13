@@ -204,6 +204,12 @@ const Dashboard = (props) => {
       {/* Edit Bond form */}
       <BondEditForm isOpen={props.overlay === 6} />
 
+      {/* Add Asset form */}
+      <OtherAssetForm isOpen={props.overlay === 7} />
+
+      {/* Edit Asset form */}
+      <OtherAssetEditForm isOpen={props.overlay === 8} />
+
       <div id="dashboard" style={defaultPageStyles.pageStyle}>
         <div id="top">
           <div className="left-grid">
@@ -437,11 +443,15 @@ const Dashboard = (props) => {
             </div>
           </div>
 
-          <div className="label-grid">
-            <div className="label-dashboard">Other Assets</div>
-            {
+          {/* OTHER ASSETS */}
+
+          <div>
+            <div className="flex items-center justify-between">
+              <div className="text-lg md:text-xl">
+                Other <span className="font-bold">Assets</span>
+              </div>
               <div
-                className="label-icon"
+                className="flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer"
                 onClick={() =>
                   props.openOverlay({
                     type: "setOverlay",
@@ -449,57 +459,55 @@ const Dashboard = (props) => {
                   })
                 }
               >
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox="0 0 50 50"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M25 17.3485V32.6118"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M32.6389 24.9802H17.3611"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M34.7619 4.16666H15.2381C8.4325 4.16666 4.16663 8.9835 4.16663 15.8024V34.1976C4.16663 41.0165 8.41266 45.8333 15.2381 45.8333H34.7619C41.5873 45.8333 45.8333 41.0165 45.8333 34.1976V15.8024C45.8333 8.9835 41.5873 4.16666 34.7619 4.16666Z"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <span style={{ marginLeft: "10px" }}>Add Asset</span>
+                {props.bondLoading !== 1 && (
+                  <>
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 50 50"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M25 17.3485V32.6118"
+                        stroke="white"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M32.6389 24.9802H17.3611"
+                        stroke="white"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M34.7619 4.16666H15.2381C8.4325 4.16666 4.16663 8.9835 4.16663 15.8024V34.1976C4.16663 41.0165 8.41266 45.8333 15.2381 45.8333H34.7619C41.5873 45.8333 45.8333 41.0165 45.8333 34.1976V15.8024C45.8333 8.9835 41.5873 4.16666 34.7619 4.16666Z"
+                        stroke="white"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <span className="block sm:hidden text-xs uppercase">
+                      Add
+                    </span>
+                    <span className="hidden sm:block text-sm md:text-base">
+                      Add Asset
+                    </span>
+                  </>
+                )}
               </div>
-            }
-          </div>
+            </div>
 
-          <div id="other-assets">
-            <OtherAssets
-              gradient="linear-gradient(to right, #2C5364, #203A43, #0F2027)"
-              // loading={loadingData[3]}
-              // setloading={setloadingDataByType}
-              // isDataLoaded={loadingData.reduce((a, b) => a + b)}
-              // setPurchasePrice={setassetPurchasePriceByType}
-              // openOverlay={openEditOverlay}
-              // addeditoverlayhandle={openOverlay}
-              // currentOpenOverlay={overlay}
-            />
+            <div id="other-assets">
+              <OtherAssets gradient="linear-gradient(to right, #2C5364, #203A43, #0F2027)" />
+            </div>
           </div>
         </div>
-
-        <div id="footer"></div>
       </div>
     </>
   );

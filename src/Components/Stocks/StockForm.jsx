@@ -89,7 +89,7 @@ const StockForm = (props) => {
       return;
     }
 
-    setText("Adding stock...");
+    setText("Adding Stock...");
 
     const ADD_ENDPOINT = process.env.REACT_APP_API_URL + "/addEditDelStock.php";
 

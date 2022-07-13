@@ -89,7 +89,7 @@ const CryptoForm = (props) => {
       return;
     }
 
-    setText("Adding crypto...");
+    setText("Adding Crypto...");
 
     const ADD_ENDPOINT =
       process.env.REACT_APP_API_URL + "/addEditDelcrypto.php";

@@ -112,11 +112,11 @@ const Stocks = (props) => {
               <tr className="header">
                 <th>Symbol</th>
                 <th>Description</th>
-                <th>Purchase Date</th>
+                <th>Purchase date</th>
                 <th>Quantity</th>
-                <th>Purchase Price</th>
-                <th>Current Price</th>
-                <th>Total Gain/Loss</th>
+                <th>Purchase price</th>
+                <th>Current price</th>
+                <th>Total gain/loss</th>
                 <th>Options</th>
               </tr>
             </thead>
