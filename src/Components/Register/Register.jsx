@@ -10,14 +10,13 @@ import CountrySelector from "../CountrySelector";
 import { useTitle } from "../../Services/useTitle";
 
 const Register = (props) => {
-
   //if already logged in, redirect directly to dashboard
   if (props.isAuthenticated) {
     let uid = localStorage.getItem("userID");
     return <Redirect to={`/dashboard/${uid}`} />;
   }
 
-  useTitle("Register - Evolve")
+  useTitle("Register - Evolve");
 
   const [data, setData] = useState({
     firstName: "",
@@ -57,7 +56,7 @@ const Register = (props) => {
       //there is an error
       if (response.data.error !== undefined) {
         //console.log(response.data.error);
-        document.getElementsByClassName("holder")[0].scrollTo(0, 0);
+        document.getElementsByClassName("holder")[0].scrollIntoView();
 
         //resetting the form
         setData({

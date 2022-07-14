@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import TopBar from "../TopBar/TopBar";
 import Dashboard from "../Dashboard/Dashboard";
 import Search from "../Search/Search";
@@ -7,6 +7,10 @@ import Notes from "../Notes/Notes";
 import "./content.css";
 
 const Content = (props) => {
+  useLayoutEffect(() => {
+    document.getElementById("content").scrollIntoView();
+  }, []);
+
   useEffect(() => {
     const updatePosition = () => {
       const scrollTopValue = document.getElementById("content").scrollTop;

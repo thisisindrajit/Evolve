@@ -46,7 +46,7 @@ const Login = (props) => {
       //there is an error
       if (response.data.error !== undefined) {
         console.log(response.data.error);
-        document.getElementsByClassName("holder")[0].scrollTo(0, 0);
+        document.getElementsByClassName("holder")[0].scrollIntoView();
 
         //resetting the form
         setData({ email: "", password: "" });
