@@ -1,10 +1,8 @@
 #market {
-  @apply w-full m-auto px-4 flex flex-col gap-6;
+  @apply w-full m-auto px-4 flex flex-col gap-8;
 }
 
 #market-container,
 #crypto-container {
-  @apply w-full m-auto my-4 md:my-8 h-[50vh] md:h-[75vh];
-  max-width: 1024px;
- 
+  @apply w-full m-auto my-4 md:my-6 max-w-[1024px];
 }

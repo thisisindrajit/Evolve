@@ -4,9 +4,12 @@ import { AdvancedChart, MiniChart } from "react-tradingview-embed";
 import defaultPageStyles from "../../Styles/defaultPageStyles";
 import axios from "axios";
 import { connect } from "react-redux";
-import { trimEnd } from "lodash";
+import { useTitle } from "../../Services/useTitle";
 
 const Search = (props) => {
+
+  useTitle(`Search - Evolve`);
+
   let isunmounted = false;
 
   let symbolarray = [];
@@ -53,7 +56,6 @@ const Search = (props) => {
           response.data.map((stock) => {
             symbolarray.push(stock.symbol);
           });
-
 
           setStockData(symbolarray);
 
@@ -105,10 +107,17 @@ const Search = (props) => {
   return (
     <div id="search" style={defaultPageStyles.pageStyle}>
       {props.stockLoading === 0 ? (
-        <div className="flex flex-col gap-8 mb-8">
-          <div className="flex flex-col gap-4">
+        <>
+          <div className="flex flex-col gap-2 md:gap-4">
             <div className="text-base md:text-lg">
               <span className="font-bold">Advanced </span>Chart
+            </div>
+            {/*Vertical line*/}
+            <div className="w-full h-px bg-evolve-green"></div>
+            {/* Info */}
+            <div className="text-xs md:text-sm leading-loose text-gray-300">
+              Search for other assets by clicking on the current asset symbol in
+              the top left corner of the chart.
             </div>
             <div id="chart-holder-search">
               <AdvancedChart
@@ -118,7 +127,7 @@ const Search = (props) => {
                   height: 550,
                   style: "2",
                   timezone: "Etc/UTC",
-                  toolbar_bg: "#f1f3f6",
+                  hide_side_toolbar: true,
                   allow_symbol_change: true,
                   details: true,
                 }}
@@ -126,15 +135,16 @@ const Search = (props) => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2 md:gap-4">
             <div className="text-base md:text-lg">
-              Your <span className="font-bold">Recent Stocks</span> Overview
+              Your <span className="font-bold">Recent Stocks</span>
             </div>
+            {/*Vertical line*/}
+            <div className="w-full h-px bg-evolve-green"></div>
             {stockData.length > 0 ? (
               <div id="chart-holder-stock">
                 {stockData.slice(0, 10).map((stock, index) => {
                   return (
-                    
                     <div className="ticker-evolve" key={index}>
                       <MiniChart
                         widgetProps={{
@@ -155,7 +165,7 @@ const Search = (props) => {
               </div>
             )}
           </div>
-        </div>
+       </>
       ) : (
         <div className="m-auto h-[80vh] flex items-center justify-center w-full">
           Loading your data...

@@ -1,6 +1,5 @@
 #search {
-  @apply w-full m-auto px-4 flex flex-col gap-6;
-
+  @apply w-full m-auto px-4 flex flex-col gap-16 mb-8;
 }
 
 #chart-holder-search {
@@ -8,6 +7,5 @@
 }
 
 #chart-holder-stock {
-  @apply grid grid-cols-1 md:grid-cols-2 gap-4 items-center justify-center flex-wrap;
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4 mt-2 items-center justify-center flex-wrap;
 }
-

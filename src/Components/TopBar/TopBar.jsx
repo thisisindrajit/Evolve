@@ -16,7 +16,7 @@ const TopBar = (props) => {
       </div>
       {/* hamburger menu in case of mobile mode */}
       <HamburgerMenu currentpage={props.currentpage} setpage={props.setpage} />
-      <div className="block md:hidden">
+      <div className="block md:hidden" onClick={() => props.setpage(1)}>
         <img
           src={logo}
           height="20"

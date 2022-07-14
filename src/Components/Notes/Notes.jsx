@@ -4,8 +4,11 @@ import defaultPageStyles from "../../Styles/defaultPageStyles";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useTitle } from "../../Services/useTitle";
 
 const Notes = (props) => {
+  useTitle(`${localStorage.getItem("username")}'s Notes - Evolve`);
+
   let isunmounted = false;
   let [notes, setNotes] = useState("");
   let [loading, setLoading] = useState(1);
