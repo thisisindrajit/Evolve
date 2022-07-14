@@ -7,7 +7,7 @@ import Notes from "../Notes/Notes";
 import "./content.css";
 
 const Content = (props) => {
-  useLayoutEffect(() => {
+  useEffect(() => {
     document.getElementById("content").scrollIntoView();
   }, []);
 
