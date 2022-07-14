@@ -1,0 +1,5 @@
+#content {
+  @apply text-white min-h-screen overflow-x-hidden overflow-y-auto w-full scroll-smooth;
+  background: linear-gradient(180deg, #1b1e21 0%, #121515 100%);
+}
+

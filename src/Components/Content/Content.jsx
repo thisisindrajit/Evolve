@@ -1,16 +1,12 @@
-import React, { useEffect, useLayoutEffect } from "react";
-import TopBar from "./TopBar/TopBar";
-import Dashboard from "./Dashboard/Dashboard";
-import Search from "./Search/Search";
-import Market from "./Market/Market";
-import Notes from "./Notes/Notes";
+import React, { useEffect } from "react";
+import TopBar from "../TopBar/TopBar";
+import Dashboard from "../Dashboard/Dashboard";
+import Search from "../Search/Search";
+import Market from "../Market/Market";
+import Notes from "../Notes/Notes";
 import "./content.css";
 
 const Content = (props) => {
-  useLayoutEffect(() => {
-    document.getElementById("content").scrollTo(-100, 0);
-  }, []);
-
   useEffect(() => {
     const updatePosition = () => {
       const scrollTopValue = document.getElementById("content").scrollTop;
@@ -35,7 +31,7 @@ const Content = (props) => {
         currentpage={props.currentpage}
         setpage={props.setpage}
       />
-      <div id="page-render">
+      <div>
         {props.currentpage == 1 && <Dashboard />}
         {props.currentpage == 2 && <Search />}
         {props.currentpage == 3 && <Market />}

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LandingPage from "./landingPage";
-import Main from "./Components/Main";
+import UserHome from "./Components/UserHome/UserHome";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
 import NotFound from "./Utils/NotFound";
@@ -85,7 +85,7 @@ export default function AppRoutes() {
         />
         <ProtectedRoute
           path="/dashboard/:id"
-          component={Main}
+          component={UserHome}
           isAuthenticated={isAuthenticated}
           logout={logout}
         />

@@ -1,4 +1,4 @@
-#main{
+#user-home{
     @apply flex md:grid;
     grid-template-columns: minmax(3vw, 65px) auto;
     width:100%;

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "./main.css";
-import Sidebar from "./Sidebar/Sidebar";
-import Content from "./Content";
+import "./userhome.css";
+import Sidebar from "../Sidebar/Sidebar";
+import Content from "../Content/Content";
 import { Redirect } from "react-router-dom";
 
-const Main = (props) => {
+const UserHome = (props) => {
   if (props.match.params.id !== localStorage.getItem("userID")) {
     return <Redirect to="/" />;
   }
@@ -17,7 +17,7 @@ const Main = (props) => {
   };
 
   return (
-    <div id="main">
+    <div id="user-home">
       <Sidebar fillvalue={curpage} setpage={setnewcurpage} />
       <Content
         currentpage={curpage}
@@ -28,4 +28,4 @@ const Main = (props) => {
   );
 };
 
-export default Main;
+export default UserHome;
