@@ -12,6 +12,10 @@ const Content = (props) => {
   }, []);
 
   useEffect(() => {
+    document.getElementById("content").scrollTo(0, 0);
+  }, [props.currentpage]);
+
+  useEffect(() => {
     const updatePosition = () => {
       const scrollTopValue = document.getElementById("content").scrollTop;
 

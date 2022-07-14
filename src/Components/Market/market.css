@@ -1,12 +1,10 @@
 #market {
-  width: 95vw;
-  margin: 0 20px;
-  overflow: hidden;
+  @apply w-full m-auto px-4 flex flex-col gap-6;
 }
 
-#market-container, #crypto-container{
-  width:80%;
-  margin:auto;
-  height:500px;
-  padding:10px;
+#market-container,
+#crypto-container {
+  @apply w-full m-auto my-4 md:my-8;
+  max-width: 1024px;
+  height: 75vh;
 }

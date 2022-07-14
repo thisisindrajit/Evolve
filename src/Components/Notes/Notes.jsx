@@ -94,10 +94,7 @@ const Notes = (props) => {
         draggable
         pauseOnHover
       />
-      <div
-        className="w-full mx-4 flex flex-col gap-4 mb-16"
-        style={defaultPageStyles.pageStyle}
-      >
+      <div id="notes" style={defaultPageStyles.pageStyle}>
         <div className="text-xl">
           My <span className="font-bold">Notes</span>
         </div>

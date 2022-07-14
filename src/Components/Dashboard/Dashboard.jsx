@@ -19,6 +19,7 @@ import { connect } from "react-redux";
 import { useTitle } from "../../Services/useTitle";
 
 const Dashboard = (props) => {
+
   useTitle(`${localStorage.getItem("username")}'s Dashboard - Evolve`);
 
   const marketobj = {

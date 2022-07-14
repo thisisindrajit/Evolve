@@ -20,18 +20,14 @@
   @apply flex items-center justify-center w-full;
 }
 
-#footer {
-  height: 75px;
-}
-
 #stock-market-overview {
   @apply rounded-lg;
-  background: linear-gradient(129.95deg, #0f0c29, #302b63, #24243e);
+  background: linear-gradient(130deg, #0f0c29, #302b63, #24243e);
 }
 
 #markets-overview {
   @apply rounded-lg;
-  background: linear-gradient(129.95deg, #acb6e5, #86fde8);
+  background: linear-gradient(130deg, #acb6e5, #86fde8);
 }
 
 .left-grid,
