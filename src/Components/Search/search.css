@@ -1,26 +1,13 @@
 #search {
-  width: 95vw;
-  margin: 0 20px;
-  overflow: hidden;
+  @apply w-full m-auto px-4 flex flex-col gap-6;
+
 }
 
 #chart-holder-search {
-  width: 100%;
-  margin: auto;
-  overflow: auto;
-  height: 600px;
+  @apply m-auto w-full max-w-[1350px];
 }
 
 #chart-holder-stock {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4 items-center justify-center flex-wrap;
 }
 
-.ticker-evolve {
-  width: 100%;
-  margin: auto;
-}

@@ -16,7 +16,7 @@ const BondDeleteOverlay = (props) => {
     };
 
     const DELETE_ENDPOINT =
-      process.env.REACT_APP_API_URL + "addEditDelBond.php";
+      process.env.REACT_APP_API_URL + "/addEditDelBond.php";
 
     try {
       let response = await axios.post(DELETE_ENDPOINT, data);

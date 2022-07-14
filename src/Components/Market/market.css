@@ -4,7 +4,7 @@
 
 #market-container,
 #crypto-container {
-  @apply w-full m-auto my-4 md:my-8;
+  @apply w-full m-auto my-4 md:my-8 h-[50vh] md:h-[75vh];
   max-width: 1024px;
-  height: 75vh;
+ 
 }
