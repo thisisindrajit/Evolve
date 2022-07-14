@@ -7,12 +7,9 @@ import Notes from "../Notes/Notes";
 import "./content.css";
 
 const Content = (props) => {
-  useEffect(() => {
-    document.getElementById("content").scrollIntoView();
-  }, []);
-
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.getElementById("content").scrollTo(0, 0);
+    document.getElementById("content").scrollIntoView();
   }, [props.currentpage]);
 
   useEffect(() => {
