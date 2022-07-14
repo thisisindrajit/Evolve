@@ -56,15 +56,7 @@ const Notes = (props) => {
       if (response.status === 200 && response.data.msg === "Edited Note!") {
         setUpdating(0);
         setError(0);
-        toast.success("Notes updated!", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        toast.success("Notes updated!");
         console.log(response.data.msg);
       } else {
         console.log(response);
@@ -90,7 +82,18 @@ const Notes = (props) => {
 
   return (
     <>
-      <ToastContainer />
+      <ToastContainer
+        className="z-30"
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div
         className="w-full mx-4 flex flex-col gap-4 mb-16"
         style={defaultPageStyles.pageStyle}

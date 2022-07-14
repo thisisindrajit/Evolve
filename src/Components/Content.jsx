@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import TopBar from "./TopBar/TopBar";
 import Dashboard from "./Dashboard/Dashboard";
 import Search from "./Search/Search";
@@ -7,6 +7,10 @@ import Notes from "./Notes/Notes";
 import "./content.css";
 
 const Content = (props) => {
+  useLayoutEffect(() => {
+    document.getElementById("content").scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     const updatePosition = () => {
       const scrollTopValue = document.getElementById("content").scrollTop;
@@ -26,7 +30,11 @@ const Content = (props) => {
 
   return (
     <div id="content">
-      <TopBar logout={props.logout} currentpage={props.currentpage} setpage={props.setpage}/>
+      <TopBar
+        logout={props.logout}
+        currentpage={props.currentpage}
+        setpage={props.setpage}
+      />
       <div id="page-render">
         {props.currentpage == 1 && <Dashboard />}
         {props.currentpage == 2 && <Search />}

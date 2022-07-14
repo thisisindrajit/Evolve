@@ -77,7 +77,7 @@ const AssetGraph = (props) => {
             offsetX: -18,
             fontSize: "14px",
           },
-          labels: ["Stocks", "Crypto", "Bonds", "Others"],
+          labels: ["Stocks", "Crypto", "Bonds", "Other Assets"],
         },
       },
     ],
