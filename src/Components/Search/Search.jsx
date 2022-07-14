@@ -7,7 +7,6 @@ import { connect } from "react-redux";
 import { useTitle } from "../../Services/useTitle";
 
 const Search = (props) => {
-
   useTitle(`Search - Evolve`);
 
   let isunmounted = false;
@@ -108,14 +107,14 @@ const Search = (props) => {
     <div id="search" style={defaultPageStyles.pageStyle}>
       {props.stockLoading === 0 ? (
         <>
-          <div className="flex flex-col gap-2 md:gap-4">
+          <div>
             <div className="text-base md:text-lg">
               <span className="font-bold">Advanced </span>Chart
             </div>
             {/*Vertical line*/}
-            <div className="w-full h-px bg-evolve-green"></div>
+            <div className="w-full h-px bg-evolve-green mt-3 mb-2 md:my-4"></div>
             {/* Info */}
-            <div className="text-xs md:text-sm leading-loose text-gray-300">
+            <div className="text-xs md:text-sm leading-loose text-gray-300 text-justify mb-4">
               Search for other assets by clicking on the current asset symbol in
               the top left corner of the chart.
             </div>
@@ -135,12 +134,12 @@ const Search = (props) => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 md:gap-4">
+          <div>
             <div className="text-base md:text-lg">
               Your <span className="font-bold">Recent Stocks</span>
             </div>
             {/*Vertical line*/}
-            <div className="w-full h-px bg-evolve-green"></div>
+            <div className="w-full h-px bg-evolve-green mt-3 mb-2 md:my-4"></div>
             {stockData.length > 0 ? (
               <div id="chart-holder-stock">
                 {stockData.slice(0, 10).map((stock, index) => {
@@ -165,7 +164,7 @@ const Search = (props) => {
               </div>
             )}
           </div>
-       </>
+        </>
       ) : (
         <div className="m-auto h-[80vh] flex items-center justify-center w-full">
           Loading your data...
