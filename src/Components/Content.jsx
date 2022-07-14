@@ -8,7 +8,7 @@ import "./content.css";
 
 const Content = (props) => {
   useLayoutEffect(() => {
-    document.getElementById("content").scrollTo(0, 0);
+    document.getElementById("content").scrollTo(-100, 0);
   }, []);
 
   useEffect(() => {

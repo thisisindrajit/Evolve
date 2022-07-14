@@ -75,7 +75,7 @@ const Login = (props) => {
   return props.loading === true ? (
     <Loading />
   ) : (
-    <div className="flex flex-col min-h-screen pb-4 md:pb-8 my-24">
+    <div className="flex flex-col min-h-screen pb-4 md:pb-8">
       <LogoHolder type="login" />
       <div className="m-auto holder px-4 py-8 xsm:px-6 sm:px-10 w-11/12 sm:w-10/12 md:w-6/12 xl:w-5/12">
         <form
