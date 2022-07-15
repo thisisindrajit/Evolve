@@ -1,5 +1,5 @@
 #market {
-  @apply w-full m-auto px-4 flex flex-col gap-8;
+  @apply w-full m-auto px-4 flex flex-col gap-8 mb-8;
 }
 
 #market-container,

@@ -1,7 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./market.css";
 import defaultPageStyles from "../../Styles/defaultPageStyles";
-import { CryptocurrencyMarket, MarketData } from "react-tradingview-embed";
+import {
+  CryptocurrencyMarket,
+  MarketData,
+  TickerTape,
+} from "react-tradingview-embed";
 import { useTitle } from "../../Services/useTitle";
 
 const Market = (props) => {
@@ -9,6 +13,34 @@ const Market = (props) => {
 
   return (
     <div id="market" style={defaultPageStyles.pageStyle}>
+      {/* Tickertape */}
+      <TickerTape
+        widgetProps={{
+          symbols: [
+            {
+              proName: "FOREXCOM:SPXUSD",
+              title: "S&P 500",
+            },
+            {
+              description: "SENSEX",
+              proName: "BSE:SENSEX",
+            },
+            {
+              description: "BITCOIN",
+              proName: "BITSTAMP:BTCUSD",
+            },
+            {
+              description: "ETHEREUM",
+              proName: "BITSTAMP:ETHUSD",
+            },
+          ],
+          showSymbolLogo: true,
+          colorTheme: "dark",
+          isTransparent: false,
+          displayMode: "regular",
+          locale: "en",
+        }}
+      />
       {/* MARKET OVERVIEW */}
       <div>
         <div className="text-base md:text-lg">

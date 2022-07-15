@@ -168,32 +168,6 @@ const Dashboard = (props) => {
     ],
   };
 
-  const tickerTapeWidgetProps = {
-    symbols: [
-      {
-        proName: "FOREXCOM:SPXUSD",
-        title: "S&P 500",
-      },
-      {
-        description: "SENSEX",
-        proName: "BSE:SENSEX",
-      },
-      {
-        description: "BITCOIN",
-        proName: "BITSTAMP:BTCUSD",
-      },
-      {
-        description: "ETHEREUM",
-        proName: "BITSTAMP:ETHUSD",
-      },
-    ],
-    showSymbolLogo: true,
-    colorTheme: "dark",
-    isTransparent: false,
-    displayMode: "regular",
-    locale: "en",
-  };
-
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
@@ -208,13 +182,6 @@ const Dashboard = (props) => {
     script2.async = true;
     script2.innerHTML = JSON.stringify(marketOverviewWidgetProps);
     document.getElementById("markets-overview").appendChild(script2);
-
-    const script3 = document.createElement("script");
-    script3.src =
-      "https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
-    script3.async = true;
-    script3.innerHTML = JSON.stringify(tickerTapeWidgetProps);
-    document.getElementById("tickertape").appendChild(script3);
   }, []);
 
   return (
@@ -244,12 +211,6 @@ const Dashboard = (props) => {
       <OtherAssetEditForm isOpen={props.overlay === 8} />
 
       <div id="dashboard" style={defaultPageStyles.pageStyle}>
-        {/* Tickertape */}
-        <div id="tickertape" className="w-full mb-4 md:mb-8 px-4">
-          <div className="tradingview-widget-container">
-            <div className="tradingview-widget-container__widget"></div>
-          </div>
-        </div>
         <div id="top">
           <div className="left-grid">
             <AssetBox

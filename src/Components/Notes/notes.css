@@ -1,5 +1,5 @@
 #notes {
-  @apply w-full px-4 flex flex-col gap-4 mb-16;
+  @apply w-full px-4 flex flex-col gap-4 mb-8;
 }
 
 .notes-area {
