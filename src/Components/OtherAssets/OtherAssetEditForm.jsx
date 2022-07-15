@@ -216,7 +216,11 @@ const OtherAssetEditForm = (props) => {
                 required
               />
             </InputHolder>
-            <InputHolder title="Expected annual return (in %)" isRequired>
+            <InputHolder
+              title="Expected annual return (in %)"
+              showInfo
+              info="If there is no annual return from the asset, you can leave this field blank."
+            >
               <input
                 type="text"
                 title="Annual Return"
