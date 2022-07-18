@@ -8,13 +8,13 @@ import { currency } from "../../Utils/constants";
 const Stocks = (props) => {
   let isunmounted = false;
   const [deleteOverlay, setDeleteOverlay] = useState(-1); //using the deleteOverlay value to store the transaction ID of the stock to be deleted
-  const [currentPriceData, setCurrentPriceData] = useState([]);
-  const [totalCostPrice, setTotalCostPrice] = useState(null);
-  const [pricesLoading, setPricesLoading] = useState(true);
+  const [currentStockPriceData, setCurrentStockPriceData] = useState([]);
+  const [totalStockCostPrice, setTotalStockCostPrice] = useState(null);
+  const [stockPricesLoading, setStockPricesLoading] = useState(true);
 
   // function to get all ticker prices from API each minute
   const getPricesAtGivenTime = async () => {
-    setPricesLoading(true);
+    setStockPricesLoading(true);
     console.log(`Getting stock prices at ${new Date().getTime()}`);
     let totalPriceAtGivenTime = 0;
     let currentPricesAtGivenTime = [];
@@ -42,9 +42,9 @@ const Stocks = (props) => {
         currentStockPriceResponse.data.price * stock.quantity;
     }
 
-    setCurrentPriceData(currentPricesAtGivenTime);
-    setTotalCostPrice(totalPriceAtGivenTime.toFixed(2));
-    setPricesLoading(false);
+    setCurrentStockPriceData(currentPricesAtGivenTime);
+    setTotalStockCostPrice(totalPriceAtGivenTime.toFixed(2));
+    setStockPricesLoading(false);
   };
 
   useEffect(() => {
@@ -83,7 +83,7 @@ const Stocks = (props) => {
       totalPurchasePrice += parseFloat(stock.purchase_price) * stock.quantity;
     });
 
-    const gainLoss = (totalCostPrice - totalPurchasePrice).toFixed(2);
+    const gainLoss = (totalStockCostPrice - totalPurchasePrice).toFixed(2);
 
     if (gainLoss < 0) {
       return `-${currency}` + -1 * gainLoss;
@@ -186,7 +186,7 @@ const Stocks = (props) => {
             <tbody>
               {props.stocks.map((stock, index) => {
                 const gainLoss = (
-                  parseFloat(currentPriceData[index]) * stock.quantity -
+                  parseFloat(currentStockPriceData[index]) * stock.quantity -
                   parseFloat(stock.purchase_price) * stock.quantity
                 ).toFixed(2);
                 let glMain = null;
@@ -220,11 +220,11 @@ const Stocks = (props) => {
                     <td>{stock.quantity}</td>
                     <td>{currency + stock.purchase_price}</td>
                     <td>
-                      {currentPriceData[index]
-                        ? currency + currentPriceData[index]
+                      {currentStockPriceData[index]
+                        ? currency + currentStockPriceData[index]
                         : "..."}
                     </td>
-                    <td>{currentPriceData[index] ? glMain : "..."}</td>
+                    <td>{currentStockPriceData[index] ? glMain : "..."}</td>
                     <td>
                       <div className="flex items-center gap-4">
                         {/*Edit icon*/}
@@ -317,12 +317,12 @@ const Stocks = (props) => {
                 <td></td>
                 <td>{currency + findTotalPurchasePrice(props.stocks)}</td>
                 <td>
-                  {!pricesLoading && totalCostPrice
-                    ? currency + totalCostPrice
+                  {!stockPricesLoading && totalStockCostPrice
+                    ? currency + totalStockCostPrice
                     : "..."}
                 </td>
                 <td>
-                  {!pricesLoading && totalCostPrice
+                  {!stockPricesLoading && totalStockCostPrice
                     ? findTotalGainLoss(props.stocks)
                     : "..."}
                 </td>

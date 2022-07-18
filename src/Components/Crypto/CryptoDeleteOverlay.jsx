@@ -5,9 +5,9 @@ import DialogBox from "../DialogBox/DialogBox";
 
 const CryptoDeleteOverlay = (props) => {
   let isunmounted = false;
-  let [text, setText] = useState("Delete");
+  const [text, setText] = useState("Delete");
 
-  let deleteCrypto = async () => {
+  const deleteCrypto = async () => {
     setText("Deleting...");
 
     const data = {

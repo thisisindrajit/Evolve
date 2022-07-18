@@ -37,11 +37,11 @@ const CryptoForm = (props) => {
     }
   }, [props.isOpen]);
 
-  let errorSet = (desc) => {
+  const errorSet = (desc) => {
     setError({ isSet: true, errorDesc: desc });
   };
 
-  let setMaxDate = () => {
+  const setMaxDate = () => {
     var dtToday = new Date();
 
     var month = dtToday.getMonth() + 1;
@@ -55,7 +55,7 @@ const CryptoForm = (props) => {
     return maxDate;
   };
 
-  let changeData = (e, type) => {
+  const changeData = (e, type) => {
     setData({
       uid: data.uid,
       type: "1",
@@ -67,7 +67,7 @@ const CryptoForm = (props) => {
     });
   };
 
-  let handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     var numreg = new RegExp("^[0-9]+$");

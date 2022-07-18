@@ -7,10 +7,56 @@ import { currency } from "../../Utils/constants";
 
 const Crypto = (props) => {
   let isunmounted = false;
+  const [deleteOverlay, setDeleteOverlay] = useState(-1); //using the deleteOverlay value to store the transaction ID of the crypto to be deleted
+  const [currentCryptoPriceData, setCurrentCryptoPriceData] = useState([]);
+  const [totalCryptoCostPrice, setTotalCryptoCostPrice] = useState(null);
+  const [cryptoPricesLoading, setCryptoPricesLoading] = useState(true);
 
-  let [deleteOverlay, setDeleteOverlay] = useState(-1); //using the deleteOverlay value to store the transaction ID of the crypto to be deleted
+  // function to get all ticker prices from API each minute
+  const getCryptoPricesAtGivenTime = async () => {
+    setCryptoPricesLoading(true);
+    console.log(`Getting crypto prices at ${new Date().getTime()}`);
+    let totalPriceAtGivenTime = 0;
+    let currentPricesAtGivenTime = [];
 
-  let findTotalPurchasePrice = (cryptos) => {
+    for (let crypto of props.crypto) {
+      const PRICE_ENDPOINT =
+        process.env.REACT_APP_NODE_API_URL +
+        "/getCurrentPrice/" +
+        crypto.symbol.toUpperCase();
+
+      const currentCryptoPriceResponse = await axios.get(PRICE_ENDPOINT, {
+        validateStatus: false,
+      });
+
+      if (currentCryptoPriceResponse.status !== 200) {
+        // -1 indicates that the price of the crypto is not obtained
+        currentPricesAtGivenTime.push(-1);
+        return;
+      }
+
+      currentPricesAtGivenTime.push(
+        currentCryptoPriceResponse.data.price.toFixed(2)
+      );
+      totalPriceAtGivenTime +=
+        currentCryptoPriceResponse.data.price * crypto.quantity;
+    }
+
+    setCurrentCryptoPriceData(currentPricesAtGivenTime);
+    setTotalCryptoCostPrice(totalPriceAtGivenTime.toFixed(2));
+    setCryptoPricesLoading(false);
+  };
+
+  useEffect(() => {
+    if (props.crypto.length > 0) {
+      getCryptoPricesAtGivenTime();
+      const interval = setInterval(getCryptoPricesAtGivenTime, 60000);
+
+      return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
+    }
+  }, [props.crypto.length]);
+
+  const findTotalPurchasePrice = (cryptos) => {
     if (cryptos.length === 0) {
       return 0;
     }
@@ -25,13 +71,34 @@ const Crypto = (props) => {
     return totalPurchasePrice.toFixed(2);
   };
 
-  let convertDateFormat = (date) => {
+  const findTotalGainLoss = (cryptos) => {
+    if (cryptos.length === 0) {
+      return 0;
+    }
+
+    //total purchase price variable
+    let totalPurchasePrice = 0;
+
+    cryptos.map((crypto) => {
+      totalPurchasePrice += parseFloat(crypto.purchase_price) * crypto.quantity;
+    });
+
+    const gainLoss = (totalCryptoCostPrice - totalPurchasePrice).toFixed(2);
+
+    if (gainLoss < 0) {
+      return `-${currency}` + -1 * gainLoss;
+    }
+
+    return currency + gainLoss;
+  };
+
+  const convertDateFormat = (date) => {
     date = date.split("-");
 
     return date[2] + "/" + date[1] + "/" + date[0];
   };
 
-  let fetchcryptoData = async () => {
+  const fetchcryptoData = async () => {
     const data = {
       uid: localStorage.getItem("userID"),
       assettype: 2, //to denote crypto
@@ -116,6 +183,18 @@ const Crypto = (props) => {
             </thead>
             <tbody>
               {props.crypto.map((crypto, index) => {
+                const gainLoss = (
+                  parseFloat(currentCryptoPriceData[index]) * crypto.quantity -
+                  parseFloat(crypto.purchase_price) * crypto.quantity
+                ).toFixed(2);
+                let glMain = null;
+
+                if (gainLoss < 0) {
+                  glMain = `-${currency}` + -1 * gainLoss;
+                } else {
+                  glMain = currency + gainLoss;
+                }
+
                 let cryptoData = {
                   cryptoTransactionID: crypto.crypto_transaction_ID,
                   symbol: crypto.symbol,
@@ -138,8 +217,12 @@ const Crypto = (props) => {
                     <td>{convertDateFormat(crypto.purchase_date)}</td>
                     <td>{crypto.quantity}</td>
                     <td>{currency + crypto.purchase_price}</td>
-                    <td></td>
-                    <td></td>
+                    <td>
+                      {currentCryptoPriceData[index]
+                        ? currency + currentCryptoPriceData[index]
+                        : "..."}
+                    </td>
+                    <td>{currentCryptoPriceData[index] ? glMain : "..."}</td>
                     <td>
                       <div className="flex items-center gap-4">
                         {/*Edit icon*/}
@@ -231,8 +314,16 @@ const Crypto = (props) => {
                 <td></td>
                 <td></td>
                 <td>{currency + findTotalPurchasePrice(props.crypto)}</td>
-                <td></td>
-                <td></td>
+                <td>
+                  {!cryptoPricesLoading && totalCryptoCostPrice
+                    ? currency + totalCryptoCostPrice
+                    : "..."}
+                </td>
+                <td>
+                  {!cryptoPricesLoading && totalCryptoCostPrice
+                    ? findTotalGainLoss(props.crypto)
+                    : "..."}
+                </td>
               </tr>
             </tbody>
           </table>
