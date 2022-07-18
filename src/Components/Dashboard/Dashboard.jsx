@@ -258,10 +258,10 @@ const Dashboard = (props) => {
                   My <span className="font-bold">Stocks</span>
                 </div>
                 <svg
-                  width="20"
-                  height="20"
+                  width="22"
+                  height="22"
                   viewBox="0 0 22 22"
-                  className="cursor-pointer"
+                  className="cursor-pointer h-5 w-5"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   data-tip="Only US stocks are supported as of now."
@@ -356,10 +356,10 @@ const Dashboard = (props) => {
                   My <span className="font-bold">Crypto</span>
                 </div>
                 <svg
-                  width="20"
-                  height="20"
+                  width="22"
+                  height="22"
                   viewBox="0 0 22 22"
-                  className="cursor-pointer"
+                  className="cursor-pointer h-5 w-5"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   data-tip="Only cryptos trading in US dollars are supported as of now."
