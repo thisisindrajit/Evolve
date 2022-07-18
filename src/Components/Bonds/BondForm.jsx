@@ -80,7 +80,7 @@ const BondForm = (props) => {
     var percentreg = /(^100(\.0{1,})?$)|(^([1-9]([0-9])?|1)(\.[0-9]{1,})?$)/;
 
     if (!decreg.test(data.faceValue)) {
-      errorSet("Please provide number input only for face value!");
+      errorSet("Please provide number input only for face value! Please remove any commas if you have used them.");
       document.getElementById("custom-modal").scrollIntoView();
       Object.assign(data, { faceValue: "" });
       return;

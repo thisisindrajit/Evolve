@@ -21,11 +21,12 @@ const Icon = (props) => {
         xmlns="http://www.w3.org/2000/svg"
         onClick={props.onClick ? props.onClick : null}
         data-tip={props.tooltipData}
+        data-for="icon"
       >
         {props.children}
       </svg>
       {props.showTooltip && (
-        <ReactTooltip place="right" type="light" effect="float" />
+        <ReactTooltip id="icon" place="right" type="light" effect="float" />
       )}
     </div>
   );

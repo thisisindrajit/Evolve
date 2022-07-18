@@ -65,7 +65,7 @@ const CryptoEditForm = (props) => {
     var decreg = new RegExp("^[0-9]+$|^[0-9]+.[0-9]+$");
 
     if (!numreg.test(data.quantity)) {
-      errorSet("Please provide number input only for quantity!");
+      errorSet("Please provide number input only for quantity! Please remove any commas if you have used them.");
       document.getElementById("custom-modal").scrollIntoView();
 
       Object.assign(data, { quantity: "" });
@@ -73,10 +73,28 @@ const CryptoEditForm = (props) => {
     }
 
     if (!decreg.test(data.purchasePrice)) {
-      errorSet("Please provide number input only for purchase price!");
+      errorSet("Please provide number input only for purchase price! Please remove any commas if you have used them.");
       document.getElementById("custom-modal").scrollIntoView();
 
       Object.assign(data, { purchasePrice: "" });
+      return;
+    }
+
+    setText("Checking crypto symbol...");
+
+    const CHECK_SYMBOL_ENDPOINT =
+      process.env.REACT_APP_NODE_API_URL +
+      "/checkIfSymbolExists/" +
+      data.symbol.toUpperCase();
+
+    const symbolResponse = await axios.get(CHECK_SYMBOL_ENDPOINT, {
+      validateStatus: false,
+    });
+
+    if (symbolResponse.status !== 200) {
+      errorSet("Crypto symbol does not exist! Please try with another symbol!");
+      setText("Edit Crypto");
+      document.getElementById("custom-modal").scrollIntoView();
       return;
     }
 
@@ -183,7 +201,12 @@ const CryptoEditForm = (props) => {
               </div>
             )}
 
-            <InputHolder title="Crypto Symbol" isRequired>
+            <InputHolder
+              title="Crypto Symbol"
+              isRequired
+              showInfo
+              info="Enter the crypto's symbol exactly as present in Yahoo finance website."
+            >
               <input
                 type="text"
                 title="Symbol"

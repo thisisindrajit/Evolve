@@ -84,7 +84,7 @@ const OtherAssetForm = (props) => {
     }
 
     if (!decreg.test(data.purchasePrice)) {
-      errorSet("Please provide number input only for purchase price!");
+      errorSet("Please provide number input only for purchase price! Please remove any commas if you have used them.");
       document.getElementById("custom-modal").scrollIntoView();
 
       Object.assign(data, { purchasePrice: "" });
