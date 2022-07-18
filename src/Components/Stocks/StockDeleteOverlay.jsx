@@ -5,9 +5,9 @@ import DialogBox from "../DialogBox/DialogBox";
 
 const StockDeleteOverlay = (props) => {
   let isunmounted = false;
-  let [text, setText] = useState("Delete");
+  const [text, setText] = useState("Delete");
 
-  let deleteStock = async () => {
+  const deleteStock = async () => {
     setText("Deleting...");
 
     const data = {

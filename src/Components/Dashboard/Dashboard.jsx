@@ -262,7 +262,7 @@ const Dashboard = (props) => {
                   width="20"
                   viewBox="0 0 46 46"
                   className="cursor-pointer mb-0.5 md:mb-0"
-                  data-tip="Only US stocks are supported as of now."
+                  data-tip="Only US stocks are supported as of now. Prices are updated each minute."
                   data-for="info"
                   fill="white"
                   xmlns="http://www.w3.org/2000/svg"
@@ -274,7 +274,7 @@ const Dashboard = (props) => {
                   id="info"
                   place="right"
                   type="light"
-                  effect="solid"
+                  effect="float"
                 />
               </div>
               <div
@@ -348,7 +348,7 @@ const Dashboard = (props) => {
                   width="20"
                   viewBox="0 0 46 46"
                   className="cursor-pointer mb-0.5 md:mb-0"
-                  data-tip="Only cryptos trading in US dollars are supported as of now."
+                  data-tip="Only cryptos trading in US dollars are supported as of now. Prices are updated each minute."
                   data-for="info"
                   fill="white"
                   xmlns="http://www.w3.org/2000/svg"
@@ -360,7 +360,7 @@ const Dashboard = (props) => {
                   id="info"
                   place="right"
                   type="light"
-                  effect="solid"
+                  effect="float"
                 />
               </div>
               <div

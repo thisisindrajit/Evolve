@@ -7,10 +7,56 @@ import { currency } from "../../Utils/constants";
 
 const Stocks = (props) => {
   let isunmounted = false;
+  const [deleteOverlay, setDeleteOverlay] = useState(-1); //using the deleteOverlay value to store the transaction ID of the stock to be deleted
+  const [currentPriceData, setCurrentPriceData] = useState([]);
+  const [totalCostPrice, setTotalCostPrice] = useState(null);
+  const [pricesLoading, setPricesLoading] = useState(true);
 
-  let [deleteOverlay, setDeleteOverlay] = useState(-1); //using the deleteOverlay value to store the transaction ID of the stock to be deleted
+  // function to get all ticker prices from API each minute
+  const getPricesAtGivenTime = async () => {
+    setPricesLoading(true);
+    console.log(`Getting stock prices at ${new Date().getTime()}`);
+    let totalPriceAtGivenTime = 0;
+    let currentPricesAtGivenTime = [];
 
-  let findTotalPurchasePrice = (stocks) => {
+    for (let stock of props.stocks) {
+      const PRICE_ENDPOINT =
+        process.env.REACT_APP_NODE_API_URL +
+        "/getCurrentPrice/" +
+        stock.symbol.toUpperCase();
+
+      const currentStockPriceResponse = await axios.get(PRICE_ENDPOINT, {
+        validateStatus: false,
+      });
+
+      if (currentStockPriceResponse.status !== 200) {
+        // -1 indicates that the price of the stock is not obtained
+        currentPricesAtGivenTime.push(-1);
+        return;
+      }
+
+      currentPricesAtGivenTime.push(
+        currentStockPriceResponse.data.price.toFixed(2)
+      );
+      totalPriceAtGivenTime +=
+        currentStockPriceResponse.data.price * stock.quantity;
+    }
+
+    setCurrentPriceData(currentPricesAtGivenTime);
+    setTotalCostPrice(totalPriceAtGivenTime.toFixed(2));
+    setPricesLoading(false);
+  };
+
+  useEffect(() => {
+    if (props.stocks.length > 0) {
+      getPricesAtGivenTime();
+      const interval = setInterval(getPricesAtGivenTime, 60000);
+
+      return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
+    }
+  }, [props.stocks.length]);
+
+  const findTotalPurchasePrice = (stocks) => {
     if (stocks.length === 0) {
       return 0;
     }
@@ -25,13 +71,34 @@ const Stocks = (props) => {
     return totalPurchasePrice.toFixed(2);
   };
 
-  let convertDateFormat = (date) => {
+  const findTotalGainLoss = (stocks) => {
+    if (stocks.length === 0) {
+      return 0;
+    }
+
+    //total purchase price variable
+    let totalPurchasePrice = 0;
+
+    stocks.map((stock) => {
+      totalPurchasePrice += parseFloat(stock.purchase_price) * stock.quantity;
+    });
+
+    const gainLoss = (totalCostPrice - totalPurchasePrice).toFixed(2);
+
+    if (gainLoss < 0) {
+      return `-${currency}` + -1 * gainLoss;
+    }
+
+    return currency + gainLoss;
+  };
+
+  const convertDateFormat = (date) => {
     date = date.split("-");
 
     return date[2] + "/" + date[1] + "/" + date[0];
   };
 
-  let fetchStockData = async () => {
+  const fetchStockData = async () => {
     const data = {
       uid: localStorage.getItem("userID"),
       assettype: 1, //to denote stock
@@ -93,10 +160,6 @@ const Stocks = (props) => {
     };
   }, [props.stockLoading]);
 
-  // TODO: !Change this to original current price from API
-  let currentdata = ["132.03", "732.23", "3333.00"];
-  let totalcp = 0;
-
   return (
     <>
       {deleteOverlay !== -1 && (
@@ -122,19 +185,17 @@ const Stocks = (props) => {
             </thead>
             <tbody>
               {props.stocks.map((stock, index) => {
-                const gainloss = (
-                  parseFloat(currentdata[index]) * stock.quantity -
+                const gainLoss = (
+                  parseFloat(currentPriceData[index]) * stock.quantity -
                   parseFloat(stock.purchase_price) * stock.quantity
                 ).toFixed(2);
-                let glmain = null;
+                let glMain = null;
 
-                if (gainloss < 0) {
-                  glmain = "-₹" + -1 * gainloss;
+                if (gainLoss < 0) {
+                  glMain = `-${currency}` + -1 * gainLoss;
                 } else {
-                  glmain = currency + gainloss;
+                  glMain = currency + gainLoss;
                 }
-
-                totalcp += parseFloat(currentdata[index]) * stock.quantity;
 
                 const stockdata = {
                   stockTransactionID: stock.stock_transaction_ID,
@@ -158,10 +219,12 @@ const Stocks = (props) => {
                     <td>{convertDateFormat(stock.purchase_date)}</td>
                     <td>{stock.quantity}</td>
                     <td>{currency + stock.purchase_price}</td>
-                    {/*<td>{currency + currentdata[index]}</td> 
-                      <td>{glmain}</td>*/}
-                    <td></td>
-                    <td></td>
+                    <td>
+                      {currentPriceData[index]
+                        ? currency + currentPriceData[index]
+                        : "..."}
+                    </td>
+                    <td>{currentPriceData[index] ? glMain : "..."}</td>
                     <td>
                       <div className="flex items-center gap-4">
                         {/*Edit icon*/}
@@ -253,9 +316,16 @@ const Stocks = (props) => {
                 <td></td>
                 <td></td>
                 <td>{currency + findTotalPurchasePrice(props.stocks)}</td>
-                {/* <td>{currency + totalcp.toFixed(2)}</td> */}
-                <td></td>
-                <td></td>
+                <td>
+                  {!pricesLoading && totalCostPrice
+                    ? currency + totalCostPrice
+                    : "..."}
+                </td>
+                <td>
+                  {!pricesLoading && totalCostPrice
+                    ? findTotalGainLoss(props.stocks)
+                    : "..."}
+                </td>
               </tr>
             </tbody>
           </table>

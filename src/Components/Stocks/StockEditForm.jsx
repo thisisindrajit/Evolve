@@ -28,11 +28,11 @@ const StockEditForm = (props) => {
     }
   }, [props.isOpen]);
 
-  let errorSet = (desc) => {
+  const errorSet = (desc) => {
     setError({ isSet: true, errorDesc: desc });
   };
 
-  let setMaxDate = () => {
+  const setMaxDate = () => {
     var dtToday = new Date();
 
     var month = dtToday.getMonth() + 1;
@@ -46,7 +46,7 @@ const StockEditForm = (props) => {
     return maxDate;
   };
 
-  let changeData = (e, type) => {
+  const changeData = (e, type) => {
     setData({
       stockTransactionID: data.stockTransactionID,
       type: "2", //edit stock
@@ -58,7 +58,7 @@ const StockEditForm = (props) => {
     });
   };
 
-  let handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     var numreg = new RegExp("^[0-9]+$");
