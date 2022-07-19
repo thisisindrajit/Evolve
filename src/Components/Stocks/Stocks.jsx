@@ -178,6 +178,7 @@ const Stocks = (props) => {
                 <th>Purchase price</th>
                 <th>Current price</th>
                 <th>Total gain/loss</th>
+                <th>Status</th>
                 <th>Options</th>
               </tr>
             </thead>
@@ -223,6 +224,7 @@ const Stocks = (props) => {
                         : "..."}
                     </td>
                     <td>{currentStockPriceData[index] ? glMain : "..."}</td>
+                    <td>Not sold</td>
                     <td>
                       <div className="flex items-center gap-4">
                         {/*Edit icon*/}

@@ -33,16 +33,16 @@ const OtherAssetEditForm = (props) => {
   };
 
   let setMaxDate = () => {
-    var dtToday = new Date();
+    let dtToday = new Date();
 
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
+    let month = dtToday.getMonth() + 1;
+    let day = dtToday.getDate();
+    let year = dtToday.getFullYear();
 
     if (month < 10) month = "0" + month.toString();
     if (day < 10) day = "0" + day.toString();
 
-    var maxDate = year + "-" + month + "-" + day;
+    let maxDate = year + "-" + month + "-" + day;
     return maxDate;
   };
 
@@ -61,8 +61,8 @@ const OtherAssetEditForm = (props) => {
   let handleSubmit = async (e) => {
     e.preventDefault();
 
-    var decreg = new RegExp("^[0-9]+$|^[0-9]+.[0-9]+$");
-    var percentreg = /(^100(\.0{1,})?$)|(^([1-9]([0-9])?|1)(\.[0-9]{1,})?$)/;
+    let decreg = new RegExp("^[0-9]+([.][0-9]*)?$");
+    let percentreg = /(^100(\.0{1,})?$)|(^([1-9]([0-9])?|1)(\.[0-9]{1,})?$)/;
 
     if (data.annualReturn.length > 0 && !percentreg.test(data.annualReturn)) {
       errorSet(
@@ -75,7 +75,9 @@ const OtherAssetEditForm = (props) => {
     }
 
     if (!decreg.test(data.purchasePrice)) {
-      errorSet("Please provide number input only for purchase price! Please remove any commas if you have used them.");
+      errorSet(
+        "Please provide number input only for purchase price! Please remove any commas if you have used them."
+      );
       document.getElementById("custom-modal").scrollIntoView();
 
       Object.assign(data, { purchasePrice: "" });

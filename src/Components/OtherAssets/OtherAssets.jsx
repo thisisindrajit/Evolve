@@ -8,9 +8,11 @@ import { currency } from "../../Utils/constants";
 const OtherAssets = (props) => {
   let isunmounted = false;
 
-  let [deleteOverlay, setDeleteOverlay] = useState(-1); //using the deleteOverlay value to store the transaction ID of the other asset to be deleted
+  const [deleteOverlay, setDeleteOverlay] = useState(-1); //using the deleteOverlay value to store the transaction ID of the other asset to be deleted
+  const [assetReturns, setAssetReturns] = useState([]);
+  const [totalAssetReturns, setTotalAssetReturns] = useState(0);
 
-  let findTotalPurchasePrice = (others) => {
+  const findTotalPurchasePrice = (others) => {
     if (others.length === 0) {
       return 0;
     }
@@ -25,13 +27,13 @@ const OtherAssets = (props) => {
     return totalPurchasePrice.toFixed(2);
   };
 
-  let convertDateFormat = (date) => {
+  const convertDateFormat = (date) => {
     date = date.split("-");
 
     return date[2] + "/" + date[1] + "/" + date[0];
   };
 
-  let fetchotherAssetData = async () => {
+  const fetchotherAssetData = async () => {
     const data = {
       uid: localStorage.getItem("userID"),
       assettype: 4, //to denote other asset
@@ -82,9 +84,52 @@ const OtherAssets = (props) => {
     }
   };
 
+  const getMonthDifference = (startDate, endDate) => {
+    const exactMonthDifference =
+      startDate.getDate() <= endDate.getDate()
+        ? endDate.getMonth() - startDate.getMonth()
+        : endDate.getMonth() - startDate.getMonth() - 1;
+
+    return (
+      exactMonthDifference +
+      12 * (endDate.getFullYear() - startDate.getFullYear())
+    );
+  };
+
+  const calculateAssetReturn = (purchaseDate, purchasePrice, annualReturn) => {
+    const monthDifference = getMonthDifference(
+      new Date(purchaseDate),
+      new Date()
+    );
+    return purchasePrice * monthDifference * (annualReturn / 1200);
+  };
+
   useEffect(() => {
     if (props.othersLoading === 1) {
       fetchotherAssetData();
+    } else {
+      if (props.others.length > 0) {
+        let returnsOfAssets = [];
+        let totalReturnsFromAssets = 0;
+
+        for (let asset of props.others) {
+          if (asset.annual_return !== "0.00") {
+            const currentAssetReturn = calculateAssetReturn(
+              asset.purchase_date,
+              asset.purchase_price,
+              asset.annual_return
+            );
+
+            returnsOfAssets.push(currentAssetReturn.toFixed(2));
+            totalReturnsFromAssets += currentAssetReturn;
+          } else {
+            returnsOfAssets.push("-");
+          }
+        }
+
+        setAssetReturns(returnsOfAssets);
+        setTotalAssetReturns(totalReturnsFromAssets.toFixed(2));
+      }
     }
 
     return () => {
@@ -110,6 +155,8 @@ const OtherAssets = (props) => {
                 <th>Purchase date</th>
                 <th>Purchase price</th>
                 <th>Expected annual return</th>
+                <th>Approx returns until now</th>
+                <th>Status</th>
                 <th>Options</th>
               </tr>
             </thead>
@@ -145,6 +192,14 @@ const OtherAssets = (props) => {
                         ? "-"
                         : otherAsset.annual_return + "%"}
                     </td>
+                    <td>
+                      {assetReturns[index]
+                        ? assetReturns[index] !== "-"
+                          ? currency + assetReturns[index]
+                          : "-"
+                        : "..."}
+                    </td>
+                    <td>Not sold</td>
                     <td>
                       <div className="flex items-center gap-4">
                         {/*Edit icon*/}
@@ -238,6 +293,9 @@ const OtherAssets = (props) => {
                 <td></td>
                 <td>{currency + findTotalPurchasePrice(props.others)}</td>
                 <td></td>
+                <td>
+                  {totalAssetReturns ? currency + totalAssetReturns : "..."}
+                </td>
               </tr>
             </tbody>
           </table>

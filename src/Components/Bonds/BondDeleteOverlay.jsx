@@ -5,9 +5,9 @@ import DialogBox from "../DialogBox/DialogBox";
 
 const BondDeleteOverlay = (props) => {
   let isunmounted = false;
-  let [text, setText] = useState("Delete");
+  const [text, setText] = useState("Delete");
 
-  let deleteBond = async () => {
+  const deleteBond = async () => {
     setText("Deleting...");
     
     const data = {

@@ -47,7 +47,6 @@ const Crypto = (props) => {
     setCryptoPricesLoading(false);
   };
 
-
   const findTotalPurchasePrice = (cryptos) => {
     if (cryptos.length === 0) {
       return 0;
@@ -177,6 +176,7 @@ const Crypto = (props) => {
                 <th>Purchase price</th>
                 <th>Current price</th>
                 <th>Total gain/loss</th>
+                <th>Status</th>
                 <th>Options</th>
               </tr>
             </thead>
@@ -222,6 +222,8 @@ const Crypto = (props) => {
                         : "..."}
                     </td>
                     <td>{currentCryptoPriceData[index] ? glMain : "..."}</td>
+                    <td>Not sold</td>
+
                     <td>
                       <div className="flex items-center gap-4">
                         {/*Edit icon*/}

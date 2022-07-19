@@ -42,16 +42,16 @@ const CryptoForm = (props) => {
   };
 
   const setMaxDate = () => {
-    var dtToday = new Date();
+    let dtToday = new Date();
 
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
+    let month = dtToday.getMonth() + 1;
+    let day = dtToday.getDate();
+    let year = dtToday.getFullYear();
 
     if (month < 10) month = "0" + month.toString();
     if (day < 10) day = "0" + day.toString();
 
-    var maxDate = year + "-" + month + "-" + day;
+    let maxDate = year + "-" + month + "-" + day;
     return maxDate;
   };
 
@@ -70,8 +70,8 @@ const CryptoForm = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    var numreg = new RegExp("^[0-9]+$");
-    var decreg = new RegExp("^[0-9]+$|^[0-9]+.[0-9]+$");
+    let numreg = new RegExp("^[0-9]+$");
+    let decreg = new RegExp("^[0-9]+([.][0-9]*)?$");
 
     if (!numreg.test(data.quantity)) {
       errorSet("Please provide number input only for quantity! Please remove any commas if you have used them.");
