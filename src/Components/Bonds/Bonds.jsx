@@ -59,7 +59,7 @@ const Bonds = (props) => {
       pDate.getMonth() <= today.getMonth() &&
       pDate.getDate() <= today.getDate();
 
-    return condition1 && condition2;
+    return getYearDifference(pDate, today) == yearsToMaturity ? condition1 && condition2 : condition1;
   };
 
   const calculateInterestPaid = (
