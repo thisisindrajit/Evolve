@@ -8,9 +8,9 @@ import { currency } from "../../Utils/constants";
 const Bonds = (props) => {
   let isunmounted = false;
 
-  let [deleteOverlay, setDeleteOverlay] = useState(-1); //using the deleteOverlay value to store the transaction ID of the bond to be deleted
+  const [deleteOverlay, setDeleteOverlay] = useState(-1); //using the deleteOverlay value to store the transaction ID of the bond to be deleted
 
-  let findTotalFaceValue = (bonds) => {
+  const findTotalFaceValue = (bonds) => {
     if (bonds.length === 0) {
       return 0;
     }
@@ -25,13 +25,74 @@ const Bonds = (props) => {
     return totalPurchasePrice.toFixed(2);
   };
 
-  let convertDateFormat = (date) => {
+  const convertDateFormat = (date) => {
     date = date.split("-");
 
     return date[2] + "/" + date[1] + "/" + date[0];
   };
 
-  let fetchBondData = async () => {
+  const getMonthDifference = (startDate, endDate) => {
+    return (
+      endDate.getMonth() -
+      startDate.getMonth() +
+      12 * (endDate.getFullYear() - startDate.getFullYear())
+    );
+  };
+
+  const getYearDifference = (startDate, endDate) => {
+    return endDate.getFullYear() - startDate.getFullYear();
+  };
+
+  const checkIfBondIsMatured = (bondPurchaseDate, yearsToMaturity) => {
+    const pDate = new Date(bondPurchaseDate);
+    const today = new Date();
+
+    const condition1 = getYearDifference(pDate, today) >= yearsToMaturity;
+
+    const condition2 =
+      pDate.getMonth() <= today.getMonth() &&
+      pDate.getDate() <= today.getDate();
+
+    return condition1 && condition2;
+  };
+
+  const calculateTotalInterestPaid = (
+    bondPurchaseDate,
+    faceValue,
+    couponRate,
+    interval
+  ) => {
+    const monthDiff = getMonthDifference(
+      new Date(bondPurchaseDate),
+      new Date()
+    );
+    const interestAmt = faceValue * (couponRate / 100);
+
+    switch (interval) {
+      case "Annual":
+        return Math.floor(monthDiff / 12) > 0
+          ? interestAmt * Math.floor(monthDiff / 12)
+          : 0;
+
+      case "Semi Annual":
+        return Math.floor(monthDiff / 6) > 0
+          ? interestAmt * Math.floor(monthDiff / 6)
+          : 0;
+
+      case "Quarterly":
+        return Math.floor(monthDiff / 4) > 0
+          ? interestAmt * Math.floor(monthDiff / 4)
+          : 0;
+
+      case "Monthly":
+        return monthDiff > 0 ? interestAmt * monthDiff : 0;
+
+      default:
+        return 0;
+    }
+  };
+
+  const fetchBondData = async () => {
     const data = {
       uid: localStorage.getItem("userID"),
       assettype: 3, //to denote bond
@@ -116,10 +177,22 @@ const Bonds = (props) => {
                 <th>Payment interval</th>
                 <th>Total interest paid until now</th>
                 <th>Options</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
               {props.bonds.map((bond, index) => {
+                const isMatured = checkIfBondIsMatured(
+                  bond.purchase_date,
+                  bond.years_to_maturity
+                );
+
+                const totalInterestPaid = calculateTotalInterestPaid(
+                  bond.purchase_date,
+                  bond.face_value,
+                  bond.coupon_rate,
+                  bond.payment_interval
+                );
 
                 let bondData = {
                   bondTransactionID: bond.bond_transaction_ID,
@@ -136,7 +209,11 @@ const Bonds = (props) => {
                   <tr
                     className="data"
                     key={index}
-                    style={{ background: props.gradient }}
+                    style={{
+                      background: isMatured
+                        ? "linear-gradient(130deg, #7b9c9a 0%, #5e5c5c 75%)"
+                        : props.gradient
+                    }}
                   >
                     <td>{bond.bond_type}</td>
                     <td title={bond.bond_description}>
@@ -147,7 +224,7 @@ const Bonds = (props) => {
                     <td>{bond.coupon_rate + "%"}</td>
                     <td>{bond.years_to_maturity}</td>
                     <td>{bond.payment_interval}</td>
-                    <td></td>
+                    <td>{currency + totalInterestPaid.toFixed(2)}</td>
                     <td>
                       <div className="flex items-center gap-4">
                         {/*Edit icon*/}
@@ -229,6 +306,7 @@ const Bonds = (props) => {
                         </svg>
                       </div>
                     </td>
+                    <td>{isMatured ? "Matured" : "Not matured"}</td>
                   </tr>
                 );
               })}

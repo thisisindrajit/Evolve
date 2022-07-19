@@ -71,7 +71,7 @@ const UserMenu = (props) => {
           <div className="pt-2">
             <Menu.Item>
               <div className="text-sm cursor-pointer py-2 hover:px-2 transition-all hover:bg-white hover:text-black rounded-md">
-                Request a feature
+                Report bug / Request a feature
               </div>
             </Menu.Item>
             <Menu.Item>
