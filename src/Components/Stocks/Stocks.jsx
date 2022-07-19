@@ -47,15 +47,6 @@ const Stocks = (props) => {
     setStockPricesLoading(false);
   };
 
-  useEffect(() => {
-    if (props.stocks.length > 0) {
-      getPricesAtGivenTime();
-      const interval = setInterval(getPricesAtGivenTime, 60000);
-
-      return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
-    }
-  }, [props.stocks.length]);
-
   const findTotalPurchasePrice = (stocks) => {
     if (stocks.length === 0) {
       return 0;
@@ -153,6 +144,13 @@ const Stocks = (props) => {
   useEffect(() => {
     if (props.stockLoading === 1) {
       fetchStockData();
+    } else {
+      if (props.stocks.length > 0) {
+        getPricesAtGivenTime();
+        const interval = setInterval(getPricesAtGivenTime, 60000);
+
+        return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
+      }
     }
 
     return () => {

@@ -47,14 +47,6 @@ const Crypto = (props) => {
     setCryptoPricesLoading(false);
   };
 
-  useEffect(() => {
-    if (props.crypto.length > 0) {
-      getCryptoPricesAtGivenTime();
-      const interval = setInterval(getCryptoPricesAtGivenTime, 60000);
-
-      return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
-    }
-  }, [props.crypto.length]);
 
   const findTotalPurchasePrice = (cryptos) => {
     if (cryptos.length === 0) {
@@ -151,6 +143,13 @@ const Crypto = (props) => {
   useEffect(() => {
     if (props.cryptoLoading === 1) {
       fetchcryptoData();
+    } else {
+      if (props.crypto.length > 0) {
+        getCryptoPricesAtGivenTime();
+        const interval = setInterval(getCryptoPricesAtGivenTime, 60000);
+
+        return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
+      }
     }
 
     return () => {

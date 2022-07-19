@@ -9,6 +9,8 @@ const Bonds = (props) => {
   let isunmounted = false;
 
   const [deleteOverlay, setDeleteOverlay] = useState(-1); //using the deleteOverlay value to store the transaction ID of the bond to be deleted
+  const [interestPaid, setInterestPaid] = useState([]);
+  const [totalInterestPaid, setTotalInterestPaid] = useState(null);
 
   const findTotalFaceValue = (bonds) => {
     if (bonds.length === 0) {
@@ -32,9 +34,13 @@ const Bonds = (props) => {
   };
 
   const getMonthDifference = (startDate, endDate) => {
+    const exactMonthDifference =
+      startDate.getDate() <= endDate.getDate()
+        ? endDate.getMonth() - startDate.getMonth()
+        : endDate.getMonth() - startDate.getMonth() - 1;
+
     return (
-      endDate.getMonth() -
-      startDate.getMonth() +
+      exactMonthDifference +
       12 * (endDate.getFullYear() - startDate.getFullYear())
     );
   };
@@ -56,7 +62,7 @@ const Bonds = (props) => {
     return condition1 && condition2;
   };
 
-  const calculateTotalInterestPaid = (
+  const calculateInterestPaid = (
     bondPurchaseDate,
     faceValue,
     couponRate,
@@ -148,6 +154,26 @@ const Bonds = (props) => {
   useEffect(() => {
     if (props.bondLoading === 1) {
       fetchBondData();
+    } else {
+      if (props.bonds.length > 0) {
+        let interestPaidInBonds = [];
+        let totalInterestPaidInBonds = 0;
+
+        for (let bond of props.bonds) {
+          const interestFromCurrentBond = calculateInterestPaid(
+            bond.purchase_date,
+            bond.face_value,
+            bond.coupon_rate,
+            bond.payment_interval
+          );
+
+          interestPaidInBonds.push(interestFromCurrentBond);
+          totalInterestPaidInBonds += interestFromCurrentBond;
+        }
+
+        setInterestPaid(interestPaidInBonds);
+        setTotalInterestPaid(totalInterestPaidInBonds);
+      }
     }
 
     return () => {
@@ -187,13 +213,6 @@ const Bonds = (props) => {
                   bond.years_to_maturity
                 );
 
-                const totalInterestPaid = calculateTotalInterestPaid(
-                  bond.purchase_date,
-                  bond.face_value,
-                  bond.coupon_rate,
-                  bond.payment_interval
-                );
-
                 let bondData = {
                   bondTransactionID: bond.bond_transaction_ID,
                   bondtype: bond.bond_type,
@@ -212,7 +231,7 @@ const Bonds = (props) => {
                     style={{
                       background: isMatured
                         ? "linear-gradient(130deg, #7b9c9a 0%, #5e5c5c 75%)"
-                        : props.gradient
+                        : props.gradient,
                     }}
                   >
                     <td>{bond.bond_type}</td>
@@ -224,7 +243,11 @@ const Bonds = (props) => {
                     <td>{bond.coupon_rate + "%"}</td>
                     <td>{bond.years_to_maturity}</td>
                     <td>{bond.payment_interval}</td>
-                    <td>{currency + totalInterestPaid.toFixed(2)}</td>
+                    <td>
+                      {interestPaid[index]
+                        ? currency + interestPaid[index].toFixed(2)
+                        : "..."}
+                    </td>
                     <td>
                       <div className="flex items-center gap-4">
                         {/*Edit icon*/}
@@ -319,7 +342,11 @@ const Bonds = (props) => {
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td>
+                  {totalInterestPaid
+                    ? currency + totalInterestPaid.toFixed(2)
+                    : "..."}
+                </td>
               </tr>
             </tbody>
           </table>
