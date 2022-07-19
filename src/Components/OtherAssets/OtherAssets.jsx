@@ -295,7 +295,13 @@ const OtherAssets = (props) => {
                 <td></td>
                 <td>
                   {totalAssetReturns ? (
-                    <span className="text-green-500">
+                    <span
+                      className={
+                        totalAssetReturns === "0.00"
+                          ? "text-yellow-500"
+                          : "text-green-500"
+                      }
+                    >
                       {currency + totalAssetReturns}
                     </span>
                   ) : (

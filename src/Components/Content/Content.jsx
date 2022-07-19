@@ -37,10 +37,10 @@ const Content = (props) => {
         setpage={props.setpage}
       />
       <div>
-        {props.currentpage == 1 && <Dashboard />}
-        {props.currentpage == 2 && <Search />}
-        {props.currentpage == 3 && <Market />}
-        {props.currentpage == 4 && <Notes />}
+        {props.currentpage === 1 && <Dashboard />}
+        {props.currentpage === 2 && <Search />}
+        {props.currentpage === 3 && <Market />}
+        {props.currentpage === 4 && <Notes />}
       </div>
     </div>
   );

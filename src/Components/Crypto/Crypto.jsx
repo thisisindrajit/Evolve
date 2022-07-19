@@ -74,7 +74,7 @@ const Crypto = (props) => {
       totalPurchasePrice += parseFloat(crypto.purchase_price) * crypto.quantity;
     });
 
-    const gainLoss = (totalCryptoCostPrice - totalPurchasePrice).toFixed(2);
+    let gainLoss = (totalCryptoCostPrice - totalPurchasePrice).toFixed(2);
 
     if (gainLoss < 0) {
       return (
@@ -82,7 +82,11 @@ const Crypto = (props) => {
       );
     }
 
-    return <span className="text-green-500">{currency + gainLoss}</span>;
+    return (
+      <span className={gainLoss === "0.00" ? "text-yellow-500" : "text-green-500"}>
+        {currency + gainLoss}
+      </span>
+    );
   };
 
   const convertDateFormat = (date) => {

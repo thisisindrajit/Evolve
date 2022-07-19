@@ -15,8 +15,8 @@ const Icon = (props) => {
         height={props.height}
         width={props.width}
         viewBox="0 0 40 40"
-        fill={props.fill == "yes" ? "white" : "none"}
-        stroke={props.fill == "no" ? "white" : "none"}
+        fill={props.fill === "yes" ? "white" : "none"}
+        stroke={props.fill === "no" ? "white" : "none"}
         strokeWidth="2"
         xmlns="http://www.w3.org/2000/svg"
         onClick={props.onClick ? props.onClick : null}

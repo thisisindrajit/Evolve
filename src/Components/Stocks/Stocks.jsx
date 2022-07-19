@@ -82,7 +82,13 @@ const Stocks = (props) => {
       );
     }
 
-    return <span className="text-green-500">{currency + gainLoss}</span>;
+    return (
+      <span
+        className={gainLoss === "0.00" ? "text-yellow-500" : "text-green-500"}
+      >
+        {currency + gainLoss}
+      </span>
+    );
   };
 
   const convertDateFormat = (date) => {

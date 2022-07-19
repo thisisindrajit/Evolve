@@ -59,7 +59,7 @@ const Bonds = (props) => {
       pDate.getMonth() <= today.getMonth() &&
       pDate.getDate() <= today.getDate();
 
-    return getYearDifference(pDate, today) == yearsToMaturity
+    return getYearDifference(pDate, today) === parseInt(yearsToMaturity)
       ? condition1 && condition2
       : condition1;
   };
@@ -370,7 +370,13 @@ const Bonds = (props) => {
                 <td></td>
                 <td>
                   {totalInterestPaid ? (
-                    <span className="text-green-500">
+                    <span
+                      className={
+                        totalInterestPaid === "0.00"
+                          ? "text-yellow-500"
+                          : "text-green-500"
+                      }
+                    >
                       {currency + totalInterestPaid}
                     </span>
                   ) : (
