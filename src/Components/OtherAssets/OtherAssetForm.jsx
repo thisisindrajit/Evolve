@@ -84,7 +84,9 @@ const OtherAssetForm = (props) => {
     }
 
     if (!decreg.test(data.purchasePrice)) {
-      errorSet("Please provide number input only for purchase price! Please remove any commas if you have used them.");
+      errorSet(
+        "Please provide number input only for purchase price! Please remove any commas if you have used them."
+      );
       document.getElementById("custom-modal").scrollIntoView();
 
       Object.assign(data, { purchasePrice: "" });
@@ -122,7 +124,7 @@ const OtherAssetForm = (props) => {
         props.setLoading({ type: "setLoading", payload: { othersLoading: 1 } });
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 

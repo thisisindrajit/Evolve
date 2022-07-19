@@ -65,7 +65,9 @@ const CryptoEditForm = (props) => {
     let decreg = new RegExp("^[0-9]+([.][0-9]*)?$");
 
     if (!numreg.test(data.quantity)) {
-      errorSet("Please provide number input only for quantity! Please remove any commas if you have used them.");
+      errorSet(
+        "Please provide number input only for quantity! Please remove any commas if you have used them."
+      );
       document.getElementById("custom-modal").scrollIntoView();
 
       Object.assign(data, { quantity: "" });
@@ -73,7 +75,9 @@ const CryptoEditForm = (props) => {
     }
 
     if (!decreg.test(data.purchasePrice)) {
-      errorSet("Please provide number input only for purchase price! Please remove any commas if you have used them.");
+      errorSet(
+        "Please provide number input only for purchase price! Please remove any commas if you have used them."
+      );
       document.getElementById("custom-modal").scrollIntoView();
 
       Object.assign(data, { purchasePrice: "" });
@@ -128,7 +132,7 @@ const CryptoEditForm = (props) => {
         props.setLoading({ type: "setLoading", payload: { cryptoLoading: 1 } });
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 

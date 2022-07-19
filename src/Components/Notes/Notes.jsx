@@ -38,7 +38,7 @@ const Notes = (props) => {
         console.log("Some error occurred!");
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 

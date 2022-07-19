@@ -171,7 +171,7 @@ const Bonds = (props) => {
         console.log("Some error occurred!");
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 
@@ -369,9 +369,13 @@ const Bonds = (props) => {
                 <td></td>
                 <td></td>
                 <td>
-                  {totalInterestPaid
-                    ? currency + totalInterestPaid
-                    : "..."}
+                  {totalInterestPaid ? (
+                    <span className="text-green-500">
+                      {currency + totalInterestPaid}
+                    </span>
+                  ) : (
+                    "..."
+                  )}
                 </td>
               </tr>
             </tbody>

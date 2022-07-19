@@ -7,7 +7,6 @@ export const removelocalStorage = () => {
 };
 
 export const verifyToken = async (uid, name) => {
-  // const VERIFICATION_ENDPOINT = "http://localhost:80/evolve/verifyToken.php";
   const VERIFICATION_ENDPOINT = process.env.REACT_APP_API_URL + "/verifyToken.php";
 
   const data = {
@@ -32,7 +31,7 @@ export const verifyToken = async (uid, name) => {
       return true;
     }
   } catch (e) {
-    console.log(e);
+    console.error(e);;
   }
 
   return false;

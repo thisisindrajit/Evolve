@@ -89,7 +89,7 @@ const Search = (props) => {
         console.log("Some error occurred!");
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 
@@ -159,7 +159,7 @@ const Search = (props) => {
                 })}
               </div>
             ) : (
-              <div className="w-full text-center text-red-500 my-4">
+              <div className="w-full text-center text-red-500 mt-8">
                 No Stocks found!
               </div>
             )}

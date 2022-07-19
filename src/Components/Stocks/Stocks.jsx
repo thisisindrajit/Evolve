@@ -77,10 +77,12 @@ const Stocks = (props) => {
     const gainLoss = (totalStockCostPrice - totalPurchasePrice).toFixed(2);
 
     if (gainLoss < 0) {
-      return `-${currency}` + -1 * gainLoss;
+      return (
+        <span className="text-red-500">{`-${currency}` + -1 * gainLoss}</span>
+      );
     }
 
-    return currency + gainLoss;
+    return <span className="text-green-500">{currency + gainLoss}</span>;
   };
 
   const convertDateFormat = (date) => {
@@ -137,7 +139,7 @@ const Stocks = (props) => {
         console.log("Some error occurred!");
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 

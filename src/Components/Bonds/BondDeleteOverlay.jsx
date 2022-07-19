@@ -9,7 +9,7 @@ const BondDeleteOverlay = (props) => {
 
   const deleteBond = async () => {
     setText("Deleting...");
-    
+
     const data = {
       bondTransactionID: props.bondtid,
       type: "3",
@@ -28,7 +28,7 @@ const BondDeleteOverlay = (props) => {
         console.log(response.data.error);
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 

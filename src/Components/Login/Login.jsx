@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./login.css";
 import axios from "axios";
@@ -19,39 +19,40 @@ const Login = (props) => {
 
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState({ isSet: false, errorDesc: "" });
+  const [buttonText, setButtonText] = useState("LOGIN");
 
-  let errorSet = (desc) => {
+  const errorSet = (desc) => {
     setError({ isSet: true, errorDesc: desc });
   };
 
-  let changeData = (e, type) => {
+  const changeData = (e, type) => {
     setData({
       email: type === 1 ? e.target.value : data.email,
       password: type === 2 ? e.target.value : data.password,
     });
   };
 
-  let handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setButtonText("LOGGING YOU IN...");
 
-    // TODO: Perform email validation using regex
-
-    // const LOGIN_ENDPOINT = "http://localhost:80/evolve/login.php";
     const LOGIN_ENDPOINT = process.env.REACT_APP_API_URL + "/login.php";
 
     try {
       let response = await axios.post(LOGIN_ENDPOINT, data);
-      //console.log(response);
 
-      //there is an error
+      // there is an error
       if (response.data.error !== undefined) {
         console.log(response.data.error);
         document.getElementsByClassName("holder")[0].scrollIntoView();
 
-        //resetting the form
+        // changing button text
+        setButtonText("LOGIN");
+
+        // resetting the form
         setData({ email: "", password: "" });
 
-        //setting the error
+        // setting the error
         errorSet(response.data.error);
         return;
       } else if (response.status === 200 && response.data.userData.token) {
@@ -63,12 +64,14 @@ const Login = (props) => {
         localStorage.setItem("userID", uid);
         localStorage.setItem("username", username);
 
-        //setting authenticated to true
+        // setting authenticated to true
         props.login();
       }
     } catch (e) {
+      // changing button text
+      setButtonText("LOGIN");
       errorSet("Some error occured while logging in!");
-      console.log(e);
+      console.error(e);
     }
   };
 
@@ -96,7 +99,7 @@ const Login = (props) => {
 
           <InputHolder title="Email ID" isRequired>
             <input
-              type="text"
+              type="email"
               title="Email"
               name="email"
               value={data.email}
@@ -121,7 +124,7 @@ const Login = (props) => {
           </InputHolder>
           <button type="submit" className="w-full sm:w-10/12">
             <div className="border-2 border-white p-4 font-bold my-2 hover:text-white hover:bg-evolve-green hover:border-evolve-green transition-all text-sm">
-              LOGIN
+              {buttonText}
             </div>
           </button>
 

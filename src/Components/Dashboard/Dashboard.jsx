@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./dashboard.css";
 import defaultPageStyles from "../../Styles/defaultPageStyles";
 import AssetBox from "../AssetBox/AssetBox";
@@ -18,9 +18,20 @@ import OtherAssetEditForm from "../OtherAssets/OtherAssetEditForm";
 import { connect } from "react-redux";
 import { useTitle } from "../../Services/useTitle";
 import ReactTooltip from "react-tooltip";
+import Modal from "../Modal/Modal";
 
 const Dashboard = (props) => {
   useTitle(`${localStorage.getItem("username")}'s Dashboard - Evolve`);
+
+  const [showWelcomeModal, setShowWelcomeModal] = useState(
+    localStorage.getItem("isNewEvolveUser") === "yes" ? true : false
+  );
+
+  const onCloseWelcomeModal = () => {
+    console.log("New user status unset!");
+    localStorage.removeItem("isNewEvolveUser");
+    setShowWelcomeModal(false);
+  };
 
   const stockMarketWidgetProps = {
     colorTheme: "dark",
@@ -187,6 +198,26 @@ const Dashboard = (props) => {
 
   return (
     <>
+      <Modal open={showWelcomeModal} onClose={() => {}}>
+        <div className="flex flex-col gap-2">
+          <div className="text-evolve-green text-lg md:text-xl">
+            Welcome to evolve!
+          </div>
+          {/*Vertical line*/}
+          <div className="w-full h-px bg-gray-500 my-2"></div>
+          <div className="leading-loose text-justify">
+            Evolve is the only online portfolio manager that you'll ever need to
+            keep track of your assets and investments💰. So why are you still
+            waiting? Start tracking your assets today with Evolve!
+          </div>
+          <div
+            className="border-2 border-white w-fit p-4 font-bold my-2 hover:text-white hover:bg-evolve-green hover:border-evolve-green transition-all text-xs cursor-pointer"
+            onClick={onCloseWelcomeModal}
+          >
+            START USING EVOLVE
+          </div>
+        </div>
+      </Modal>
       {/* Add stock form */}
       <StockForm isOpen={props.overlay === 1} />
 

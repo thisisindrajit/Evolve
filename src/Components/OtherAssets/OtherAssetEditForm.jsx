@@ -110,7 +110,7 @@ const OtherAssetEditForm = (props) => {
         props.setLoading({ type: "setLoading", payload: { othersLoading: 1 } });
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 

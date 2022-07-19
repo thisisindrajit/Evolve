@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./register.css";
 import axios from "axios";
@@ -6,11 +6,11 @@ import { Redirect } from "react-router-dom";
 import Loading from "../../Utils/Loading";
 import LogoHolder from "../LogoHolder/LogoHolder";
 import InputHolder from "../InputHolder";
-import CountrySelector from "../CountrySelector";
+// import CountrySelector from "../CountrySelector";
 import { useTitle } from "../../Services/useTitle";
 
 const Register = (props) => {
-  //if already logged in, redirect directly to dashboard
+  // if already logged in, redirect directly to dashboard
   if (props.isAuthenticated) {
     let uid = localStorage.getItem("userID");
     return <Redirect to={`/dashboard/${uid}`} />;
@@ -21,53 +21,55 @@ const Register = (props) => {
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
-    location: "India",
+    location: "-",
     email: "",
     password: "",
   });
 
   const [error, setError] = useState({ isSet: false, errorDesc: "" });
+  const [buttonText, setButtonText] = useState("REGISTER");
 
-  let errorSet = (desc) => {
+  const errorSet = (desc) => {
     setError({ isSet: true, errorDesc: desc });
   };
 
-  let changeData = (e, type) => {
+  const changeData = (e, type) => {
     setData({
       firstName: type === 1 ? e.target.value : data.firstName,
       lastName: type === 2 ? e.target.value : data.lastName,
-      location: type === 3 ? e.target.value : data.location,
+      // location: type === 3 ? e.target.value : data.location,
       email: type === 4 ? e.target.value : data.email,
       password: type === 5 ? e.target.value : data.password,
     });
   };
 
-  let handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    //TO DO - Perform validation of email
 
-    // const REGISTER_ENDPOINT = "http://localhost:80/evolve/register.php";
+    setButtonText("REGISTERING...");
+
     const REGISTER_ENDPOINT = process.env.REACT_APP_API_URL + "/register.php";
 
     try {
       let response = await axios.post(REGISTER_ENDPOINT, data);
-      //console.log(response);
 
-      //there is an error
+      // there is an error
       if (response.data.error !== undefined) {
-        //console.log(response.data.error);
         document.getElementsByClassName("holder")[0].scrollIntoView();
 
-        //resetting the form
+        // changing button text
+        setButtonText("REGISTER");
+
+        // resetting the form
         setData({
           firstName: "",
           lastName: "",
-          location: "",
+          location: "-",
           email: "",
           password: "",
         });
 
-        //setting the error
+        // setting the error
         errorSet(response.data.error);
         return;
       } else if (response.status === 200 && response.data.userData.token) {
@@ -82,11 +84,13 @@ const Register = (props) => {
         localStorage.setItem("username", username);
 
         //setting authenticated to true
-        props.login();
+        props.register();
       }
     } catch (e) {
+      // changing button text
+      setButtonText("REGISTER");
       errorSet("Some error occured while registering!");
-      console.log(e);
+      console.error(e);
     }
   };
 
@@ -139,32 +143,21 @@ const Register = (props) => {
               spellCheck="false"
             />
           </InputHolder>
-          {/*Change location to set of options only */}
-          <InputHolder
+          {/* Change location to set of options only */}
+          {/* <InputHolder
             title="Country"
             isRequired
             showInfo
             info="This data is used to select the apt currency for you."
           >
-            {/* <input
-              type="text"
-              title="Location"
-              name="location"
-              value={data.location}
-              placeholder="Enter your country"
-              onChange={(e) => changeData(e, 3)}
-              spellCheck="false"
-              className="input-field"
-              required
-            /> */}
             <CountrySelector
               value={data.location}
               onChange={(e) => changeData(e, 3)}
             />
-          </InputHolder>
+          </InputHolder> */}
           <InputHolder title="Email ID" isRequired>
             <input
-              type="text"
+              type="email"
               title="Email"
               name="email"
               value={data.email}
@@ -189,7 +182,7 @@ const Register = (props) => {
           </InputHolder>
           <button type="submit" className="w-full sm:w-10/12">
             <div className="border-2 border-white p-4 font-bold my-2 hover:text-white hover:bg-evolve-green hover:border-evolve-green transition-all text-sm">
-              REGISTER
+              {buttonText}
             </div>
           </button>
           <span className="text-sm mt-6">

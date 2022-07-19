@@ -70,14 +70,26 @@ const UserMenu = (props) => {
           </div>
           <div className="pt-2">
             <Menu.Item>
-              <div className="text-sm cursor-pointer py-2 hover:px-2 transition-all hover:bg-white hover:text-black rounded-md">
-                Report bug / Request a feature
-              </div>
+              <a
+                href="https://forms.gle/iztwDvme8GB6n1ka7"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="text-sm cursor-pointer py-2 hover:px-2 transition-all hover:bg-white hover:text-black rounded-md">
+                  Report bug / Request a feature
+                </div>
+              </a>
             </Menu.Item>
             <Menu.Item>
-              <div className="text-sm cursor-pointer py-2 hover:px-2 transition-all hover:bg-white hover:text-black rounded-md">
-                Feedback
-              </div>
+              <a
+                href="https://forms.gle/C9JXuQzDXx2J1uAa7"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="text-sm cursor-pointer py-2 hover:px-2 transition-all hover:bg-white hover:text-black rounded-md">
+                  Feedback
+                </div>
+              </a>
             </Menu.Item>
             <Menu.Item onClick={props.logout}>
               <div className="text-sm cursor-pointer py-2 hover:px-2 transition-all hover:bg-white hover:text-black rounded-md">

@@ -80,7 +80,7 @@ const OtherAssets = (props) => {
         console.log("Some error occurred!");
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 
@@ -155,7 +155,7 @@ const OtherAssets = (props) => {
                 <th>Purchase date</th>
                 <th>Purchase price</th>
                 <th>Expected annual return</th>
-                <th>Approx returns until now</th>
+                <th>Approx return till now</th>
                 <th>Status</th>
                 <th>Options</th>
               </tr>
@@ -294,7 +294,13 @@ const OtherAssets = (props) => {
                 <td>{currency + findTotalPurchasePrice(props.others)}</td>
                 <td></td>
                 <td>
-                  {totalAssetReturns ? currency + totalAssetReturns : "..."}
+                  {totalAssetReturns ? (
+                    <span className="text-green-500">
+                      {currency + totalAssetReturns}
+                    </span>
+                  ) : (
+                    "..."
+                  )}
                 </td>
               </tr>
             </tbody>

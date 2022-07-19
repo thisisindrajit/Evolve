@@ -9,13 +9,13 @@ import Register from "./Components/Register/Register";
 import NotFound from "./Utils/NotFound";
 import ProtectedRoute from "./Utils/ProtectedRoute";
 import * as authservice from "./Services/Auth";
+import { connect } from "react-redux";
 
-export default function AppRoutes() {
+const AppRoutes = (props) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, isLoading] = useState(true);
 
   useEffect(() => {
-
     authservice
       .verifyToken(
         localStorage.getItem("userID"),
@@ -39,11 +39,56 @@ export default function AppRoutes() {
 
   const login = () => {
     setIsAuthenticated(true);
+    // setting initial state
+    props.setLoading({
+      type: "setLoading",
+      payload: {
+        overlay: 0,
+        editFormData: {},
+        stocks: [],
+        stockLoading: 1,
+        stockPurchasePrice: 0,
+        crypto: [],
+        cryptoLoading: 1,
+        cryptoPurchasePrice: 0,
+        bonds: [],
+        bondLoading: 1,
+        bondPurchasePrice: 0,
+        others: [],
+        othersLoading: 1,
+        othersPurchasePrice: 0,
+      },
+    });
   };
 
   const logout = () => {
     authservice.removelocalStorage();
     setIsAuthenticated(false);
+  };
+
+  const register = () => {
+    localStorage.setItem("isNewEvolveUser", "yes");
+    setIsAuthenticated(true);
+    // setting initial state
+    props.setLoading({
+      type: "setLoading",
+      payload: {
+        overlay: 0,
+        editFormData: {},
+        stocks: [],
+        stockLoading: 1,
+        stockPurchasePrice: 0,
+        crypto: [],
+        cryptoLoading: 1,
+        cryptoPurchasePrice: 0,
+        bonds: [],
+        bondLoading: 1,
+        bondPurchasePrice: 0,
+        others: [],
+        othersLoading: 1,
+        othersPurchasePrice: 0,
+      },
+    });
   };
 
   return (
@@ -78,7 +123,7 @@ export default function AppRoutes() {
             <Register
               isAuthenticated={isAuthenticated}
               loading={loading}
-              login={login}
+              register={register}
               {...props}
             />
           )}
@@ -93,4 +138,15 @@ export default function AppRoutes() {
       </Switch>
     </BrowserRouter>
   );
-}
+};
+
+// these are the functions which are required to map the state to the props and dispatch actions to store
+const mapStateToProps = (state) => ({
+  ...state,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setLoading: (loadingData) => dispatch(loadingData),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppRoutes);

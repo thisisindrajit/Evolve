@@ -28,7 +28,7 @@ const OtherAssetDeleteOverlay = (props) => {
         console.log(response.data.error);
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 
