@@ -5,6 +5,8 @@ Investing is important, if not critical, to make your money work for you. You wo
 
 **Evolve - the only online investment portfolio manager that you’ll ever need.**
 
+## Link to Evolve
+[Click here](https://thisisevolve.vercel.app/) to start using Evolve!
 
 ## Tech Stack:
 
@@ -14,17 +16,3 @@ Investing is important, if not critical, to make your money work for you. You wo
 - PHP (backend) [Hosted in Azure App Service]
 - MySQL (database) [Hosted in PlanetScale]
 
-
-## Site screenshots
-Coming soon!
-
-Note - All data available in My Stocks, My Crypto, My Bonds and Other Assets tables in the dashboard are just dummy values and are not real.
-
-*Charts and financial information provided by TradingView, a popular charting & trading platform.*
-
-
-## References:
-
-- Snowpack documentation - https://www.snowpack.dev/tutorials/react
-- React Hooks documentation - https://reactjs.org/docs/hooks-intro.html
-- TradingView widgets - https://www.tradingview.com/widget/
