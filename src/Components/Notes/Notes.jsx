@@ -85,7 +85,7 @@ const Notes = (props) => {
   }, [loading]);
 
   return (
-    <div style={defaultPageStyles.pageStyle}>
+    <>
       <ToastContainer
         className="z-30"
         position="top-right"
@@ -98,34 +98,62 @@ const Notes = (props) => {
         draggable
         pauseOnHover
       />
-      <div id="notes">
-        <div className="text-xl">
-          My <span className="font-bold">Notes</span>
-        </div>
-        <textarea
-          className="notes-area"
-          placeholder="Jot down your stock picks this month, your financial goals etc."
-          value={loading === 1 ? "Loading notes..." : notes}
-          onChange={(e) => setNotes(e.target.value)}
-        ></textarea>
-        {loading !== 1 && (
-          <div className="m-auto mr-0 flex flex-col w-full sm:w-fit sm:flex-row items-center gap-4 sm:gap-1">
-            {error === 1 && (
-              <div className="leading-relaxed text-red-500 border border-red-500 sm:border-none p-2 text-center text-sm md:text-base font-bold w-full sm:w-fit">
-                Error while saving note! Please try again!
-              </div>
-            )}
-            <div
-              className="border-2 border-white text-xs uppercase p-3 rounded-md hover:bg-white hover:text-gray-800 transition-all cursor-pointer font-bold w-full text-center sm:w-fit"
-              onClick={updating === 1 ? null : () => updateNote()}
-            >
-              {updating === 1 ? "Updating Notes..." : "Save Notes"}
-            </div>
+      <div style={defaultPageStyles.pageStyle}>
+        <div id="notes">
+          <div className="text-xl">
+            My <span className="font-bold">Notes</span>
           </div>
-        )}
+          <textarea
+            className="notes-area"
+            placeholder="Jot down your stock picks this month, your financial goals etc."
+            value={loading === 1 ? "Loading notes..." : notes}
+            onChange={(e) => setNotes(e.target.value)}
+          ></textarea>
+          {loading !== 1 && (
+            <div className="m-auto mr-0 flex flex-col w-full sm:w-fit sm:flex-row items-center gap-4 sm:gap-1">
+              {error === 1 && (
+                <div className="leading-relaxed text-red-500 border border-red-500 sm:border-none p-2 text-center text-sm md:text-base font-bold w-full sm:w-fit">
+                  Error while saving note! Please try again!
+                </div>
+              )}
+              <div
+                className="border-2 border-white text-xs uppercase p-3 rounded-md hover:bg-white hover:text-gray-800 transition-all cursor-pointer font-bold w-full text-center sm:w-fit"
+                onClick={updating === 1 ? null : () => updateNote()}
+              >
+                {updating === 1 ? (
+                  <div className="flex items-center justify-center gap-1">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 50 50"
+                      className="h-4 w-4"
+                    >
+                      <path
+                        fill="#14cccc"
+                        d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z"
+                      >
+                        <animateTransform
+                          attributeType="xml"
+                          attributeName="transform"
+                          type="rotate"
+                          from="0 25 25"
+                          to="360 25 25"
+                          dur="0.6s"
+                          repeatCount="indefinite"
+                        />
+                      </path>
+                    </svg>
+                    Updating Notes...
+                  </div>
+                ) : (
+                  "Save Notes"
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </>
   );
 };
 
