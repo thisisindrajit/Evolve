@@ -60,7 +60,7 @@ const LandingPage = (props) => {
       </div> */}
       <div className="px-4 py-6 md:p-8 text-xs leading-loose footer">
         {/* Attribution */}
-        Created for{" "}
+        Created for the{" "}
         <span className="text-evolve-green font-bold">
           PlanetScale X Hashnode{" "}
           <img
