@@ -58,15 +58,15 @@ const LandingPage = (props) => {
         
         © Copyright {new Date().getFullYear()} - Evolve
       </div> */}
-      <div className="px-4 py-6 md:p-8 text-sm font-bold leading-loose footer">
+      <div className="px-4 py-6 md:p-8 text-xs leading-loose footer">
         {/* Attribution */}
         Created for{" "}
-        <span className="text-evolve-green">
+        <span className="text-evolve-green font-bold">
           PlanetScale X Hashnode{" "}
           <img
             src="https://seeklogo.com/images/H/hashnode-logo-B114767E70-seeklogo.com.png"
             alt="Hashnode icon"
-            className="h-6 rounded-md p-1 bg-white inline-block mx-0.5"
+            className="h-5 rounded-md p-0.5 bg-white inline-block mx-0.5"
           />{" "}
           hackathon
         </span>

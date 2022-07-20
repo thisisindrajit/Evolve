@@ -35,7 +35,7 @@ const AssetBox = (props) => {
         <span className="text-sm sm:text-base xl:text-lg font-bold">
           Average Return
         </span>
-        <span className="text-sm sm:text-base truncate"></span>
+        <span className="text-sm sm:text-base truncate">-</span>
       </div>
     </div>
   );

@@ -181,7 +181,30 @@ const Register = (props) => {
             />
           </InputHolder>
           <button type="submit" className="w-full sm:w-10/12">
-            <div className="border-2 border-white p-4 font-bold my-2 hover:text-white hover:bg-evolve-green hover:border-evolve-green transition-all text-sm">
+            <div className="border-2 border-white p-4 font-bold my-2 hover:text-white hover:bg-evolve-green hover:border-evolve-green transition-all text-sm flex items-center justify-center gap-2">
+              {/* Loading icon */}
+              {buttonText === "REGISTERING..." && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 50 50"
+                  className="h-5 w-5"
+                >
+                  <path
+                    fill="white"
+                    d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z"
+                  >
+                    <animateTransform
+                      attributeType="xml"
+                      attributeName="transform"
+                      type="rotate"
+                      from="0 25 25"
+                      to="360 25 25"
+                      dur="0.6s"
+                      repeatCount="indefinite"
+                    />
+                  </path>
+                </svg>
+              )}
               {buttonText}
             </div>
           </button>

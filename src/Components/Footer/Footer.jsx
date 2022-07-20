@@ -40,8 +40,8 @@ const Footer = (props) => {
         />
       </div>
       {/* Attribution */}
-      <div className="text-sm font-bold mt-4 leading-loose">
-        {`->`} Created with ❤️ for the PlanetScale X Hashnode{" "}
+      <div className="text-sm mt-4 leading-loose">
+        Created with ❤️ for the PlanetScale X Hashnode{" "}
         <img
           src="https://seeklogo.com/images/H/hashnode-logo-B114767E70-seeklogo.com.png"
           alt="Hashnode icon"
