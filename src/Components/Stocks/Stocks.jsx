@@ -55,7 +55,7 @@ const Stocks = (props) => {
     //total purchase price variable
     let totalPurchasePrice = 0;
 
-    stocks.map((stock) => {
+    stocks.forEach((stock) => {
       totalPurchasePrice += parseFloat(stock.purchase_price) * stock.quantity;
     });
 
@@ -70,7 +70,7 @@ const Stocks = (props) => {
     //total purchase price variable
     let totalPurchasePrice = 0;
 
-    stocks.map((stock) => {
+    stocks.forEach((stock) => {
       totalPurchasePrice += parseFloat(stock.purchase_price) * stock.quantity;
     });
 

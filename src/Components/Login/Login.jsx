@@ -9,17 +9,17 @@ import InputHolder from "../InputHolder";
 import { useTitle } from "../../Services/useTitle";
 
 const Login = (props) => {
-  //if already logged in, redirect directly to dashboard
-  if (props.isAuthenticated) {
-    let uid = localStorage.getItem("userID");
-    return <Redirect to={`/dashboard/${uid}`} />;
-  }
-
   useTitle("Login - Evolve");
 
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState({ isSet: false, errorDesc: "" });
   const [buttonText, setButtonText] = useState("LOGIN");
+  
+  //if already logged in, redirect directly to dashboard
+  if (props.isAuthenticated) {
+    let uid = localStorage.getItem("userID");
+    return <Redirect to={`/dashboard/${uid}`} />;
+  }
 
   const errorSet = (desc) => {
     setError({ isSet: true, errorDesc: desc });

@@ -35,7 +35,7 @@ const StockForm = (props) => {
 
       setText("Add Stock");
     }
-  }, [props.isOpen]);
+  }, [props.isOpen, data.uid]);
 
   const errorSet = (desc) => {
     setError({ isSet: true, errorDesc: desc });

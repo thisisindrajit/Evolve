@@ -20,7 +20,7 @@ const Bonds = (props) => {
     //total purchase price variable
     let totalPurchasePrice = 0;
 
-    bonds.map((bond) => {
+    bonds.forEach((bond) => {
       totalPurchasePrice += parseFloat(bond.face_value);
     });
 

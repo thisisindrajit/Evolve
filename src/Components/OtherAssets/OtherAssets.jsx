@@ -20,7 +20,7 @@ const OtherAssets = (props) => {
     //total purchase price variable
     let totalPurchasePrice = 0;
 
-    others.map((otherAsset) => {
+    others.forEach((otherAsset) => {
       totalPurchasePrice += parseFloat(otherAsset.purchase_price);
     });
 

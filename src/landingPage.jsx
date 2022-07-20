@@ -6,16 +6,15 @@ import "./landingPage.css";
 import full_logo from "./Images/logo_vector.png";
 import LogoHolder from "./Components/LogoHolder/LogoHolder";
 import { useTitle } from "./Services/useTitle";
-import Footer from "./Components/Footer/Footer";
 
 const LandingPage = (props) => {
+  useTitle("Evolve");
+
   //if already logged in, redirect directly to dashboard
   if (props.isAuthenticated) {
     let uid = localStorage.getItem("userID");
     return <Redirect to={`/dashboard/${uid}`} />;
   }
-
-  useTitle("Evolve");
 
   return props.loading === true ? (
     <Loading />
@@ -44,6 +43,7 @@ const LandingPage = (props) => {
           <img
             src={full_logo}
             className="right-img"
+            alt="Evolve-icon"
             style={{
               opacity: "0",
               margin: "auto",

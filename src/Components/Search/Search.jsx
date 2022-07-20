@@ -14,7 +14,7 @@ const Search = (props) => {
 
   let symbolarray = [];
 
-  props.stocks.map((stock) => {
+  props.stocks.forEach((stock) => {
     symbolarray.push(stock.symbol);
   });
 
@@ -29,7 +29,7 @@ const Search = (props) => {
     //total purchase price variable
     let totalPurchasePrice = 0;
 
-    stocks.map((stock) => {
+    stocks.forEach((stock) => {
       totalPurchasePrice += parseFloat(stock.purchase_price) * stock.quantity;
     });
 
@@ -53,7 +53,7 @@ const Search = (props) => {
           //creating symbol array
           let symbolarray = [];
 
-          response.data.map((stock) => {
+          response.data.forEach((stock) => {
             symbolarray.push(stock.symbol);
           });
 

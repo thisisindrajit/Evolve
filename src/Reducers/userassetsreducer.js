@@ -1,4 +1,4 @@
-export default (state, action) => {
+export default function (state, action) {
   switch (action.type) {
     //! Put all cases for the reducer here
     case "setstockdetails":

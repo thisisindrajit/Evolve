@@ -10,12 +10,6 @@ import InputHolder from "../InputHolder";
 import { useTitle } from "../../Services/useTitle";
 
 const Register = (props) => {
-  // if already logged in, redirect directly to dashboard
-  if (props.isAuthenticated) {
-    let uid = localStorage.getItem("userID");
-    return <Redirect to={`/dashboard/${uid}`} />;
-  }
-
   useTitle("Register - Evolve");
 
   const [data, setData] = useState({
@@ -28,6 +22,12 @@ const Register = (props) => {
 
   const [error, setError] = useState({ isSet: false, errorDesc: "" });
   const [buttonText, setButtonText] = useState("REGISTER");
+
+  // if already logged in, redirect directly to dashboard
+  if (props.isAuthenticated) {
+    let uid = localStorage.getItem("userID");
+    return <Redirect to={`/dashboard/${uid}`} />;
+  }
 
   const errorSet = (desc) => {
     setError({ isSet: true, errorDesc: desc });
@@ -73,8 +73,6 @@ const Register = (props) => {
         errorSet(response.data.error);
         return;
       } else if (response.status === 200 && response.data.userData.token) {
-        console.log("Token:" + response.data.userData.token);
-
         let jwt = response.data.userData.token;
         let uid = response.data.userData.uid;
         let username = response.data.userData.name;

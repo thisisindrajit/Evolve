@@ -3,8 +3,8 @@ import { Route, Redirect } from "react-router-dom";
 
 const ProtectedRoute = ({
   component: Component,
-  isAuthenticated: isAuthenticated,
-  logout: logout,
+  isAuthenticated,
+  logout,
   ...rest
 }) => {
   return (
@@ -12,9 +12,6 @@ const ProtectedRoute = ({
       {...rest}
       render={(props) => {
         if (isAuthenticated) {
-          {
-            /*rendering the dashboard*/
-          }
           return <Component {...props} logout={logout} />;
         } else {
           return (

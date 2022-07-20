@@ -35,7 +35,7 @@ const OtherAssetForm = (props) => {
 
       setText("Add Asset");
     }
-  }, [props.isOpen]);
+  }, [props.isOpen, data.uid]);
 
   let errorSet = (desc) => {
     setError({ isSet: true, errorDesc: desc });

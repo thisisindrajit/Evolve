@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import "./notes.css";
 import defaultPageStyles from "../../Styles/defaultPageStyles";
 import axios from "axios";

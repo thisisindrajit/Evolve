@@ -35,7 +35,7 @@ const CryptoForm = (props) => {
 
       setText("Add Crypto");
     }
-  }, [props.isOpen]);
+  }, [props.isOpen, data.uid]);
 
   const errorSet = (desc) => {
     setError({ isSet: true, errorDesc: desc });

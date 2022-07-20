@@ -39,7 +39,7 @@ const BondForm = (props) => {
 
       setText("Add Bond");
     }
-  }, [props.isOpen]);
+  }, [props.isOpen, data.uid]);
 
   const errorSet = (desc) => {
     setError({ isSet: true, errorDesc: desc });

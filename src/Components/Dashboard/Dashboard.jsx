@@ -182,19 +182,21 @@ const Dashboard = (props) => {
   };
 
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src =
-      "https://s3.tradingview.com/external-embedding/embed-widget-hotlists.js";
-    script.async = true;
-    script.innerHTML = JSON.stringify(stockMarketWidgetProps);
-    document.getElementById("stock-market-overview").appendChild(script);
+    if (stockMarketWidgetProps && marketOverviewWidgetProps) {
+      const script = document.createElement("script");
+      script.src =
+        "https://s3.tradingview.com/external-embedding/embed-widget-hotlists.js";
+      script.async = true;
+      script.innerHTML = JSON.stringify(stockMarketWidgetProps);
+      document.getElementById("stock-market-overview").appendChild(script);
 
-    const script2 = document.createElement("script");
-    script2.src =
-      "https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js";
-    script2.async = true;
-    script2.innerHTML = JSON.stringify(marketOverviewWidgetProps);
-    document.getElementById("markets-overview").appendChild(script2);
+      const script2 = document.createElement("script");
+      script2.src =
+        "https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js";
+      script2.async = true;
+      script2.innerHTML = JSON.stringify(marketOverviewWidgetProps);
+      document.getElementById("markets-overview").appendChild(script2);
+    }
   }, []);
 
   return (

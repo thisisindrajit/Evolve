@@ -55,7 +55,7 @@ const Crypto = (props) => {
     //total purchase price variable
     let totalPurchasePrice = 0;
 
-    cryptos.map((crypto) => {
+    cryptos.forEach((crypto) => {
       totalPurchasePrice += parseFloat(crypto.purchase_price) * crypto.quantity;
     });
 
@@ -70,7 +70,7 @@ const Crypto = (props) => {
     //total purchase price variable
     let totalPurchasePrice = 0;
 
-    cryptos.map((crypto) => {
+    cryptos.forEach((crypto) => {
       totalPurchasePrice += parseFloat(crypto.purchase_price) * crypto.quantity;
     });
 
