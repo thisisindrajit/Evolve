@@ -6,6 +6,7 @@ import "./landingPage.css";
 import full_logo from "./Images/logo_vector.png";
 import LogoHolder from "./Components/LogoHolder/LogoHolder";
 import { useTitle } from "./Services/useTitle";
+import Footer from "./Components/Footer/Footer";
 
 const LandingPage = (props) => {
   //if already logged in, redirect directly to dashboard
@@ -53,8 +54,22 @@ const LandingPage = (props) => {
           />
         </div>
       </div>
-      <div className="px-4 py-6 md:p-8 text-right text-sm footer">
+      {/* <div className="px-4 py-6 md:p-8 text-right text-sm footer">
+        
         © Copyright {new Date().getFullYear()} - Evolve
+      </div> */}
+      <div className="px-4 py-6 md:p-8 text-sm font-bold leading-loose footer">
+        {/* Attribution */}
+        Created for{" "}
+        <span className="text-evolve-green">
+          PlanetScale X Hashnode{" "}
+          <img
+            src="https://seeklogo.com/images/H/hashnode-logo-B114767E70-seeklogo.com.png"
+            alt="Hashnode icon"
+            className="h-6 rounded-md p-1 bg-white inline-block mx-0.5"
+          />{" "}
+          hackathon
+        </span>
       </div>
     </div>
   );

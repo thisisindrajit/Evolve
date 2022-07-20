@@ -19,6 +19,7 @@ import { connect } from "react-redux";
 import { useTitle } from "../../Services/useTitle";
 import ReactTooltip from "react-tooltip";
 import Modal from "../Modal/Modal";
+import Footer from "../Footer/Footer";
 
 const Dashboard = (props) => {
   useTitle(`${localStorage.getItem("username")}'s Dashboard - Evolve`);
@@ -197,7 +198,7 @@ const Dashboard = (props) => {
   }, []);
 
   return (
-    <>
+    <div style={defaultPageStyles.pageStyle}>
       <Modal open={showWelcomeModal} onClose={() => {}}>
         <div className="flex flex-col gap-2">
           <div className="text-evolve-green text-lg md:text-xl">
@@ -242,7 +243,7 @@ const Dashboard = (props) => {
       {/* Edit Asset form */}
       <OtherAssetEditForm isOpen={props.overlay === 8} />
 
-      <div id="dashboard" style={defaultPageStyles.pageStyle}>
+      <div id="dashboard">
         <div id="top">
           <div className="left-grid">
             <AssetBox
@@ -583,7 +584,8 @@ const Dashboard = (props) => {
           </div>
         </div>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 };
 

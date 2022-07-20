@@ -5,6 +5,7 @@ import defaultPageStyles from "../../Styles/defaultPageStyles";
 import axios from "axios";
 import { connect } from "react-redux";
 import { useTitle } from "../../Services/useTitle";
+import Footer from "../Footer/Footer";
 
 const Search = (props) => {
   useTitle(`Search - Evolve`);
@@ -104,72 +105,75 @@ const Search = (props) => {
   }, [props.stockLoading]);
 
   return (
-    <div id="search" style={defaultPageStyles.pageStyle}>
-      {props.stockLoading === 0 ? (
-        <>
-          <div>
-            <div className="text-base md:text-lg">
-              <span className="font-bold">Advanced </span>Chart
+    <div style={defaultPageStyles.pageStyle}>
+      <div id="search">
+        {props.stockLoading === 0 ? (
+          <>
+            <div>
+              <div className="text-base md:text-lg">
+                <span className="font-bold">Advanced </span>Chart
+              </div>
+              {/*Vertical line*/}
+              <div className="w-full h-px bg-evolve-green mt-3 mb-2 md:my-4"></div>
+              {/* Info */}
+              <div className="text-xs md:text-sm leading-loose text-gray-300 text-justify mb-4">
+                Search for other assets by clicking on the current asset symbol
+                in the top left corner of the chart.
+              </div>
+              <div id="chart-holder-search">
+                <AdvancedChart
+                  widgetProps={{
+                    colorTheme: "dark",
+                    symbol: stockData.length > 0 ? stockData[0] : "AAPL",
+                    height: 550,
+                    style: "2",
+                    timezone: "Etc/UTC",
+                    hide_side_toolbar: true,
+                    allow_symbol_change: true,
+                    details: true,
+                  }}
+                />
+              </div>
             </div>
-            {/*Vertical line*/}
-            <div className="w-full h-px bg-evolve-green mt-3 mb-2 md:my-4"></div>
-            {/* Info */}
-            <div className="text-xs md:text-sm leading-loose text-gray-300 text-justify mb-4">
-              Search for other assets by clicking on the current asset symbol in
-              the top left corner of the chart.
-            </div>
-            <div id="chart-holder-search">
-              <AdvancedChart
-                widgetProps={{
-                  colorTheme: "dark",
-                  symbol: stockData.length > 0 ? stockData[0] : "AAPL",
-                  height: 550,
-                  style: "2",
-                  timezone: "Etc/UTC",
-                  hide_side_toolbar: true,
-                  allow_symbol_change: true,
-                  details: true,
-                }}
-              />
-            </div>
-          </div>
 
-          <div>
-            <div className="text-base md:text-lg">
-              Your <span className="font-bold">Recent Stocks</span>
+            <div>
+              <div className="text-base md:text-lg">
+                Your <span className="font-bold">Recent Stocks</span>
+              </div>
+              {/*Vertical line*/}
+              <div className="w-full h-px bg-evolve-green mt-3 mb-2 md:my-4"></div>
+              {stockData.length > 0 ? (
+                <div id="chart-holder-stock">
+                  {stockData.slice(0, 10).map((stock, index) => {
+                    return (
+                      <div className="ticker-evolve" key={index}>
+                        <MiniChart
+                          widgetProps={{
+                            width: "100%",
+                            symbol: stock,
+                            autosize: true,
+                            dateRange: "12M",
+                            colorTheme: "dark",
+                          }}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <div className="w-full text-center text-red-500 mt-8">
+                  No Stocks found!
+                </div>
+              )}
             </div>
-            {/*Vertical line*/}
-            <div className="w-full h-px bg-evolve-green mt-3 mb-2 md:my-4"></div>
-            {stockData.length > 0 ? (
-              <div id="chart-holder-stock">
-                {stockData.slice(0, 10).map((stock, index) => {
-                  return (
-                    <div className="ticker-evolve" key={index}>
-                      <MiniChart
-                        widgetProps={{
-                          width: "100%",
-                          symbol: stock,
-                          autosize: true,
-                          dateRange: "12M",
-                          colorTheme: "dark",
-                        }}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-            ) : (
-              <div className="w-full text-center text-red-500 mt-8">
-                No Stocks found!
-              </div>
-            )}
+          </>
+        ) : (
+          <div className="m-auto h-[80vh] flex items-center justify-center w-full">
+            Loading your data...
           </div>
-        </>
-      ) : (
-        <div className="m-auto h-[80vh] flex items-center justify-center w-full">
-          Loading your data...
-        </div>
-      )}
+        )}
+      </div>
+      {props.stockLoading === 0 && <Footer />}
     </div>
   );
 };

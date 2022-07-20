@@ -5,6 +5,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useTitle } from "../../Services/useTitle";
+import Footer from "../Footer/Footer";
 
 const Notes = (props) => {
   useTitle(`${localStorage.getItem("username")}'s Notes - Evolve`);
@@ -84,7 +85,7 @@ const Notes = (props) => {
   }, [loading]);
 
   return (
-    <>
+    <div style={defaultPageStyles.pageStyle}>
       <ToastContainer
         className="z-30"
         position="top-right"
@@ -97,7 +98,7 @@ const Notes = (props) => {
         draggable
         pauseOnHover
       />
-      <div id="notes" style={defaultPageStyles.pageStyle}>
+      <div id="notes">
         <div className="text-xl">
           My <span className="font-bold">Notes</span>
         </div>
@@ -123,7 +124,8 @@ const Notes = (props) => {
           </div>
         )}
       </div>
-    </>
+      <Footer />
+    </div>
   );
 };
 

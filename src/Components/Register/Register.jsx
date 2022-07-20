@@ -21,7 +21,7 @@ const Register = (props) => {
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
-    location: "-",
+    location: "",
     email: "",
     password: "",
   });
@@ -64,7 +64,7 @@ const Register = (props) => {
         setData({
           firstName: "",
           lastName: "",
-          location: "-",
+          location: "",
           email: "",
           password: "",
         });
