@@ -34,169 +34,163 @@ const Dashboard = (props) => {
     setShowWelcomeModal(false);
   };
 
-  const stockMarketWidgetProps = {
-    colorTheme: "dark",
-    dateRange: "12M",
-    exchange: "NASDAQ",
-    showChart: true,
-    locale: "en",
-    largeChartUrl: "",
-    showSymbolLogo: false,
-    width: "100%",
-    height: "600",
-    isTransparent: "true",
-    plotLineColorGrowing: "#fff",
-    plotLineColorFalling: "#fff",
-    gridLineColor: "#9F9BCA",
-    scaleFontColor: "#9F9BCA",
-    belowLineFillColorGrowing: "#302b63",
-    belowLineFillColorFalling: "#302b63",
-    symbolActiveColor: "#4B4591",
-  };
-
-  const marketOverviewWidgetProps = {
-    colorTheme: "light",
-    dateRange: "12M",
-    showChart: true,
-    locale: "en",
-    largeChartUrl: "",
-    isTransparent: true,
-    showSymbolLogo: true,
-    width: "100%",
-    height: "600",
-    plotLineColorGrowing: "#66A4B3",
-    plotLineColorFalling: "#66A4B3",
-    gridLineColor: "#428899",
-    scaleFontColor: "#428899",
-    belowLineFillColorGrowing: "#89C8D7",
-    belowLineFillColorFalling: "#89C8D7",
-    symbolActiveColor: "#CDE7EE",
-    tabs: [
-      {
-        title: "Indices",
-        symbols: [
-          {
-            s: "FOREXCOM:NSXUSD",
-            d: "Nasdaq 100",
-          },
-          {
-            s: "FOREXCOM:SPXUSD",
-            d: "S&P 500",
-          },
-          {
-            s: "FOREXCOM:DJI",
-            d: "Dow 30",
-          },
-          {
-            s: "BSE:SENSEX",
-            d: "SENSEX",
-          },
-        ],
-        originalTitle: "Indices",
-      },
-      {
-        title: "Commodities",
-        symbols: [
-          {
-            s: "CME_MINI:ES1!",
-            d: "S&P 500",
-          },
-          {
-            s: "CME:6E1!",
-            d: "Euro",
-          },
-          {
-            s: "COMEX:GC1!",
-            d: "Gold",
-          },
-          {
-            s: "NYMEX:CL1!",
-            d: "Crude Oil",
-          },
-          {
-            s: "NYMEX:NG1!",
-            d: "Natural Gas",
-          },
-          {
-            s: "CBOT:ZC1!",
-            d: "Corn",
-          },
-        ],
-        originalTitle: "Commodities",
-      },
-      {
-        title: "Bonds",
-        symbols: [
-          {
-            s: "CME:GE1!",
-            d: "Eurodollar",
-          },
-          {
-            s: "CBOT:ZB1!",
-            d: "T-Bond",
-          },
-          {
-            s: "CBOT:UB1!",
-            d: "Ultra T-Bond",
-          },
-          {
-            s: "EUREX:FGBL1!",
-            d: "Euro Bund",
-          },
-          {
-            s: "EUREX:FBTP1!",
-            d: "Euro BTP",
-          },
-          {
-            s: "EUREX:FGBM1!",
-            d: "Euro BOBL",
-          },
-        ],
-        originalTitle: "Bonds",
-      },
-      {
-        title: "Forex",
-        symbols: [
-          {
-            s: "FX:EURUSD",
-          },
-          {
-            s: "FX:GBPUSD",
-          },
-          {
-            s: "FX:USDJPY",
-          },
-          {
-            s: "FX:USDCHF",
-          },
-          {
-            s: "FX:AUDUSD",
-          },
-          {
-            s: "FX:USDCAD",
-          },
-        ],
-        originalTitle: "Forex",
-      },
-    ],
-  };
-
   useEffect(() => {
-    if (stockMarketWidgetProps && marketOverviewWidgetProps) {
-      const script = document.createElement("script");
-      script.src =
-        "https://s3.tradingview.com/external-embedding/embed-widget-hotlists.js";
-      script.async = true;
-      script.innerHTML = JSON.stringify(stockMarketWidgetProps);
-      document.getElementById("stock-market-overview").appendChild(script);
+    const script = document.createElement("script");
+    script.src =
+      "https://s3.tradingview.com/external-embedding/embed-widget-hotlists.js";
+    script.async = true;
+    script.innerHTML = JSON.stringify({
+      colorTheme: "dark",
+      dateRange: "12M",
+      exchange: "NASDAQ",
+      showChart: true,
+      locale: "en",
+      largeChartUrl: "",
+      showSymbolLogo: false,
+      width: "100%",
+      height: "600",
+      isTransparent: "true",
+      plotLineColorGrowing: "#fff",
+      plotLineColorFalling: "#fff",
+      gridLineColor: "#9F9BCA",
+      scaleFontColor: "#9F9BCA",
+      belowLineFillColorGrowing: "#302b63",
+      belowLineFillColorFalling: "#302b63",
+      symbolActiveColor: "#4B4591",
+    });
+    document.getElementById("stock-market-overview").appendChild(script);
 
-      const script2 = document.createElement("script");
-      script2.src =
-        "https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js";
-      script2.async = true;
-      script2.innerHTML = JSON.stringify(marketOverviewWidgetProps);
-      document.getElementById("markets-overview").appendChild(script2);
-    }
+    const script2 = document.createElement("script");
+    script2.src =
+      "https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js";
+    script2.async = true;
+    script2.innerHTML = JSON.stringify({
+      colorTheme: "light",
+      dateRange: "12M",
+      showChart: true,
+      locale: "en",
+      largeChartUrl: "",
+      isTransparent: true,
+      showSymbolLogo: true,
+      width: "100%",
+      height: "600",
+      plotLineColorGrowing: "#66A4B3",
+      plotLineColorFalling: "#66A4B3",
+      gridLineColor: "#428899",
+      scaleFontColor: "#428899",
+      belowLineFillColorGrowing: "#89C8D7",
+      belowLineFillColorFalling: "#89C8D7",
+      symbolActiveColor: "#CDE7EE",
+      tabs: [
+        {
+          title: "Indices",
+          symbols: [
+            {
+              s: "FOREXCOM:NSXUSD",
+              d: "Nasdaq 100",
+            },
+            {
+              s: "FOREXCOM:SPXUSD",
+              d: "S&P 500",
+            },
+            {
+              s: "FOREXCOM:DJI",
+              d: "Dow 30",
+            },
+            {
+              s: "BSE:SENSEX",
+              d: "SENSEX",
+            },
+          ],
+          originalTitle: "Indices",
+        },
+        {
+          title: "Commodities",
+          symbols: [
+            {
+              s: "CME_MINI:ES1!",
+              d: "S&P 500",
+            },
+            {
+              s: "CME:6E1!",
+              d: "Euro",
+            },
+            {
+              s: "COMEX:GC1!",
+              d: "Gold",
+            },
+            {
+              s: "NYMEX:CL1!",
+              d: "Crude Oil",
+            },
+            {
+              s: "NYMEX:NG1!",
+              d: "Natural Gas",
+            },
+            {
+              s: "CBOT:ZC1!",
+              d: "Corn",
+            },
+          ],
+          originalTitle: "Commodities",
+        },
+        {
+          title: "Bonds",
+          symbols: [
+            {
+              s: "CME:GE1!",
+              d: "Eurodollar",
+            },
+            {
+              s: "CBOT:ZB1!",
+              d: "T-Bond",
+            },
+            {
+              s: "CBOT:UB1!",
+              d: "Ultra T-Bond",
+            },
+            {
+              s: "EUREX:FGBL1!",
+              d: "Euro Bund",
+            },
+            {
+              s: "EUREX:FBTP1!",
+              d: "Euro BTP",
+            },
+            {
+              s: "EUREX:FGBM1!",
+              d: "Euro BOBL",
+            },
+          ],
+          originalTitle: "Bonds",
+        },
+        {
+          title: "Forex",
+          symbols: [
+            {
+              s: "FX:EURUSD",
+            },
+            {
+              s: "FX:GBPUSD",
+            },
+            {
+              s: "FX:USDJPY",
+            },
+            {
+              s: "FX:USDCHF",
+            },
+            {
+              s: "FX:AUDUSD",
+            },
+            {
+              s: "FX:USDCAD",
+            },
+          ],
+          originalTitle: "Forex",
+        },
+      ],
+    });
+    document.getElementById("markets-overview").appendChild(script2);
   }, []);
 
   return (

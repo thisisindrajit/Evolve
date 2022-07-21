@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../table.css";
 import OtherAssetDeleteOverlay from "./OtherAssetDeleteOverlay";
 import axios from "axios";
@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { currency } from "../../Utils/constants";
 
 const OtherAssets = (props) => {
-  let isunmounted = false;
+  const isUnMounted = useRef(false);
 
   const [deleteOverlay, setDeleteOverlay] = useState(-1); //using the deleteOverlay value to store the transaction ID of the other asset to be deleted
   const [assetReturns, setAssetReturns] = useState([]);
@@ -45,7 +45,7 @@ const OtherAssets = (props) => {
     try {
       let response = await axios.post(OTHER_ENDPOINT, data);
 
-      if (response.status === 200 && !isunmounted) {
+      if (response.status === 200 && !isUnMounted.current) {
         if (!response.data.msg) {
           //setotherAssetData(response.data);
           const othersData = {
@@ -133,7 +133,7 @@ const OtherAssets = (props) => {
     }
 
     return () => {
-      isunmounted = true;
+      isUnMounted.current = true;
     };
   }, [props.othersLoading]);
 

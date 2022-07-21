@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import DialogBox from "../DialogBox/DialogBox";
 
 const OtherAssetDeleteOverlay = (props) => {
-  let isunmounted = false;
+  const isUnMounted = useRef(false);
   let [text, setText] = useState("Delete");
 
   let deleteOtherAsset = async () => {
@@ -21,7 +21,7 @@ const OtherAssetDeleteOverlay = (props) => {
     try {
       let response = await axios.post(DELETE_ENDPOINT, data);
 
-      if (response.status === 200 && !isunmounted) {
+      if (response.status === 200 && !isUnMounted.current) {
         console.log(response.data);
         props.setLoading({ type: "setLoading", payload: { othersLoading: 1 } });
       } else {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../table.css";
 import StockDeleteOverlay from "./StockDeleteOverlay";
 import axios from "axios";
@@ -6,7 +6,8 @@ import { connect } from "react-redux";
 import { currency } from "../../Utils/constants";
 
 const Stocks = (props) => {
-  let isunmounted = false;
+  const isUnMounted = useRef(false);
+
   const [deleteOverlay, setDeleteOverlay] = useState(-1); //using the deleteOverlay value to store the transaction ID of the stock to be deleted
   const [currentStockPriceData, setCurrentStockPriceData] = useState([]);
   const [totalStockCostPrice, setTotalStockCostPrice] = useState(null);
@@ -109,7 +110,7 @@ const Stocks = (props) => {
     try {
       let response = await axios.post(STOCK_ENDPOINT, data);
 
-      if (response.status === 200 && !isunmounted) {
+      if (response.status === 200 && !isUnMounted.current) {
         // Set stocks, stock purchase price to store and stocks loading to 0
 
         if (!response.data.msg) {
@@ -162,7 +163,7 @@ const Stocks = (props) => {
     }
 
     return () => {
-      isunmounted = true;
+      isUnMounted.current = true;
     };
   }, [props.stockLoading]);
 

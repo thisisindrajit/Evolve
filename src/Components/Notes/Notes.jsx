@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./notes.css";
 import defaultPageStyles from "../../Styles/defaultPageStyles";
 import axios from "axios";
@@ -10,7 +10,7 @@ import Footer from "../Footer/Footer";
 const Notes = (props) => {
   useTitle(`${localStorage.getItem("username")}'s Notes - Evolve`);
 
-  let isunmounted = false;
+  const isUnMounted = useRef(false);
   let [notes, setNotes] = useState("");
   let [loading, setLoading] = useState(1);
   let [updating, setUpdating] = useState(0);
@@ -27,7 +27,7 @@ const Notes = (props) => {
     try {
       let response = await axios.post(NOTES_ENDPOINT, data);
 
-      if (response.status === 200 && !isunmounted) {
+      if (response.status === 200 && !isUnMounted.current) {
         if (!response.data.msg) {
           setNotes(response.data[0].user_notes);
         } else {
@@ -80,7 +80,7 @@ const Notes = (props) => {
     }
 
     return () => {
-      isunmounted = true;
+      isUnMounted.current = true;
     };
   }, [loading]);
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../table.css";
 import BondDeleteOverlay from "./BondDeleteOverlay";
 import axios from "axios";
@@ -6,8 +6,7 @@ import { connect } from "react-redux";
 import { currency } from "../../Utils/constants";
 
 const Bonds = (props) => {
-  let isunmounted = false;
-
+  const isUnMounted = useRef(false);
   const [deleteOverlay, setDeleteOverlay] = useState(-1); //using the deleteOverlay value to store the transaction ID of the bond to be deleted
   const [interestPaid, setInterestPaid] = useState([]);
   const [totalInterestPaid, setTotalInterestPaid] = useState(null);
@@ -134,7 +133,7 @@ const Bonds = (props) => {
     try {
       let response = await axios.post(BOND_ENDPOINT, data);
 
-      if (response.status === 200 && !isunmounted) {
+      if (response.status === 200 && !isUnMounted.current) {
         if (!response.data.msg) {
           //setBondData(response.data);
           const bondData = {
@@ -203,7 +202,7 @@ const Bonds = (props) => {
     }
 
     return () => {
-      isunmounted = true;
+      isUnMounted.current = true;
     };
   }, [props.bondLoading]);
 

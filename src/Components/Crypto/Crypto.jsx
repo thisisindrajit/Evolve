@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../table.css";
 import CryptoDeleteOverlay from "./CryptoDeleteOverlay";
 import axios from "axios";
@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { currency } from "../../Utils/constants";
 
 const Crypto = (props) => {
-  let isunmounted = false;
+  const isUnMounted = useRef(false);
   const [deleteOverlay, setDeleteOverlay] = useState(-1); //using the deleteOverlay value to store the transaction ID of the crypto to be deleted
   const [currentCryptoPriceData, setCurrentCryptoPriceData] = useState([]);
   const [totalCryptoCostPrice, setTotalCryptoCostPrice] = useState(null);
@@ -83,7 +83,9 @@ const Crypto = (props) => {
     }
 
     return (
-      <span className={gainLoss === "0.00" ? "text-yellow-500" : "text-green-500"}>
+      <span
+        className={gainLoss === "0.00" ? "text-yellow-500" : "text-green-500"}
+      >
         {currency + gainLoss}
       </span>
     );
@@ -107,7 +109,7 @@ const Crypto = (props) => {
     try {
       let response = await axios.post(CRYPTO_ENDPOINT, data);
 
-      if (response.status === 200 && !isunmounted) {
+      if (response.status === 200 && !isUnMounted.current) {
         if (!response.data.msg) {
           const cryptoData = {
             type: "setcryptodetails",
@@ -158,7 +160,7 @@ const Crypto = (props) => {
     }
 
     return () => {
-      isunmounted = true;
+      isUnMounted.current = true;
     };
   }, [props.cryptoLoading]);
 

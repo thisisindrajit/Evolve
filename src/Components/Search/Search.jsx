@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./search.css";
 import { AdvancedChart, MiniChart } from "react-tradingview-embed";
 import defaultPageStyles from "../../Styles/defaultPageStyles";
@@ -10,7 +10,7 @@ import Footer from "../Footer/Footer";
 const Search = (props) => {
   useTitle(`Search - Evolve`);
 
-  let isunmounted = false;
+  const isUnMounted = useRef(false);
 
   let symbolarray = [];
 
@@ -48,7 +48,7 @@ const Search = (props) => {
     try {
       let response = await axios.post(STOCK_ENDPOINT, data);
 
-      if (response.status === 200 && !isunmounted) {
+      if (response.status === 200 && !isUnMounted.current) {
         if (!response.data.msg) {
           //creating symbol array
           let symbolarray = [];
@@ -100,7 +100,7 @@ const Search = (props) => {
     }
 
     return () => {
-      isunmounted = true;
+      isUnMounted.current = true;
     };
   }, [props.stockLoading]);
 

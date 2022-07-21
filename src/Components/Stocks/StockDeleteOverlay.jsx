@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import DialogBox from "../DialogBox/DialogBox";
 
 const StockDeleteOverlay = (props) => {
-  let isunmounted = false;
+  const isUnMounted = useRef(false);
   const [text, setText] = useState("Delete");
 
   const deleteStock = async () => {
@@ -21,7 +21,7 @@ const StockDeleteOverlay = (props) => {
     try {
       let response = await axios.post(DELETE_ENDPOINT, data);
 
-      if (response.status === 200 && !isunmounted) {
+      if (response.status === 200 && !isUnMounted.current) {
         props.setLoading({ type: "setLoading", payload: { stockLoading: 1 } });
       } else {
         console.log(response.data.error);
