@@ -245,7 +245,7 @@ const Bonds = (props) => {
                 <th>Coupon rate</th>
                 <th>Years to maturity</th>
                 <th>Payment interval</th>
-                <th>Total returns</th>
+                <th>Total returns till now</th>
                 <th>Status</th>
                 <th>Options</th>
               </tr>
@@ -287,7 +287,7 @@ const Bonds = (props) => {
                     <td>{bond.coupon_rate + "%"}</td>
                     <td>{bond.years_to_maturity}</td>
                     <td>{bond.payment_interval}</td>
-                    <td>
+                    <td style={{maxWidth: "100vw",}}>
                       {bondReturns[index]
                         ? currency +
                           bondReturns[index] +

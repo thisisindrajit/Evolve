@@ -166,7 +166,7 @@ const OtherAssets = (props) => {
                 <th>Purchase date</th>
                 <th>Purchase price</th>
                 <th>Expected annual return</th>
-                <th>Approx return till now</th>
+                <th>Approx returns till now</th>
                 <th>Status</th>
                 <th>Options</th>
               </tr>
