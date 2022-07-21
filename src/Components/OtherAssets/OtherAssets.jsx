@@ -129,6 +129,17 @@ const OtherAssets = (props) => {
 
         setAssetReturns(returnsOfAssets);
         setTotalAssetReturns(totalReturnsFromAssets.toFixed(2));
+
+        // Dispatching the action to set avg return from other assets
+        const avgOthersReturnData = {
+          type: "setothersdetails",
+          payload: {
+            othersAvgReturn: totalReturnsFromAssets / props.others.length,
+          },
+        };
+
+        // Dispatcher for setting data
+        props.setothersdata(avgOthersReturnData);
       }
     }
 

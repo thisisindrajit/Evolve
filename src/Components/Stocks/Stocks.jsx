@@ -46,6 +46,19 @@ const Stocks = (props) => {
     setCurrentStockPriceData(currentPricesAtGivenTime);
     setTotalStockCostPrice(totalPriceAtGivenTime.toFixed(2));
     setStockPricesLoading(false);
+
+    // Dispatching the action to set avg return from stocks
+    const avgStockReturnData = {
+      type: "setstockdetails",
+      payload: {
+        stockAvgReturn:
+          (totalPriceAtGivenTime - findTotalPurchasePrice(props.stocks)) /
+          props.stocks.length,
+      },
+    };
+
+    // Dispatcher for setting data
+    props.setstockdata(avgStockReturnData);
   };
 
   const findTotalPurchasePrice = (stocks) => {

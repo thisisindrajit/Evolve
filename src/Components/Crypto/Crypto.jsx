@@ -45,6 +45,19 @@ const Crypto = (props) => {
     setCurrentCryptoPriceData(currentPricesAtGivenTime);
     setTotalCryptoCostPrice(totalPriceAtGivenTime.toFixed(2));
     setCryptoPricesLoading(false);
+
+    // Dispatching the action to set avg return from crypto
+    const avgCryptoReturnData = {
+      type: "setcryptodetails",
+      payload: {
+        cryptoAvgReturn:
+          (totalPriceAtGivenTime - findTotalPurchasePrice(props.crypto)) /
+          props.crypto.length,
+      },
+    };
+
+    // Dispatcher for setting data
+    props.setcryptodata(avgCryptoReturnData);
   };
 
   const findTotalPurchasePrice = (cryptos) => {

@@ -8,8 +8,8 @@ import { currency } from "../../Utils/constants";
 const Bonds = (props) => {
   const isUnMounted = useRef(false);
   const [deleteOverlay, setDeleteOverlay] = useState(-1); //using the deleteOverlay value to store the transaction ID of the bond to be deleted
-  const [interestPaid, setInterestPaid] = useState([]);
-  const [totalInterestPaid, setTotalInterestPaid] = useState(null);
+  const [bondReturns, setBondReturns] = useState([]);
+  const [bondTotalReturns, setBondTotalReturns] = useState(null);
 
   const findTotalFaceValue = (bonds) => {
     if (bonds.length === 0) {
@@ -63,7 +63,7 @@ const Bonds = (props) => {
       : condition1;
   };
 
-  const calculateInterestPaid = (
+  const calculateBondReturns = (
     isBondMatured,
     yearsToMaturity,
     bondPurchaseDate,
@@ -104,19 +104,27 @@ const Bonds = (props) => {
     } else {
       switch (interval) {
         case "Annual":
-          return interestAmt * Math.floor(yearsToMaturity);
+          return (
+            parseFloat(faceValue) + interestAmt * Math.floor(yearsToMaturity)
+          );
 
         case "Semi Annual":
-          return interestAmt * Math.floor(2 * yearsToMaturity);
+          return (
+            parseFloat(faceValue) +
+            interestAmt * Math.floor(2 * yearsToMaturity)
+          );
 
         case "Quarterly":
-          return interestAmt * Math.floor(yearsToMaturity * 4);
+          return (
+            parseFloat(faceValue) +
+            interestAmt * Math.floor(yearsToMaturity * 4)
+          );
 
         case "Monthly":
-          return interestAmt * (yearsToMaturity * 12);
+          return parseFloat(faceValue) + interestAmt * (yearsToMaturity * 12);
 
         default:
-          return 0;
+          return parseFloat(faceValue);
       }
     }
   };
@@ -179,11 +187,11 @@ const Bonds = (props) => {
       fetchBondData();
     } else {
       if (props.bonds.length > 0) {
-        let interestPaidInBonds = [];
-        let totalInterestPaidInBonds = 0;
+        let returnsFromBonds = [];
+        let totalReturnsFromBonds = 0;
 
         for (let bond of props.bonds) {
-          const interestFromCurrentBond = calculateInterestPaid(
+          const returnFromCurrentBond = calculateBondReturns(
             checkIfBondIsMatured(bond.purchase_date, bond.years_to_maturity),
             bond.years_to_maturity,
             bond.purchase_date,
@@ -192,12 +200,23 @@ const Bonds = (props) => {
             bond.payment_interval
           );
 
-          interestPaidInBonds.push(interestFromCurrentBond.toFixed(2));
-          totalInterestPaidInBonds += interestFromCurrentBond;
+          returnsFromBonds.push(returnFromCurrentBond.toFixed(2));
+          totalReturnsFromBonds += returnFromCurrentBond;
         }
 
-        setInterestPaid(interestPaidInBonds);
-        setTotalInterestPaid(totalInterestPaidInBonds.toFixed(2));
+        setBondReturns(returnsFromBonds);
+        setBondTotalReturns(totalReturnsFromBonds.toFixed(2));
+
+        // Dispatching the action to set avg return from bonds
+        const avgBondReturnData = {
+          type: "setbonddetails",
+          payload: {
+            bondAvgReturn: totalReturnsFromBonds / props.bonds.length,
+          },
+        };
+
+        // Dispatcher for setting data
+        props.setbonddata(avgBondReturnData);
       }
     }
 
@@ -226,7 +245,7 @@ const Bonds = (props) => {
                 <th>Coupon rate</th>
                 <th>Years to maturity</th>
                 <th>Payment interval</th>
-                <th>Total interest paid</th>
+                <th>Total returns</th>
                 <th>Status</th>
                 <th>Options</th>
               </tr>
@@ -269,8 +288,12 @@ const Bonds = (props) => {
                     <td>{bond.years_to_maturity}</td>
                     <td>{bond.payment_interval}</td>
                     <td>
-                      {interestPaid[index]
-                        ? currency + interestPaid[index]
+                      {bondReturns[index]
+                        ? currency +
+                          bondReturns[index] +
+                          (isMatured
+                            ? " (face value plus interest)"
+                            : " (only interest)")
                         : "..."}
                     </td>
                     <td>{isMatured ? "Matured" : "Not matured"}</td>
@@ -368,15 +391,15 @@ const Bonds = (props) => {
                 <td></td>
                 <td></td>
                 <td>
-                  {totalInterestPaid ? (
+                  {bondTotalReturns ? (
                     <span
                       className={
-                        totalInterestPaid === "0.00"
+                        bondTotalReturns === "0.00"
                           ? "text-yellow-500"
                           : "text-green-500"
                       }
                     >
-                      {currency + totalInterestPaid}
+                      {currency + bondTotalReturns}
                     </span>
                   ) : (
                     "..."

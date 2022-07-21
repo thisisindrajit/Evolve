@@ -5,16 +5,32 @@ import { connect } from "react-redux";
 import { currency } from "../../Utils/constants";
 
 const AssetBox = (props) => {
-  let isDataLoaded =
+  const isDataLoaded =
     props.stockLoading +
     props.cryptoLoading +
     props.bondLoading +
     props.othersLoading;
-  let purprice =
+  const purprice =
     parseFloat(props.stockPurchasePrice) +
     parseFloat(props.cryptoPurchasePrice) +
     parseFloat(props.bondPurchasePrice) +
     parseFloat(props.othersPurchasePrice);
+  const isAvgReturnAvailable =
+    props.stockAvgReturn &&
+    props.cryptoAvgReturn &&
+    props.bondAvgReturn &&
+    props.othersAvgReturn;
+  const avgReturn =
+    parseFloat(props.stockAvgReturn) +
+    parseFloat(props.cryptoAvgReturn) +
+    parseFloat(props.bondAvgReturn) +
+    parseFloat(props.othersAvgReturn);
+  const isAssetsAvailable =
+    props.stocks.length +
+      props.crypto.length +
+      props.bonds.length +
+      props.others.length >
+    0;
 
   return (
     <div
@@ -35,7 +51,17 @@ const AssetBox = (props) => {
         <span className="text-sm sm:text-base xl:text-lg font-bold">
           Average Return
         </span>
-        <span className="text-sm sm:text-base truncate">-</span>
+        <span className="text-sm sm:text-base truncate">
+          {isDataLoaded === 0
+            ? isAssetsAvailable
+              ? isAvgReturnAvailable
+                ? avgReturn >= 0
+                  ? currency + avgReturn.toFixed(2)
+                  : "-" + currency + (-1 * avgReturn).toFixed(2)
+                : "Loading..."
+              : "-"
+            : "Loading..."}
+        </span>
       </div>
     </div>
   );
