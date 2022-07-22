@@ -5,7 +5,7 @@ import { currency } from "../Utils/constants";
 const UserMenu = (props) => {
   return (
     <Menu as="div" className="flex">
-      <Menu.Button>
+      <Menu.Button aria-label="profile-button">
         <svg
           className="cursor-pointer h-6 md:h-8"
           viewBox="0 0 80 80"

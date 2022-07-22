@@ -16,7 +16,7 @@ const Sidebar = (props) => {
         height="26"
         width="26"
         alt="Evolve logo"
-        className="m-7 cursor-pointer"
+        className="m-[1.65rem] cursor-pointer"
         onClick={() => props.setpage(1)}
         style={{
           opacity: "0",

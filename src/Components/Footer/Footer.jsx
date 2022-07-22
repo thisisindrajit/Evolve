@@ -12,31 +12,31 @@ const Footer = (props) => {
         <img
           src="https://fintechbreakthrough.com/wp-content/uploads/2022/03/tradingview-new-1.svg"
           alt="Trading View icon"
-          className="bg-white p-1 rounded-md h-8"
+          className="bg-white p-1 rounded-md h-8 w-28"
         />
         {/* Yahoo finance icon */}
         <img
           src="https://seeklogo.com/images/Y/yahoo-finance-logo-D576345001-seeklogo.com.png"
           alt="Yahoo finance icon"
-          className="bg-white p-1 rounded-md h-8"
+          className="bg-white p-1 rounded-md h-8 w-[4.5rem]"
         />
         {/* React icon */}
         <img
           src="https://w7.pngwing.com/pngs/186/205/png-transparent-react-native-react-logos-brands-icon-thumbnail.png"
           alt="React icon"
-          className="bg-white p-1 rounded-md h-8"
+          className="bg-white p-1 rounded-md h-8 w-8"
         />
         {/* PlanetScale icon */}
         <img
           src="https://seeklogo.com/images/P/planetscale-logo-0EEA8CAEB4-seeklogo.com.png"
           alt="PlanetScale icon"
-          className="bg-white p-1 rounded-md h-8"
+          className="bg-white p-1 rounded-md h-8 w-8"
         />
         {/* Heroku icon */}
         <img
           src="https://banner2.cleanpng.com/20180531/lbf/kisspng-heroku-computer-icons-computer-servers-catalog-ser-24-5b103ecbd98262.9829309615277913078909.jpg"
           alt="Heroku icon"
-          className="bg-white rounded-md h-8"
+          className="bg-white rounded-md h-8 w-8"
         />
       </div>
       {/* Attribution */}
@@ -45,7 +45,7 @@ const Footer = (props) => {
         <img
           src="https://seeklogo.com/images/H/hashnode-logo-B114767E70-seeklogo.com.png"
           alt="Hashnode icon"
-          className="h-6 rounded-md p-1 bg-white inline-block mx-0.5"
+          className="h-6 w-6 rounded-md p-1 bg-white inline-block mx-0.5"
         />{" "}
         hackathon by{" "}
         <a
