@@ -8,7 +8,7 @@ import LogoHolder from "./Components/LogoHolder/LogoHolder";
 import { useTitle } from "./Services/useTitle";
 
 const LandingPage = (props) => {
-  useTitle("Evolve");
+  useTitle("Evolve - Your online portfolio manager");
 
   //if already logged in, redirect directly to dashboard
   if (props.isAuthenticated) {
