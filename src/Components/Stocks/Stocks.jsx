@@ -164,6 +164,8 @@ const Stocks = (props) => {
   };
 
   useEffect(() => {
+    isUnMounted.current = false;
+
     if (props.stockLoading === 1) {
       fetchStockData();
     } else {

@@ -183,6 +183,9 @@ const Bonds = (props) => {
   };
 
   useEffect(() => {
+
+    isUnMounted.current = false;
+    
     if (props.bondLoading === 1) {
       fetchBondData();
     } else {

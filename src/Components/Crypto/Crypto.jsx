@@ -161,6 +161,9 @@ const Crypto = (props) => {
   };
 
   useEffect(() => {
+
+    isUnMounted.current = false;
+    
     if (props.cryptoLoading === 1) {
       fetchcryptoData();
     } else {

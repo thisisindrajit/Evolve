@@ -105,6 +105,9 @@ const OtherAssets = (props) => {
   };
 
   useEffect(() => {
+
+    isUnMounted.current = false;
+    
     if (props.othersLoading === 1) {
       fetchotherAssetData();
     } else {
